@@ -1,3 +1,4 @@
+![Example screenshot](./img/screenshot.png) -->
 # Project Name
 > Smaczego.pl
 
@@ -14,7 +15,6 @@
 Cooking blog
 
 <!-- ## Screenshots
-![Example screenshot](./img/screenshot.png) -->
 
 ## Technologies
 * HTML5
