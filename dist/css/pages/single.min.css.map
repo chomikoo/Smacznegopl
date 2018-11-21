@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/single.scss"],"names":[],"mappings":"AAAA,eAGQ,iBAAkB,CACrB","file":"single.min.css","sourcesContent":[".single {\r\n    .entry {\r\n        // max-width: 650px;\r\n        margin: 0 0 50px 0;\r\n    }\r\n}"]}

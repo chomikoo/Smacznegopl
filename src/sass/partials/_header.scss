@@ -1,0 +1,126 @@
+// ========
+// HEADER
+// ========
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 15px;
+    margin: 0 auto 30px auto;
+
+    background-color: $c-black08;
+}
+
+.head {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+
+    overflow: hidden;
+
+    @include breakpoint(xl) {
+        flex-direction: row;
+        max-height: 90vh;
+    }
+
+    &__about {
+        position: relative;
+
+        width: 100%;
+        padding: 20px 50px 50px 50px;
+
+        background-color: $white;
+        color: $black;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: calc(0% - 29px);
+            left: 0px;
+
+            width: calc(100% - 25px);
+            height: 30px;
+
+            background: $white;
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            top: calc(0% - 29px);
+            left: calc(100% - 25px);
+
+            width: 0;
+            height: 0;
+            border: 15px solid $white;
+            border-right: 15px solid transparent;
+            border-top: 15px solid transparent;
+          }
+          
+            @include breakpoint(xl) {
+                width: 40%;
+                padding: 50px 50px 50px 50px;
+                &::after {
+                    top: 0;
+                    border-right: 15px solid $black;
+                    border-top: 15px solid $black;
+            }
+          }
+        }
+
+    &__title {
+        margin: 0 0 20px 0;
+        padding: 0 0 20px 0;
+        border-bottom: 1px solid $black;
+
+        font-size: 30px;
+        letter-spacing: 5px;
+        text-transform: lowercase;
+    }
+
+    &__text {
+        line-height: 30px;
+    }
+}
+
+.carousel {
+    width: 100%;
+
+    &__img {
+        width: 100%;
+    }
+    &__btn {
+        position: absolute;
+        top: 50%;
+        z-index: 2;
+
+        transform: translate(0%, -50%);
+
+        height: 100%;
+        width: 50px;
+
+        font-size: 40px;
+
+        &--prev {
+            left: 0;
+        }
+
+        &--next {
+            left: calc(100% - 50px);
+        }
+    }
+
+    .slick-slide {
+        transform: scale(1.1);
+    }
+
+    @include breakpoint(xl) {
+        width: 60%;
+    }
+}

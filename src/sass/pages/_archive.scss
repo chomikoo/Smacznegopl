@@ -1,0 +1,33 @@
+.albums {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint(xl) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    &__side {
+        margin: 0 0 $gap 0;
+
+        @include breakpoint(xl) {
+            flex: 0 0 calc(30% - #{$gap});
+            max-width: calc(30% - #{$gap});
+        }
+    }
+
+    &__main {
+        @include breakpoint(xl) {
+            // flex: 0 0 70%;
+            max-width: 70%;
+        }
+    }
+
+}
+
+.filter {
+    &__navigation {
+        background-color: $white;
+    }
+}

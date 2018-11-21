@@ -1,0 +1,44 @@
+{
+  "name": "Smaczegopl",
+  "version": "1.0.0",
+  "description": "> Here goes your awesome project description!",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chomikoo/Smaczegopl.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chomikoo/Smaczegopl/issues"
+  },
+  "homepage": "https://github.com/chomikoo/Smaczegopl#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-babel-minify": "^0.5.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-options": "^1.1.1",
+    "gulp-plumber": "^1.2.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-strip-debug": "^3.0.0",
+    "gulp-svgo": "^1.5.4",
+    "gulp-util": "^3.0.8",
+    "gulp-wait": "0.0.2",
+    "imagesloaded": "^4.1.4",
+    "run-sequence": "^2.2.1",
+    "slick-carousel": "^1.8.1"
+  },
+  "dependencies": {
+    "instafeed.js": "^1.4.1"
+  }
+}

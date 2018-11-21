@@ -1,0 +1,133 @@
+body {
+    margin: 120px 0 0 0;
+    background-color: $black;
+    overflow-x: hidden;
+    color: $white;
+    font-family: $f-open-sans;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $f-montserrat;
+    margin: 0;
+    padding: 0;
+}
+
+figure,
+ol,
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+a {
+    color: $white;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.btn {
+    border: none;
+    background: transparent;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.red-text {
+    color: $red;
+}
+
+.main {
+    filter: blur(0px);
+    transition: 0.5s ease-in-out;
+}
+
+.blur {
+    filter: blur(5px);
+}
+
+.page-title {
+    font-weight: 100;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+
+    .box {
+        width: calc(50% - 10px);
+    }
+}
+
+
+
+.no-scroll {
+    height: 100%;
+    overflow: hidden;
+}
+
+
+// LazyLoad
+.lazy {
+    opacity: 0;
+    transition: all 0.5s ease-in;
+    &.loaded { 
+        opacity: 1;
+    }
+}
+
+// Header Text hide
+.hide-text {
+    display: inline-block;
+    opacity: 1;
+    transition: all 0.3s ease-in;
+    &.active {
+        width: 0%;
+        opacity: 0;
+    };
+}
+
+
+//Filter checkboxes
+
+input[type=checkbox].custom_checkbox {
+    position: absolute; 
+
+    clip: rect(0 0 0 0); 
+
+    height:1px; 
+    width:1px; 
+    margin:-1px; 
+    padding:0;
+    border:0;
+
+    overflow: hidden; 
+   
+    &:checked + label {
+        background-position: 0 -15px;
+    }
+    
+    & + label {
+        display:inline-block;
+        padding-left:20px;
+        height:15px; 
+        line-height:15px;
+        font-size:15px;
+        vertical-align:middle;
+        background-image:url('../img/lite-x-gray.png');
+        background-repeat:no-repeat;
+        background-position: 0 0;
+        cursor:pointer;
+    }
+}

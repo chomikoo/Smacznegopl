@@ -1,0 +1,71 @@
+ 
+ /*--------------------------------------------------------------
+# Vendors
+--------------------------------------------------------------*/
+@import "vendors/slick";
+@import "vendors/slick-theme";
+@import "vendors/twentytwenty"; 
+
+  
+ /*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+@import "helpers/normalize";
+  
+ /*--------------------------------------------------------------
+# WordPress
+--------------------------------------------------------------*/
+@import "helpers/wordpress";
+
+/*--------------------------------------------------------------
+# Variables
+--------------------------------------------------------------*/
+@import "helpers/variables";
+
+/*--------------------------------------------------------------
+# Mixins
+--------------------------------------------------------------*/
+@import "helpers/mixins";     
+
+
+/*--------------------------------------------------------------
+# Layout
+--------------------------------------------------------------*/
+@import "layout/breakpoints"; 
+@import "layout/grid"; 
+@import "layout/general";  
+
+
+/*--------------------------------------------------------------
+# Partials
+--------------------------------------------------------------*/ 
+@import "partials/header";  
+@import "partials/navbar";  
+@import "partials/instagram";  
+@import "partials/album-card";  
+@import "partials/box"; 
+@import "partials/gallery";  
+@import "partials/footer";   
+@import "partials/wysiwyg";   
+@import "partials/modal-ajax";  
+@import "partials/icons";    
+
+
+
+ 
+/*--------------------------------------------------------------
+# Pages
+--------------------------------------------------------------*/ 
+
+@import "pages/preloader";  
+@import "pages/error404";  
+@import "pages/single";  
+@import "pages/about";  
+@import "pages/contact";    
+@import "pages/archive";    
+
+ 
+ 
+@import "layout/animations";   
+
+ 
