@@ -1,4 +1,4 @@
-![Example screenshot](./img/screenshot.png) -->
+![Example screenshot](./screenshot.png)
 # Project Name
 > Smaczego.pl
 
