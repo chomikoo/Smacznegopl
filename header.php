@@ -21,7 +21,7 @@
 
         <header class="header container">
             
-            <h1 class="header__logo page-title">Smacznego.pl</h1>
+            <h1 class="header__logo logo">Smacznego.pl</h1>
             <?php get_template_part('template-parts/nav/navbar'); ?>
             
         </header>
