@@ -2,9 +2,6 @@
  /*--------------------------------------------------------------
 # Vendors
 --------------------------------------------------------------*/
-@import "vendors/slick";
-@import "vendors/slick-theme";
-@import "vendors/twentytwenty"; 
 
   
  /*--------------------------------------------------------------
@@ -41,14 +38,11 @@
 --------------------------------------------------------------*/ 
 @import "partials/header";  
 @import "partials/navbar";  
-@import "partials/instagram";  
-@import "partials/album-card";  
-@import "partials/box"; 
-@import "partials/gallery";  
+@import "partials/instagram";   
 @import "partials/footer";   
 @import "partials/wysiwyg";   
-@import "partials/modal-ajax";  
 @import "partials/icons";    
+@import "partials/preloader";  
 
 
 
@@ -57,7 +51,6 @@
 # Pages
 --------------------------------------------------------------*/ 
 
-@import "pages/preloader";  
 @import "pages/error404";  
 @import "pages/single";  
 @import "pages/about";  
