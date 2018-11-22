@@ -40,7 +40,7 @@ const gulp = require('gulp'),
 
 //=========== Paths ==================/
 
-const projectName = 'Smacznegopl'; 
+const projectName = 'smacznegopl'; 
 
 //=========== Styles ==================/
 
@@ -55,12 +55,7 @@ const jsVendors = jsSRC + 'vendors/';
 const jsMain = jsSRC + 'script.js';
 
 const jsAll = [
-	jsVendors + 'slick.js',
-	jsVendors + 'lazyload.iife.js',
-	jsVendors + 'jquery.event.move.js',
-	jsVendors + 'jquery.twentytwenty.js',
-	jsVendors + 'instafeed.js',
-	// jsSRC + 'filter.js'
+
 	jsMain
 ];
 
