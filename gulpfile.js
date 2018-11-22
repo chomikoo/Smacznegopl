@@ -40,7 +40,7 @@ const gulp = require('gulp'),
 
 //=========== Paths ==================/
 
-const projectName = 'smacznegopl'; 
+const projectName = 'smacznego'; 
 
 //=========== Styles ==================/
 

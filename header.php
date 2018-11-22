@@ -1,9 +1,9 @@
 <?php
 /**
- * Portfolio: Header
+ * Smacznego: Header
  *
  * @package WordPress
- * @subpackage Portfolio
+ * @subpackage Smacznego
  * 
  */
 
@@ -20,7 +20,8 @@
     <body <?php body_class(); ?>>
 
         <header class="header container">
-
+            
+            <h1 class="header__logo page-title">Smacznego.pl</h1>
             <?php get_template_part('template-parts/nav/navbar'); ?>
             
         </header>
