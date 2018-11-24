@@ -1,0 +1,15 @@
+.section-spacer {
+    width: 100%;
+    padding: 50px 0;
+	text-align: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: $c-grey-l;
+	font-size: 35px;
+	&__bar {
+		width: 30%;
+		height: 2px;
+		background-color: $c-grey-l;
+	}
+}

@@ -12,10 +12,12 @@ $white: #ffffff;
 $black: #000000;
 $c-black08: rgba(0,0,0,0.8);
 
-$c-grey: #262626;
+$c-grey: #676767;
 $c-grey09: rgba($c-grey,0.9);
 
-$c-grey-l: #444444;
+$c-grey-l: #b5b5b5;
+
+$c-green: #7bbf44;
 
 // TYPOGRAPHY
 
@@ -24,3 +26,20 @@ $f-montserrat: 'Montserrat', sans-serif;
 $f-lato: 'Lato', sans-serif;
 
 // Spacers
+
+$header-height: 100px;
+
+// Radius 
+$borderR: 5px;
+
+//Boxshadow
+
+$b-shadow1: 0 1px 2px rgba(0,0,0,0.16);
+
+// Gradient 
+
+$bg-gradient: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0,0,0,0.1135) 40%);
+$bg-gradient-90deg: linear-gradient(-90deg, rgba(0, 0, 0, 0.6) -15%, rgba(0,0,0,0.1135) 40%);
+
+$bg-gradient-white: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.114) 40%);
+ 

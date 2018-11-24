@@ -1,7 +1,7 @@
 body {
+    margin-top: $header-height;
     background-color: $white;
     overflow-x: hidden;
-    color: $white;
     font-family: $f-montserrat;
 }
 
@@ -25,13 +25,25 @@ ul {
 }
 
 a {
-    color: $white;
+    color: $black;
     text-decoration: none;
 }
 
 img {
     max-width: 100%;
     height: auto;
+}
+
+.section-title {
+    font-weight: 100;
+    font-size: 40px;
+    margin-bottom: 55px;
+    text-align: center;
+    letter-spacing: 6px;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 .btn {
@@ -43,6 +55,9 @@ img {
     }
 }
 
+.main{
+    padding: 25px 0 0 0;
+}
 
 .no-scroll {
     height: 100%;
@@ -63,4 +78,18 @@ img {
 
 .logo {
     font-family: $f-mali;
+    letter-spacing: 4px;
+    margin: 0 auto;
+}
+
+.thumbnail {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+
+	img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
 }

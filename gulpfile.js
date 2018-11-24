@@ -55,7 +55,7 @@ const jsVendors = jsSRC + 'vendors/';
 const jsMain = jsSRC + 'script.js';
 
 const jsAll = [
-
+	jsVendors + 'slick.js',
 	jsMain
 ];
 

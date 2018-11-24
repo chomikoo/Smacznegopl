@@ -1,0 +1,11 @@
+.taxonomy-tag  {
+    display: flex;
+    flex-wrap: wrap;
+    // justify-content: space-between;
+    > * {
+        padding: 0 2px;
+    }
+    &__element:first-of-type {
+        padding-left: 0;
+    }
+}

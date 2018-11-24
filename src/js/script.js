@@ -3,6 +3,60 @@
 	console.log('Hello from script.js ');
 
 
+	/////////////////////
+	// Init frontpage slider
+	/////////////////////
+
+	$('.slider__list').slick({
+		dots: false,
+		speed: 500,
+		slidesToShow: 3,
+		responsive: [
+			{
+				breakpoint: 950,
+				settings: {
+				  slidesToShow: 2
+				}
+			},
+			{
+				breakpoint: 580,
+				settings: {
+				  slidesToShow: 1
+				}
+			  },
+		]
+	});
+
+	/////////////////////
+	// equal slide height
+	/////////////////////
+	const setSlidesHeight = (element) => {
+		const slickWrapper = $(element);
+		const slickWrapperH = slickWrapper.height();
+		slickWrapper.find('.slick-slide').css('height', slickWrapperH + 'px' );
+	}
+	setSlidesHeight('.top-carousel');
+	// setSlidesHeight('.meal-terms');
+
+
+	$(window).on('resize', setSlidesHeight('.top-carousel'));
+
+	$('.meal-terms').slick({
+		// dots: true,
+		speed: 500,
+		slidesToShow: 3,
+		responsive: [
+			{
+				breakpoint: 580,
+				settings: {
+				  slidesToShow: 2
+				}
+			  },
+		]
+	}); 
+
+
+	
 	// Instafeeed
 	// Init instafeed.js
 	// var instaFeed = new Instafeed({

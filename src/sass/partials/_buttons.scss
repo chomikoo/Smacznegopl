@@ -1,0 +1,16 @@
+
+.btn {
+    border: none;
+    background: transparent;
+    &:focus {
+        outline: none;
+    }
+
+
+    &--search {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+

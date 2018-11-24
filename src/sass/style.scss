@@ -2,6 +2,8 @@
  /*--------------------------------------------------------------
 # Vendors
 --------------------------------------------------------------*/
+@import "vendors/slick.scss";
+@import "vendors/slick-theme.scss";
 
   
  /*--------------------------------------------------------------
@@ -38,12 +40,20 @@
 --------------------------------------------------------------*/ 
 @import "partials/header";  
 @import "partials/navbar";  
+@import "partials/buttons";  
+@import "partials/hamburger";  
 @import "partials/instagram";   
 @import "partials/footer";   
 @import "partials/wysiwyg";   
 @import "partials/icons";    
 @import "partials/preloader";  
+@import "partials/taxonomy-tags"; 
+@import "partials/section-spacer";  
+@import "partials/post-box";  
 
+
+
+ 
 
 
  
@@ -56,6 +66,8 @@
 @import "pages/about";  
 @import "pages/contact";    
 @import "pages/archive";    
+@import "pages/front";    
+
 
  
  

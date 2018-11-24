@@ -127,6 +127,7 @@
             array(
                 'hierarchical' => true,
                 'labels' => $type_taxonomy_labels,
+                'show_admin_column' => true,
                 'show_ui' => true,
                 'update_count_callback' => '_update_post_term_count',
                 'query_var' => true,
@@ -146,7 +147,7 @@
             'parent_item_colon' => null,
             'edit_item'         => __('Edytuj typ') ,
             'update_item'       => __('Aktualizuj typ'),
-            'add_new_item'      => __('Dodaj nowy typ'),
+            'add_new_item'      => __('Dodaj nowy typ'),    
             'new_item_name'     => __('Nazwa nowego typ'),
             'separate_items_with_commas'    => __('Oddziel typy przecinkiem'),
             'add_or_remove_items'           => __('Dodaj lub usuń typy'),
@@ -160,6 +161,7 @@
             array(
                 'hierarchical' => true,
                 'labels' => $product_type_taxonomy_labels,
+                'show_admin_column' => true,
                 'show_ui' => true,
                 'update_count_callback' => '_update_post_term_count',
                 'query_var' => true,
