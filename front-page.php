@@ -91,7 +91,7 @@ get_header(); ?>
 				<?php echo __('Najnowsze przepisy', 'smacznegopl'); ?>
 			</h2>
 
-			<div class="row">
+			<div class="row mx-auto">
 				<?php	
 					$newsest_recipes_arg = new WP_Query( array(
 						'post_type' => array('recipes', 'post'),
@@ -111,11 +111,46 @@ get_header(); ?>
 
 		</section><!-- .latest-posts -->
 
-		<section class="popular-posts"></section><!-- .popular-posts -->
+		<section class="popular-posts">
 
-		<section class="newsletter"></section><!-- .newsletter -->
+			<h2 class="section-title">
+				<?php echo __('Popularne', 'smacznegopl'); ?>
+			</h2>
 
-		<section class="instagram"></section><!-- instagram -->
+			<div class="row mx-auto">
+				<?php	
+					$newsest_recipes_arg = new WP_Query( array(
+						'post_type' => array('recipes', 'post'),
+						'posts_per_page' => '6',
+						'post_status'    => 'publish',
+					) );
+					while ( $newsest_recipes_arg->have_posts() ) :
+						$newsest_recipes_arg->the_post();
+
+						get_template_part( 'template-parts/popular-post' );
+					
+					endwhile;
+					wp_reset_postdata();
+					?>
+				<!-- </div> -->
+			</div>
+
+		</section><!-- .popular-posts -->
+
+		<section class="newsletter">
+
+
+		</section><!-- .newsletter -->
+
+		<section class="instagram">
+
+			<h2 class="section-title">
+				<?php echo __('#insta', 'smacznegopl'); ?>
+			</h2>
+
+			<div id="insta"></div>
+
+		</section><!-- instagram -->
 
 	</main>
 
