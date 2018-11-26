@@ -1,3 +1,17 @@
-.instargam {
-    
+.instagram {
+    $gap: 5px;
+    .insta {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+    }
+    &__img {
+        @include image-bg();
+        width: calc(33.3% - #{$gap/2});
+        margin-bottom: $gap;
+        border-radius: $borderR;
+        font-size: 0;
+        overflow: hidden;
+    }
 }

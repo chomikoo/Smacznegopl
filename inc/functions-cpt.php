@@ -18,7 +18,7 @@
         
         $labels =  array(
             'name'              => __('Przepisy'),
-            'singular_name'     => __('Przepisy'),
+            'singular_name'     => __('Przepis'),
             'all_items'         => __('Wszystkie przepisy'),
             'add_new'           => __('Dodaj nowy przepis'),
             'add_new_item'      => __('Dodaj nowy przepis'),

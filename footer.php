@@ -12,8 +12,39 @@
 
 ?>
 
-	<footer class="footer container">
-		
+	<footer class="footer">
+		<div class="container">
+
+			<?php get_template_part('template-parts/newsletter'); ?>
+
+			<!-- <div class="footer__newsletter">
+
+				<form id="newsletter">
+					<input id="newsletter" type="text">
+					<label for="newsletter"></label>
+				</form>
+
+			</div> -->
+			
+			<div class="footer__logo logo">
+				Smacznego.pl
+			</div>
+
+			<div class="footer__socials">
+				<ul class="socials">
+					<li><a href="#" class="socials__link"><span class="fab fa-facebook-f"></span></a></li>
+					<li><a href="#" class="socials__link"><span class="fab fa-instagram"></span></a></li>
+					<li><a href="#" class="socials__link"><span class="fab fa-pinterest-p"></span></a></li>
+					<li><a href="#" class="socials__link"><span class="fas fa-rss"></span></a></li>
+				</ul>
+			</div>
+
+
+			<div class="footer__copy">
+				Chomikoo &copy; 2018
+			</div>
+				
+		</div>
 
 	</footer>
 

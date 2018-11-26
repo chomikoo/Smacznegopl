@@ -1,13 +1,16 @@
 .recipe {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     // border: 1px solid $black;
     margin: 0 0 50px 0;
-
 
     &__thumbnail {
         position: relative;
         border-radius: $borderR;
         margin: 0 0 25px 0;
-        max-height: 400px;
+        height: 260px;
+    
         &::after {
             content: '';
             position: absolute;
@@ -27,6 +30,10 @@
                 opacity: 0.5;
             }
         }
+    }
+
+    &__content {
+        flex-grow: 1;
     }
 
     &__post-type {
@@ -49,12 +56,12 @@
         color: $c-grey;
 
         &--nutrition {
-            position: absolute;
-            top: calc(100% - 25px);
-            left: 0;
-            z-index: 1;
+            // position: absolute;
+            // top: calc(100% - 25px);
+            // left: 0;
+            // z-index: 1;
             width: 100%;
-            text-align: center;
+            // text-align: center;
         }
     }
 
@@ -67,7 +74,7 @@
     &__footer {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: baseline;
     }
 
     &__more {
@@ -75,16 +82,30 @@
         transition: all 0.2s ease-in;
         &:hover, &:focus  {
             color: $c-green;
+            & ~ .bar:after {
+                width: 100%;
+            }
         }
     }
 
     .bar {
         // width: 100%;
+        position: relative;
         flex-grow: 1;
         height: 1px;
         display: inline-block;
         padding: 0 0 0 15px;
         background-color: $c-grey-l;
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 1px;
+            background-color: $c-green;
+            transition: all 0.2s ease-in;
+        }
     }
 }
 

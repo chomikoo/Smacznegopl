@@ -12,7 +12,7 @@
  */
 
 get_header(); ?>
-	<main class="main">
+	<main class="main front-page">
 		
 		<section class="top-carousel ">
 			
@@ -111,7 +111,9 @@ get_header(); ?>
 
 		</section><!-- .latest-posts -->
 
-		<section class="popular-posts">
+		<?php get_template_part('template-parts/section-spacer'); ?>
+
+		<section class="popular-posts container">
 
 			<h2 class="section-title">
 				<?php echo __('Popularne', 'smacznegopl'); ?>
@@ -137,20 +139,18 @@ get_header(); ?>
 
 		</section><!-- .popular-posts -->
 
-		<section class="newsletter">
+		<?php get_template_part('template-parts/section-spacer'); ?>
 
-
-		</section><!-- .newsletter -->
-
-		<section class="instagram">
-
+		<section class="instagram container">
+			
 			<h2 class="section-title">
 				<?php echo __('#insta', 'smacznegopl'); ?>
 			</h2>
-
-			<div id="insta"></div>
-
+			
+			<div id="insta" class="insta"></div>
+			
 		</section><!-- instagram -->
+		
 
 	</main>
 

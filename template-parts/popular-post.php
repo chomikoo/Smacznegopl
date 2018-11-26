@@ -5,7 +5,7 @@
 
 ?>
 
-<article class="popular__single post-<?php the_ID(); ?> col-6 col-md-4">
+<article class="popular__single post-<?php the_ID(); ?> col-6 col-sm-4">
     <a href="<?php the_permalink(); ?>" class="popular__link">
         <div class="popular__thumbnail" style="background-image: url('<?php echo get_the_post_thumbnail_url() ?>')">
             <!-- <img <?php responsive_thumbnail( get_the_ID(), 'thumb-320', '600px' )?> /> -->
