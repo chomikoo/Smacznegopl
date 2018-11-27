@@ -1,0 +1,22 @@
+.error {
+    height: calc(100vh - #{$header-height});
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    &__title {
+        font-size: 120px;
+        font-family: $f-mali
+    }
+
+    &__link {
+        display: inline;
+        margin-top: 15px;
+        transition: all 0.3s ease-in;
+        &:hover, &:focus {
+            background-color: $black;
+            color: $white;
+        }
+    }
+}
