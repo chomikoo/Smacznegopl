@@ -33,8 +33,8 @@
         },
         {
             "key": "field_5b3f611bb113c",
-            "label": "Waga całość",
-            "name": "waga_calosc",
+            "label": "Waga porcji",
+            "name": "waga_porcji",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -501,5 +501,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1542983763
+    "modified": 1543319361
 }

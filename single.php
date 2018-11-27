@@ -12,7 +12,7 @@
 
     <main id="main" class="main">
     
-
+        Single Post
 
     </main>
 
