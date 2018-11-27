@@ -13,7 +13,7 @@
             
             <div class="slider__info">
                 <span class="slider__date"><?php echo get_the_date( 'Y-m-d' ); ?></span>
-                <span class="slider__time"><?php echo min_2_h( get_field('czas') ); ?></span>
+                <span class="slider__time"><span class="far fa-clock"><?php echo min_2_h( get_field('czas') ); ?></span>
                 <span class="slider__kcal"><?php echo get_field('kcal'); ?>kcal</span>
             </div>
 

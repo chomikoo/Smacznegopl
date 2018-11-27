@@ -2,7 +2,6 @@
     $postType = get_post_type_object( get_post_type($post));
     $postTypeLabel = $postType->label;
     $postTypeSingularLabel = $postType->labels->singular_name;
-
 ?>
 
 <article class="recipe recipe-<?php the_ID(); ?> col col-sm-6 col-md-4">
@@ -16,13 +15,13 @@
         
         <h2 class="recipe__title"><span class="bold"><?php echo $postTypeSingularLabel; ?>:</span> <?php the_title(); ?></h2>
         
-        <?php if ( $postType = 'recipes' ) { ?>
+        <?php if ( $postType->name == 'recipes' ) { ?>
             <div class="recipe__info recipe__info--nutrition">    
                 <span class="recipe__badge"><?php echo get_field('kcal'); ?>kcal</span><span class="spacer"></span>
-                <span class="recipe__badge">B: <?php echo get_field('bialko'); ?>g</span><span class="spacer"></span>
-                <span class="recipe__badge">W: <?php echo get_field('weglowodany'); ?>g</span><span class="spacer"></span>
-                <span class="recipe__badge">T: <?php echo get_field('tluszcze'); ?>g</span><span class="spacer"></span>
-                <span class="recipe__badge"><span class="far fa-clock"></span><?php echo min_2_h( get_field('czas') ); ?></span>
+                <span class="recipe__badge">B:&nbsp;<?php echo get_field('bialko'); ?>g</span><span class="spacer"></span>
+                <span class="recipe__badge">W:&nbsp;<?php echo get_field('weglowodany'); ?>g</span><span class="spacer"></span>
+                <span class="recipe__badge">T:&nbsp;<?php echo get_field('tluszcze'); ?>g</span><span class="spacer"></span>
+                <span class="recipe__badge"><span class="far fa-clock"></span>&nbsp;<?php echo min_2_h( get_field('czas') ); ?></span>
             </div>
         <?php } ?>
 

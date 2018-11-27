@@ -147,7 +147,7 @@ get_header(); ?>
 				<?php echo __('#insta', 'smacznegopl'); ?>
 			</h2>
 			
-			<div id="insta" class="insta"></div>
+			<div id="insta" class="insta row mx-auto"></div>
 			
 		</section><!-- instagram -->
 		
