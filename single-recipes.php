@@ -21,44 +21,39 @@
 
     <main id="main" class="main">
     
-        <div class="top-bar container">
+        <div class="top-bar">
 			<?php get_template_part('template-parts/recipe/top-bar'); ?>
 		</div>
 
-        <article class="recipe recipe-<?php the_ID(); ?>">
+        <article class="single-recipe recipe-<?php the_ID(); ?> container">
 
-            <header class="recipe__header">
-                <?php the_post_thumbnail();  ?>
-                <h1 class="post__title">
-                    <?php the_title(); ?>
-                </h1>
+            <header class="single-recipe__header thumbnail gradient-bg">
+                <?php the_post_thumbnail('full');  ?>
+                <div class="single-recipe__info">
+                    <div class="single-recipe__badges badges">
+                        <span class="badges__single"><?php echo get_the_date( 'd F Y' ); ?></span><span class="dot"></span>
+                        <span class="badges__single"><?php the_author() ?></span>
+                        <span class="badges__single"><span class="far fa-clock"></span>&nbsp;<?php echo min_2_h( get_field('czas') ); ?></span><span class="dot"></span>
+                    </div>
+                    
+                    <h1 class="post__title">
+                        <?php the_title(); ?>
+                    </h1>
+                </div>
 
                 <?php get_template_part('template-parts/recipe/features.php'); ?>
 
-                <div class="badge_container container">
-                    <!-- <span class="badge badge--date badge--info">
-                        <?php echo get_the_date(); ?>
-                    </span> -->
-                    <span class="badge">
-                        <?php echo __('Czas', 'smacznegopl'); ?>:
-                        <?php echo min_2_h( $time ); ?>
-                    </span>,
-                    <span class="badge">
-                        <?php echo __('Kcal','smacznegopl'); ?>:
-                        <?php echo $kcal; ?>
-                    </span>
-                </div>
             </header>
             
-            <div class="recipe__content">
+            <div class="single-recipe__content">
 
                 <?php get_template_part('template-parts/recipe/nutritionbar'); ?>
 
                         
                 <?php if( get_field( 'wstep' ) ) { ?>
-                <div class="recipe__enter">
+                <div class="single-recipe__enter">
                     <!-- wstęp -->
-                    <div class="text wysiwg-container">
+                    <div class="wysiwyg-container">
                         <?php echo get_field('wstep'); ?>
                     </div>
 
@@ -73,9 +68,9 @@
 
     <?php  if( have_rows( 'przepis' ) ): ?>
 
-    <div class="recipe">
+    <div class="ingredients">
 
-        <h2 class="recipe__subtitle">
+        <h2 class="ingredients__subtitle">
             <?php echo __('Składniki', 'smacznegopl'); ?>:</h2>
 
         <?php 
@@ -87,129 +82,123 @@
         
     ?>
 
-        <div class="recipe__single">
+        <div class="ingredients__single">
 
-            <div class="recipe__head">
+                <div class="ingredients__head">
 
-                <h2 class="recipe__title">
-                    <?php echo $header ?>
-                </h2>
+                    <h2 class="ingredients__title">
+                        <?php echo $header ?>&nbsp;:
+                    </h2>
 
-                <!-- <div class="portions"> -->
-                <?php if( $i == 0) { 
-                    $i++;
-                ?>
-                <div class="recipe__portions">
-                    <button id="portion-minus" class="recipe__btn">
-                        <span class="fas fa-minus"></span>
-                    </button>
-                    <input id="jsPortions" class="recipe__input" type="text" value="<?php echo $portions; ?>">
-                    <button id="portion-add" class="recipe__btn">
-                        <span class="fas fa-plus"></span>
-                    </button>
+                    <!-- <div class="portions"> -->
+                    <?php if( $i == 0) { 
+                        $i++;
+                    ?>
+                    <div class="ingredients__portions">
+                        <button id="portion-minus" class="ingredients__btn">
+                            <span class="fas fa-minus"></span>
+                        </button>
+                        <input id="jsPortions" class="ingredients__input" type="text" value="<?php echo $portions; ?>">
+                        <button id="portion-add" class="ingredients__btn">
+                            <span class="fas fa-plus"></span>
+                        </button>
+                    </div>
+                    <?php } ?>
+                    <!-- </div> -->
+
                 </div>
-                <?php } ?>
-                <!-- </div> -->
 
-            </div>
+                <?php if( $ingredients ) :  ?>
 
-            <?php if( $ingredients ) :  ?>
+                <ul class="ingredients__list">
 
-            <ul class="recipe__list">
-
-                <?php
+                    <?php
 
                     while( have_rows('skladniki') ) : the_row(); ?>
 
-                <li class="recipe__ingredient">
+                    <li class="ingredients__element">
 
-                    <span class="recipe__quantity">
-                        <?php echo get_sub_field('ilosc'); ?>
-                    </span>
+                        <span class="ingredients__quantity">
+                            <?php echo get_sub_field('ilosc'); ?>
+                        </span>
 
-                    <?php 
+                        <?php 
                             $unit = get_sub_field('jednostka'); 
                             if( $unit ) {
                                 echo  $unit ;
                             }
-                   
-
+                
                             $prod_obj = get_sub_field('skladnik');
-
                             if ( $prod_obj ) {
                                 $post = $prod_obj;
                                 setup_postdata( $post );
-                                ?>
+                            ?>
 
-                    <a href="<?php the_permalink(); ?>" class="recipe__link tooltip tooltip--bottom"
-                        data-tooltip="kcal:<?php the_field('kcal'); ?>/B:<?php the_field('bialko'); ?>/W:<?php the_field('weglowodany'); ?>/T:<?php the_field('tluszcze'); ?> w 100g">
-                        <?php the_title();?>
-                    </a>
+                        <a href="<?php the_permalink(); ?>" class="ingredients__link tooltip tooltip--bottom"
+                            data-tooltip="kcal:<?php the_field('kcal'); ?>/B:<?php the_field('bialko'); ?>/W:<?php the_field('weglowodany'); ?>/T:<?php the_field('tluszcze'); ?> w 100g">
+                            <?php the_title();?>
+                        </a>
 
-                    <?php wp_reset_postdata();
-                    }
-                    $prod_info = get_sub_field('info');
-                    if( $prod_info ) {
-                        echo '<span class="recipe__info tooltip tooltip--right" data-tooltip="' . $prod_info . '"><span class="fas fa-info-circle"></span></span>';
-                    }
-                    ?>
-                </li>
+                        <?php wp_reset_postdata();
+                        }
+                        $prod_info = get_sub_field('info');
+                        if( $prod_info ) {
+                            echo '<span class="ingredients__info tooltip tooltip--right" data-tooltip="' . $prod_info . '"><span class="fas fa-info-circle"></span></span>';
+                        }
+                        ?>
+                    </li>
 
+                    <?php endwhile; ?>
 
-                <?php endwhile; ?>
+                </ul>
 
-            </ul>
+                <?php endif; ?>
 
-            <?php endif; ?>
+            </div>
+
+            <?php endwhile; ?>
 
         </div>
 
-        <?php endwhile; ?>
+        <?php endif; ?>
+
+        <!-- PrzepisEnd -->
 
     </div>
 
-    <?php endif; ?>
+    <div class="col-12 col-md-7">
 
-    <!-- PrzepisEnd -->
+        <!-- wykonanie -->
+        <div class="wysiwyg-container">
+            <?php echo get_field('wykonianie'); ?>
+        </div>
 
-
-</div>
-
-<div class="col-12 col-md-7">
-
-    <!-- wykonanie -->
-    <div class="text wysiwg-container">
-        <?php echo get_field('wykonianie'); ?>
     </div>
 
 </div>
 
-</div>
-
-<!-- zakonczenie -->
-<?php if( get_field( 'zakonczenie' ) ) { ?>
-<div class="recipe__end ">
-    <div class="text wysiwg-container">
-        <?php echo get_field('zakonczenie'); ?>
-    </div>
-</div>
-<?php } ?>
-
-<?php
-    $barcode = get_field( 'barcode' );
-    if( !empty($barcode) ) { 
-?>
-<div class="recipe__barcode">
-    <h2 class="recipe__subtitle subtitle">
-        <?php echo __('Kod MyfintessPal / Fitatu', 'smacznegopl'); ?>
-    </h2>
-    <img class="mx-auto" src="<?php echo $barcode['url'] ?>" alt="<?php echo ( !empty($barcode['alt']) )  ? $barcode['alt'] : $barcode['title'] ?>" />
-</div>
-
-<?php } ?>
-
-
+        <!-- zakonczenie -->
+        <?php if( get_field( 'zakonczenie' ) ) { ?>
+        <div class="single-recipe__end ">
+            <div class="wysiwyg-container">
+                <?php echo get_field('zakonczenie'); ?>
             </div>
+        </div>
+        <?php } ?>
+
+        <?php
+            $barcode = get_field( 'barcode' );
+            if( !empty($barcode) ) { 
+        ?>
+        <div class="single-recipe__barcode">
+            <h2 class="single-recipe__subtitle subtitle">
+                <?php echo __('Kod MyfintessPal / Fitatu', 'smacznegopl'); ?>
+            </h2>
+            <img class="mx-auto" src="<?php echo $barcode['url'] ?>" alt="<?php echo ( !empty($barcode['alt']) )  ? $barcode['alt'] : $barcode['title'] ?>" />
+        </div>
+
+        <?php } ?>
+        </div>
                 
         </article>
 
@@ -222,9 +211,7 @@
             <span class="section-spacer__bar"></span>
         </div>
 
-        <?php get_template_part( 'template-parts/partials/related-posts'); ?>
-
-
+        <?php get_template_part( 'template-parts/recipe/related-posts'); ?>
 
     </main>
             

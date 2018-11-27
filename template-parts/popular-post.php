@@ -2,7 +2,6 @@
     $postType = get_post_type_object( get_post_type($post));
     $postTypeLabel = $postType->label;
     $postTypeSingularLabel = $postType->labels->singular_name;
-
 ?>
 
 <article class="popular__single post-<?php the_ID(); ?> col-6 col-sm-4">

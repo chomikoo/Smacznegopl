@@ -9,7 +9,7 @@
 ?>
 
 
-<div class="nutrition container">
+<div class="nutrition container row">
 
     <div class="nutrition__box col-12 col-sm">
         <span class="nutrition__num">

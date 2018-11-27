@@ -28,12 +28,9 @@
             $rel_query->the_post();
     ?>
             <li class="related__element col-12 col-md-4">
-                <a href="<?php the_permalink() ?>" title="<?php the_title() ?>" rel="bookmark">
-                    <article class="related__container thumbnail">
-                        <?php the_post_thumbnail(); ?>
-                        <h1 class="subtitle related__title"><?php the_title() ?></h1>
-                    </article>
-                </a>
+      
+                <?php include( '../template-parts/recipe-box.php' ); ?>
+
             </li>
     <?php
         endwhile;

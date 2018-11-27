@@ -1,0 +1,164 @@
+.single-recipe {
+    margin: 0 auto $gapMedium*2 auto;
+    &__header {
+        position: relative;
+        width: 100%;
+        height: calc(100vh - #{$header-height + $top-bar-height + ($gapMedium*2) });
+        border-radius: $borderR;
+
+        .post__title {
+            color: $white;
+        }
+
+        
+    }
+    &__info {
+        position: absolute;
+        bottom: 90px; left: 25px;
+        z-index: 1;
+        .badges {
+            color: $white;
+        }
+    }   
+
+    &__enter, &__end {
+        margin: 0 0 $gapMedium*4 0;
+    }
+}
+
+.ingredients {
+    margin: 0 0 $gapMedium*2 0;
+    &__head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        margin-bottom: $gapMedium;
+    }
+
+    &__subtitle {
+        font-weight: 100;
+        border-bottom: 1px solid $c-grey;
+        padding-bottom: 5px;
+        margin-bottom: 25px;
+    }
+
+
+    &__title {
+        display: inline-block;
+        font-family: $f-montserrat;
+        font-weight: 100;
+        margin: 0 0 $gapMedium;
+        // font-family: 'Times New Roman', Times, serif;
+    }
+
+    &__element {
+        padding: 10px 0;
+        border-bottom: 1px solid $c-grey-l;
+        letter-spacing: 1px;
+        display: flex;
+        align-items: flex-start;
+
+        text-transform: lowercase;
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        &:before {
+            content: '\2022';
+            display: inline-block;
+            
+            font-size: 35px;
+            color: $c-grey-l;
+            margin-right: 20px;
+            padding: 6px;
+            line-height: 12px;
+        }
+    }
+
+    &__portions {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        width: 135px;
+    }
+
+    &__input {
+        width: 30px;
+        text-align: center;
+        border: none;
+        font-size: 24px;
+    }
+
+    &__btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 1px solid;
+        background: $c-grey-l;
+        color: $white;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__quantity {
+        min-width: 25px;
+        margin-right: 5px;
+        text-align: right;
+    }
+
+    &__link {
+        border-bottom: 1px dotted $c-grey-l;
+        margin-left: 5px;
+        &:hover {
+            border-bottom: 1px solid $c-grey-l;
+        }
+    }
+
+    &__info {
+        margin: 0 0 0 5px;
+    }
+
+}
+
+.wysiwyg-container {
+    p {
+        line-height: 1.5;
+        letter-spacing: 1px;        
+    }
+    
+    ol {
+        list-style-type: none;
+        font-family: $f-open;
+        margin: 0 0 $gapMedium*2 0; 
+        li {
+            position: relative;
+            counter-increment: step-counter;
+            margin-bottom: $gapMedium;
+            letter-spacing: 1px;
+            line-height: 1.5;
+            padding-left: 60px;
+            // display: flex;
+            // align-items: center;
+    
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+            &:before {
+                content: counter(step-counter);
+                padding: 6px;
+
+                position: absolute;
+                // top: -5px;
+                // left: 35px; 
+                top: 0;
+                left: 0;
+                z-index: -1;
+                font-size: 55px;
+                font-weight: bold;
+                color: $c-grey;
+            }
+        }
+    }
+}

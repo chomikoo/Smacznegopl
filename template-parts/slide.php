@@ -5,7 +5,7 @@
 
         <div class="slider__content">
 
-            <?php meal_type_taxonomy(get_the_id(), 'meal-type'); ?>
+            <?php terms_list(get_the_id(), 'meal-type'); ?>
             
             <h2 class="subtitle">
                 Przepis: <?php echo get_the_title( get_the_id() ); ?>

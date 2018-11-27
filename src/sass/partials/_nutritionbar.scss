@@ -1,0 +1,112 @@
+.nutrition {
+    width: 95%;
+    padding: 25px;
+    background-color: $white;
+    border-radius: $borderR;
+    text-align: center;
+    transform: translateY(-70px);
+    box-shadow: $b-shadow1;
+
+    &__box {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        padding: 2px 5px;
+
+        &:nth-child(odd) {
+            background-color: $c-nutritionbar-bg;
+
+            @include breakpoint(sm) {
+                background-color: $white;
+            }
+        }
+    }
+
+    &__title {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    &__num {
+        font-size: 17px;
+        font-weight: 100;
+        color: $black;
+        width: 50%;
+        text-align: left;
+    }
+
+}
+
+
+@include breakpoint(sm) {
+    .nutrition {
+        width: 85%;
+        padding: 20px 40px;
+        flex-wrap: nowrap;
+
+        &__box {
+            flex-direction: column;
+            align-items: center;
+
+            &:nth-child(odd) {
+                background-color: $white;
+            }
+        }
+
+        &__num {
+            // position: absolute;
+            animation: slide-top .5s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+            width: 100%;
+            font-size: 20px;
+            text-align: center;
+            transform: translateY(-5px);
+        }
+        
+        &__title {
+            width: 100%;
+            padding: 0 0 10px 0;
+            z-index: 2;
+        }
+    }
+}
+
+@for $i from 1 through 5 {
+    .nutrition__box:nth-of-type(#{$i}) .nutrition__num {
+        animation-delay: #{$i * 0.1}s;
+    }
+}
+
+@include breakpoint(md) {
+    
+    .nutrition {
+        margin: 0 auto $gapMedium auto;
+        &__num {
+            font-size: 24px;
+        }
+
+        &__title {
+            font-size: 18px;
+        }
+    }
+}
+
+
+@include breakpoint(xl) {
+    
+    .nutrition {
+        margin: 0 auto $gapMedium auto;
+        &__num {
+            font-size: 30px;
+        }
+
+        &__title {
+            font-size: 20px;
+        }
+    }
+}
+
+
+
+
+

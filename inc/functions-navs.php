@@ -22,19 +22,21 @@ add_action( 'init', 'chomikoo_custom_menu' );
 
 function chomikoo_menu_classes($classes, $item, $args) {
 	if($args->theme_location == 'top-menu') {
-	  $classes[] = 'container';
+		$classes[] = 'container';
 	}
+
 	return $classes;
-  }
-	add_filter('nav_menu_css_class', 'chomikoo_menu_classes', 1, 3);
+}
+add_filter('nav_menu_css_class', 'chomikoo_menu_classes', 1, 3);
 	
+
+// POST NAV
 	function chomikoo_the_post_nav() {
 
 		echo '<div class="row mx-auto post-nav">';
 			
 		$prevPost = get_previous_post();
 
-		
 		if( $prevPost ) {
 
 			if( has_post_thumbnail( $prevPost->ID ) ) {
@@ -58,8 +60,9 @@ function chomikoo_menu_classes($classes, $item, $args) {
 				echo '<div style="background-image:url(' . $prevthumbnail . ')" class="post-nav__img"></div>';
 
 			$title = $prevPost->post_title;
+			$terms = terms_list($nextPost->ID, 'meal-type');
 		
-			echo '<div class="post-nav__content">' . $title . '</div>';
+			echo '<div class="post-nav__content">' . $terms . '<h3>' . $title . '</h3></div>';
 
 			wp_reset_postdata();
 
@@ -91,7 +94,8 @@ function chomikoo_menu_classes($classes, $item, $args) {
 			echo '<div style="background-image:url(' . $nextthumbnail . ')" class="post-nav__img"></div>';
 
 			$title = $nextPost->post_title;
-			echo '<div class="post-nav__content">' . $title . '</div>';
+			$terms = terms_list($nextPost->ID, 'meal-type');
+			echo '<div class="post-nav__content">' . $terms . '<h3>' . $title . '</h3></div>';
 		
 
 			wp_reset_postdata();
@@ -104,4 +108,4 @@ function chomikoo_menu_classes($classes, $item, $args) {
 		echo '</div>';
 
 
-}
+	}

@@ -127,17 +127,19 @@
 	}
 
 
-	function meal_type_taxonomy($id, $slug) {
+	function terms_list($id, $slug) {
 		$terms = get_the_terms($id, $slug);
 		$terms_length = count($terms);
 		$i = 0;
-		echo '<ul class="taxonomy-tag">';
+		$list = '<ul class="taxonomy-tag">';
 		foreach($terms as $term){
-			echo '<li class="taxonomy-tag__element">'.$term->name.'</li>';
-			if( !($i == $terms_length - 1) ) { echo '<span>&#8226;</span>';}
+			$list .= '<li class="taxonomy-tag__element">'.$term->name.'</li>';
+			if( !($i == $terms_length - 1) ) { $list .= '<span>&#8226;</span>';}
 			$i++;
 		}
-		echo '</ul>';
+		$list .= '</ul>';
+
+		return $list;
 	}
 
 	/////////////////////////////////////////////////

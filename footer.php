@@ -53,7 +53,7 @@
 	<script>
 	WebFont.load({
 		google: {
-			families: ['Lato:400,700','Mali:300i','Montserrat:400,700&amp;subset=latin-ext']
+			families: ['Open+Sans:400,700','Mali:300i','Montserrat:400,700&amp;subset=latin-ext']
 		}
 	});
 	</script>

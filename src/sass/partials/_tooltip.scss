@@ -1,0 +1,77 @@
+.tooltip {
+    position: relative;
+    &::before {
+        content: "";
+        position: absolute;
+        top: -6px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 4px 6px 0 6px;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
+        z-index: 100;
+        opacity: 0;
+        transition: all 0.2s ease;
+    }
+    &::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        left: 50%;
+        top: -6px;
+        transform: translateX(-50%) translateY(-100%);
+        background: rgba(0, 0, 0, 0.7);
+        text-align: center;
+        color: #fff;
+        padding: 5px;
+        font-size: 12px;
+        min-width: 80px;
+        border-radius: 5px;
+        pointer-events: none;
+        opacity: 0;
+        transition: all 0.2s ease;
+    }
+    &:hover::after,
+    &:hover::before {
+        opacity: 1
+    }
+    &--left::before {
+        left: 0%;
+        top: 50%;
+        margin-left: -12px;
+        transform: translateY(-50%) rotate(-90deg)
+    }
+    &--top::before {
+        left: 50%;
+    }
+    &--bottom::before {
+        top: 100%;
+        margin-top: 8px;
+        transform: translateX(-50%) translateY(-100%) rotate(-180deg)
+    }
+    &--right::before {
+        left: 100%;
+        top: 50%;
+        margin-left: 1px;
+        transform: translateY(-50%) rotate(90deg)
+    }
+    &--left::after {
+        left: 0%;
+        top: 50%;
+        margin-left: -8px;
+        transform: translateX(-100%) translateY(-50%);
+    }
+    &--top::after {
+        left: 50%;
+    }
+    &--bottom::after {
+        top: 100%;
+        margin-top: 8px;
+        transform: translateX(-50%) translateY(0%);
+    }
+    &--right::after {
+        left: 100%;
+        top: 50%;
+        margin-left: 8px;
+        transform: translateX(0%) translateY(-50%);
+    }
+}

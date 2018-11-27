@@ -10,24 +10,40 @@ $xl: 1100px;
 
 $white: #ffffff;
 $black: #000000;
-$c-black08: rgba(0,0,0,0.8);
+
+$c-black06: rgba($black,0.6);
+$c-black08: rgba($black,0.8);
 
 $c-grey: #676767;
+
+$c-grey07: rgba($c-grey,0.7);
 $c-grey09: rgba($c-grey,0.9);
 
 $c-grey-l: #b5b5b5;
 
 $c-green: #7bbf44;
 
+$c-top-bar-bg: #F5F5F5;
+
+$c-nutritionbar-bg: #F5F5F5;
+
 // TYPOGRAPHY
 
 $f-mali: 'Mali', cursive;
 $f-montserrat: 'Montserrat', sans-serif;
-$f-lato: 'Lato', sans-serif;
+$f-open: 'Open Sans', sans-serif;
 
 // Spacers
 
 $header-height: 100px;
+$top-bar-height: 70px;
+
+$gapSmall: 15px;
+$gapMedium: 25px;
+
+
+
+
 
 // Radius 
 $borderR: 5px;

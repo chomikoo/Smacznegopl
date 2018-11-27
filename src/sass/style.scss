@@ -52,14 +52,16 @@
 @import "partials/post-box";  
 @import "partials/popular-posts";  
 @import "partials/newsletter";  
+@import "partials/top-bar";  
+@import "partials/nutritionbar"; 
+@import "partials/related-posts";  
+@import "partials/badges";  
+@import "partials/tooltip";  
+@import "partials/post-nav";  
 
 
 
-
-
- 
-
-
+  
  
 /*--------------------------------------------------------------
 # Pages
@@ -71,9 +73,8 @@
 @import "pages/contact";    
 @import "pages/archive";    
 @import "pages/front";    
+@import "pages/recipe-single";    
 
-
- 
  
 @import "layout/animations";   
 
