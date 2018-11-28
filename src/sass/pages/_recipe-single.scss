@@ -9,8 +9,6 @@
         .post__title {
             color: $white;
         }
-
-        
     }
     &__info {
         position: absolute;
@@ -24,15 +22,20 @@
     &__enter, &__end {
         margin: 0 0 $gapMedium*4 0;
     }
-}
 
+}
+.barcode {
+    text-align: center;
+    &__subtitle {
+        margin: 0 0 $gapMedium 0;
+    }
+}
 .ingredients {
     margin: 0 0 $gapMedium*2 0;
     &__head {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-
         margin-bottom: $gapMedium;
     }
 
@@ -49,7 +52,6 @@
         font-family: $f-montserrat;
         font-weight: 100;
         margin: 0 0 $gapMedium;
-        // font-family: 'Times New Roman', Times, serif;
     }
 
     &__element {
@@ -122,6 +124,10 @@
 
 }
 
+.related {
+    margin: 0 auto $gapMedium*2 auto;
+}
+
 .wysiwyg-container {
     p {
         line-height: 1.5;
@@ -139,8 +145,6 @@
             letter-spacing: 1px;
             line-height: 1.5;
             padding-left: 60px;
-            // display: flex;
-            // align-items: center;
     
             &:last-of-type {
                 margin-bottom: 0;
@@ -150,8 +154,6 @@
                 padding: 6px;
 
                 position: absolute;
-                // top: -5px;
-                // left: 35px; 
                 top: 0;
                 left: 0;
                 z-index: -1;

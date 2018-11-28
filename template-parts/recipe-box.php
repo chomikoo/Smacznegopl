@@ -1,4 +1,5 @@
 <?php 
+
     $postType = get_post_type_object( get_post_type($post));
     $postTypeLabel = $postType->label;
     $postTypeSingularLabel = $postType->labels->singular_name;

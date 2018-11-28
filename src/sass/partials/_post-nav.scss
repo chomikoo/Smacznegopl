@@ -7,6 +7,8 @@
         position: relative;
         height: 100%;
         width: 100%;
+        border-radius: $borderR;
+
         // border: 1px solid $c-grey;
         @include image-bg("./../../img/placeholder.jpg","no-repeat", "100%");
         &:after {
@@ -16,6 +18,7 @@
             bottom: 0;
             left: 0;
             right: 0;
+            border-radius: $borderR;
             background-color: $c-black06;
         }
 
@@ -72,15 +75,15 @@
 
 }
 
-@include breakpoint(sm) {
-    .post-nav {
-        margin-bottom: $gapMedium*2;
-    }
+// @include breakpoint(sm) {
+//     .post-nav {
+//         margin-bottom: $gapMedium*2;
+//     }
     
-}
+// }
 
-@include breakpoint(md) {
-    .post-nav {
-        margin-bottom: $gapMedium*4;
-    }
-}
+// @include breakpoint(md) {
+//     .post-nav {
+//         margin-bottom: $gapMedium*4;
+//     }
+// }
