@@ -96,6 +96,10 @@
       margin-left: 100% / 12 * $i; 
     }
   }
+  .container {
+    max-width: 100%;
+    padding: 0 25px;
+  }
 }
 
 //================//
@@ -103,6 +107,11 @@
 //================//
 
 @include breakpoint(md) {
+  .container {
+    max-width: 100%;
+    padding: 0 25px;
+  }
+
   .col-md {
     flex-basis: 0;
     flex-grow: 1;
@@ -129,9 +138,7 @@
       margin-left: 100% / 12 * $i; 
     }
   }
-  .container {
-    max-width: $md;
-  }
+
 
 }
 
