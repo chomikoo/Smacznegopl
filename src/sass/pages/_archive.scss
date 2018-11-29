@@ -1,0 +1,14 @@
+.archive {
+    &__wrapper {
+
+    }
+    &__header {
+        background-color: $c-archive-head-bg;
+        width: 100%;
+        padding: $gapMedium;
+    }
+
+    &__container {
+        padding: $gapMedium;
+    }
+}

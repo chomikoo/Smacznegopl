@@ -20,3 +20,15 @@
 	// SUPPORTS
 
 	add_theme_support( 'post-thumbnails' ); 
+
+	function chomikoo_template( $template = '' ) {
+
+		if (is_tax('product-type') ) {
+		  $template = locate_template( 'archive-products.php' );
+		}
+	   
+		return $template;
+	   
+	}
+	   
+	add_filter( 'taxonomy_template', 'chomikoo_template' ); 
