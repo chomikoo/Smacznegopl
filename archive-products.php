@@ -44,6 +44,9 @@ get_header(); ?>
 
 		</section><!-- .container -->
 
+		<div class="paginaiton container">
+			<?php chomikoo_pagination_nav(); ?>
+		</div>
 
 	</main>
 

@@ -33,6 +33,7 @@ get_header(); ?>
 					while( have_posts() ):  the_post();
 
 						get_template_part( 'template-parts/recipe-box' );
+						
 					endwhile;
 					echo '</div>';
 					echo '</div>';
@@ -43,6 +44,9 @@ get_header(); ?>
 
 		</section><!-- .container -->
 
+		<div class="paginaiton container">
+			<?php chomikoo_pagination_nav(); ?>
+		</div>
 
 	</main>
 

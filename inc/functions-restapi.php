@@ -48,9 +48,10 @@ function relatedRecipesResults() {
 /// GET RELATED POSTS 2 INGREDIENTS FOR ARCHIVE 
 
 function recipesWithSimilarIngredients( $postID ) {
-    
-    $urlApi = get_home_url() . '/wp-json/smacznego/v1/search';
+    // echo 'recipesWithSimilarIngredients';
 
+    $urlApi = get_home_url() . '/wp-json/smacznego/v1/search';
+    
     $response = wp_remote_get( 
         add_query_arg( 
             array(
@@ -58,26 +59,29 @@ function recipesWithSimilarIngredients( $postID ) {
         ), $urlApi) );
 
     if( !is_wp_error( $response ) && $response['response']['code'] == 200) {
-
         $recipesPosts = json_decode( $response['body'], true );
-        foreach( $recipesPosts as $recipe) {
-            $ingredientsArr = $recipe["acf"]["przepis"][0]["skladniki"];
-            if( is_array($ingredientsArr) ) {
+        foreach( $recipesPosts as $recipes) {
+            // $ingredientsArr = $recipe["acf"]["przepis"][0]["skladniki"];
+            $list_recipes = $recipes["acf"]["przepis"];
 
-                foreach( $ingredientsArr as $ingredient )  {
-
-                    if( $postID == $ingredient["skladnik"]["ID"] ) {
-                        global $post; 
-                        $post = get_post($recipe["id"]); 
-                        setup_postdata($post);
-                        get_template_part( 'template-parts/recipe-box' );
-                        wp_reset_postdata();
-
+            foreach ($list_recipes as $recipe) {
+                // echo $recipe['title'];
+                $ingredientsArr = $recipe["skladniki"];
+                
+                if( is_array($ingredientsArr) ) {
+                    
+                    foreach( $ingredientsArr as $ingredient )  {
+                        
+                        if( $postID == $ingredient["skladnik"]["ID"] ) {
+                            global $post; 
+                            $post = get_post($recipes["id"]); 
+                            setup_postdata($post);
+                            get_template_part( 'template-parts/recipe-box' );
+                            wp_reset_postdata();    
+                        }
                     }
                 }
-
             }
         }
-        
     }
 }

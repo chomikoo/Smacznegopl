@@ -11,12 +11,20 @@ get_header(); ?>
 
 <div id="primary" class="content-area">
 
-	<main id="main" class="site-main container product product--single" role="main">
+	<main id="main" class="site-main product product--single" role="main">
 
-		<header id="post-<?php the_ID(); ?>" <?php post_class('product__header'); ?> >
+		<div class="top-bar">
+			<?php get_template_part('template-parts/top-bar'); ?>
+		</div>
+
+		<header id="post-<?php the_ID(); ?>" class="product__header container" >
 
 			<div class="product__thumb thumbnail">
-				<?php the_post_thumbnail(); ?>
+			<?php if ( has_post_thumbnail() ) {
+				the_post_thumbnail();
+			} else { ?>
+				<img src="<?php echo THEME_URL . "/dist/img/placeholder.jpg " ?>" alt="<?php the_title(); ?>" />
+			<?php } ?>
 			</div>
 
 			<div class="product__info container">
@@ -30,9 +38,9 @@ get_header(); ?>
 					<?php echo get_the_term_list( $post->ID, 'product-type') ?>
 				</div>
 
-				<div class="nutrition-facts product__boxREMOVE row mx-auto">
+				<div class="nutrition-facts row mx-auto">
 
-					<?php get_template_part( 'template-parts/partials/nutrition-table' ); ?>
+					<?php get_template_part( 'template-parts/recipe/nutrition-table' ); ?>
 
 				</div>
 
@@ -47,12 +55,13 @@ get_header(); ?>
 
 		</header>
 
-		<section class="archive-related">
+		<section class="archive-related container">
 			<h2 class="subtitle product__subtitle">
 				<?php echo __('Przepisy z ', 'smaczegopl'); ?>
 				<?php the_title(); ?>
 			</h2>
 			<div class="row mx-auto justify-content-between">
+				
 				<?php recipesWithSimilarIngredients(get_the_ID()); ?>
 
 			</div>

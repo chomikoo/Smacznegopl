@@ -58,7 +58,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-
+            margin: 0 auto $gapMedium*2 auto;
             @include breakpoint(sm) {
                 flex-direction: row;
             }

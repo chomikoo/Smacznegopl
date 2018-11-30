@@ -24,7 +24,7 @@
         <main id="main" class="main">
         
             <div class="top-bar">
-                <?php get_template_part('template-parts/recipe/top-bar'); ?>
+                <?php get_template_part('template-parts/top-bar'); ?>
             </div>
 
             <article class="single-recipe recipe-<?php the_ID(); ?> container">
