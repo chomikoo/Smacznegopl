@@ -20,6 +20,8 @@ require $function_path . 'functions-mylib.php';
 require $function_path . 'functions-acf.php';
 require $function_path . 'functions-cleanup.php';
 require $function_path . 'functions-breadcrumbs.php';
+require $function_path . 'functions-restapi.php';
+
 
 
 

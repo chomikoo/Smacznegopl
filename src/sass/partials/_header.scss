@@ -25,6 +25,7 @@
 
 .top-carousel {
     max-height: calc( 95vh - #{$header-height});
+    padding: 25px 0 0 0;
     // margin: 0 0 75px 0;
 }
 
@@ -76,6 +77,10 @@
                 margin: 0;
             }
         }
+    }
+
+    &__time .far {
+        margin: 0 2px 0 0;
     }
 }
 

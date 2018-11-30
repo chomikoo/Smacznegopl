@@ -27,7 +27,7 @@
         <?php } ?>
 
         <div class="recipe__info">
-            <span class="recipe__badge"><?php echo get_the_date( 'd m Y' ); ?></span><span class="dot"></span>
+            <span class="recipe__badge"><?php echo get_the_date( 'd F Y' ); ?></span><span class="dot"></span>
             <span class="recipe__badge"><?php echo min_2_h( get_field('czas') ); ?></span><span class="dot"></span>
             <span class="recipe__badge"><?php the_author() ?></span>
         </div>
