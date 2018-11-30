@@ -24,9 +24,11 @@
 	function chomikoo_template( $template = '' ) {
 
 		if (is_tax('product-type') ) {
-		  $template = locate_template( 'archive-products.php' );
+			$template = locate_template( 'archive-products.php' );
 		}
-	   
+		if (is_tax('meal-type') ) {
+			$template = locate_template( 'archive-recipes.php' );
+		}
 		return $template;
 	   
 	}

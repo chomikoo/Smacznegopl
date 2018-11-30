@@ -17,9 +17,9 @@ get_header(); ?>
 			<?php get_template_part('template-parts/top-bar'); ?>
 		</div>
 
-		<header id="post-<?php the_ID(); ?>" class="product__header container" >
+		<header id="post-<?php the_ID(); ?>" class="product__header container row" >
 
-			<div class="product__thumb thumbnail">
+			<div class="product__thumb thumbnail col-12 col-sm-6">
 			<?php if ( has_post_thumbnail() ) {
 				the_post_thumbnail();
 			} else { ?>
@@ -27,7 +27,7 @@ get_header(); ?>
 			<?php } ?>
 			</div>
 
-			<div class="product__info container">
+			<div class="product__info container col-12 col-sm-6">
 
 				<h1 class="subtitle product__title">
 					<?php the_title(); ?>

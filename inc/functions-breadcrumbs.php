@@ -170,7 +170,11 @@ if ( ! function_exists( 'chomikoo_breadcrumbs' ) ) {
 							$output = false;
 							foreach( $cpt_terms as $cpt_term ) {
 								if ( ! $output ) {
-									$breadcrumb .= '<li class="breadcrumbs__element"><a href="' . get_term_link( $cpt_term->name, $cpt_taxes[0] ) . '">' . $cpt_term->name . ' &rsaquo; </a></li>';
+                                    // echo $cpt_term->name;
+                                    // echo $cpt_taxes[0];
+                                    $termLink = get_term_link( $cpt_term->name, $cpt_taxes[0] );
+
+									$breadcrumb .= '<li class="breadcrumbs__element"><a href="' . $termLink . '">' . $cpt_term->name . ' &rsaquo; </a></li>';
 									$output = true;
 								}
 							}

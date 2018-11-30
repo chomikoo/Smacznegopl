@@ -17,7 +17,7 @@ get_header(); ?>
 
 		<header class="archive__header">
 			<div class="archive__wrapper">
-				<h1 class="archive__title container"><?php post_type_archive_title(); ?>:</h1>
+				<h1 class="archive__title container"><?php echo get_the_archive_title(); ?></h1>
 				<?php the_archive_description( '<div class="taxonomy-description">', '</div>' ); ?>
 			</div>
 		</header>
