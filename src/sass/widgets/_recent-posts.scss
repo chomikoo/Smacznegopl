@@ -1,0 +1,37 @@
+.widget {
+    &__recent-posts {
+        display: flex;
+        flex-direction: column;
+        
+        .recent-posts {
+            
+            &__list {
+                
+            }
+            
+            &__single {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                margin: 0 0 $gapSmall 0;
+            }
+            
+            &__thumb {
+                width: 60px;
+                height: 60px;
+                border-radius: $borderR;
+                margin: 0 5px 0 0;
+            }
+
+            &__content {
+                width: calc(100% - 65px);
+                // flex: 0 0 100%;
+            }
+
+            .recipe--info {
+                font-size: 12px;
+                color: $c-grey;
+            }
+        }
+    }
+}

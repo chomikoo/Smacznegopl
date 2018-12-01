@@ -13,8 +13,6 @@
 
 get_header(); ?>
 
-<div class="wrap">
-
 	<main class="main front-page">
 		
 		<section class="top-carousel ">
@@ -88,78 +86,91 @@ get_header(); ?>
 
 		<?php get_template_part('template-parts/section-spacer'); ?>
 
-		<section class="latest-posts container">
+		<div class="wrapper container <?php echo ( is_active_sidebar( 'right-sidebar' ) ) ? 'row' : '' ?>">
 
-			<h2 class="section-title">
-				<?php echo __('Najnowsze przepisy', 'smacznegopl'); ?>
-			</h2>
+		<?php if( is_active_sidebar( 'right-sidebar' ) ) { ?>
 
-			<div class="row mx-auto">
-				<?php	
-					$newsest_recipes_arg = new WP_Query( array(
-						'post_type' => array('recipes', 'post'),
-						'posts_per_page' => '6',
-						'post_status'    => 'publish',
-					) );
-					while ( $newsest_recipes_arg->have_posts() ) :
-						$newsest_recipes_arg->the_post();
+			<div class="recipes-wrapper col-xl-9">
 
-						get_template_part( 'template-parts/recipe-box' );
+			<?php } ?>
+				<section class="latest-posts ">
+
+					<h2 class="section-title">
+						<?php echo __('Najnowsze przepisy', 'smacznegopl'); ?>
+					</h2>
+
+					<div class="row mx-auto">
+						<?php	
+							$newsest_recipes_arg = new WP_Query( array(
+								'post_type' => array('recipes', 'post'),
+								'posts_per_page' => '6',
+								'post_status'    => 'publish',
+								) );
+								while ( $newsest_recipes_arg->have_posts() ) :
+									$newsest_recipes_arg->the_post();
+									
+									get_template_part( 'template-parts/recipe-box' );
+									
+								endwhile;
+							wp_reset_postdata();
+							?>
+						<!-- </div> -->
+					</div>
+
+				</section><!-- .latest-posts -->
+
+				<?php get_template_part('template-parts/section-spacer'); ?>
+
+				<section class="popular-posts ">
+
+					<h2 class="section-title">
+						<?php echo __('Popularne', 'smacznegopl'); ?>
+					</h2>
+
+					<div class="row mx-auto">
+						<?php	
+							$newsest_recipes_arg = new WP_Query( array(
+								'post_type' => array('recipes', 'post'),
+								'posts_per_page' => '6',
+								'post_status'    => 'publish',
+								) );
+								while ( $newsest_recipes_arg->have_posts() ) :
+									$newsest_recipes_arg->the_post();
+									
+									get_template_part( 'template-parts/popular-post' );
+									
+								endwhile;
+								wp_reset_postdata();
+								?>
+						<!-- </div> -->
+					</div>
+
+				</section><!-- .popular-posts -->
+
+				<?php get_template_part('template-parts/section-spacer'); ?>
+
+				<section class="instagram ">
 					
-					endwhile;
-					wp_reset_postdata();
-					?>
-				<!-- </div> -->
-			</div>
-
-		</section><!-- .latest-posts -->
-
-		<?php get_template_part('template-parts/section-spacer'); ?>
-
-		<section class="popular-posts container">
-
-			<h2 class="section-title">
-				<?php echo __('Popularne', 'smacznegopl'); ?>
-			</h2>
-
-			<div class="row mx-auto">
-				<?php	
-					$newsest_recipes_arg = new WP_Query( array(
-						'post_type' => array('recipes', 'post'),
-						'posts_per_page' => '6',
-						'post_status'    => 'publish',
-					) );
-					while ( $newsest_recipes_arg->have_posts() ) :
-						$newsest_recipes_arg->the_post();
-
-						get_template_part( 'template-parts/popular-post' );
+					<h2 class="section-title">
+						<?php echo __('#insta', 'smacznegopl'); ?>
+					</h2>
 					
-					endwhile;
-					wp_reset_postdata();
-					?>
-				<!-- </div> -->
-			</div>
+					<div id="insta" class="insta row mx-auto"></div>
+					
+				</section><!-- instagram -->
 
-		</section><!-- .popular-posts -->
-
-		<?php get_template_part('template-parts/section-spacer'); ?>
-
-		<section class="instagram container">
+			<?php if( is_active_sidebar( 'right-sidebar' ) ) { ?>
 			
-			<h2 class="section-title">
-				<?php echo __('#insta', 'smacznegopl'); ?>
-			</h2>
-			
-			<div id="insta" class="insta row mx-auto"></div>
-			
-		</section><!-- instagram -->
-		
+			</div><!-- .recipes-wrapper -->
+			<?php } ?>
 
+			<?php get_sidebar(); ?>
+
+		</div>
 	</main>
 
-	<?php get_sidebar(); ?>
-
-</div><!-- .wrap -->
+	
+<!-- </div>.wrap -->
 
 
 <?php get_footer();

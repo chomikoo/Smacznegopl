@@ -7,8 +7,8 @@
  */
 class WP_Custom_Post_Type_Widgets_Recent_Posts extends WP_Widget {
 	public function __construct() {
-		$widget_ops = array( 'classname' => 'widget_recent_entries', 'description' => __( 'Your site&#8217;s most recent custom Posts.', 'custom-post-type-widgets' ) );
-		parent::__construct( 'custom-post-type-recent-posts', __( 'Recent Posts (Custom Post Type)', 'custom-post-type-widgets' ), $widget_ops );
+		$widget_ops = array( 'classname' => 'widget__recent-posts', 'description' => __( 'Your site&#8217;s most recent custom Posts.', 'custom-post-type-widgets' ) );
+		parent::__construct( 'custom-post-type-recent-posts', __( 'Ostatnio dodane', 'custom-post-type-widgets' ), $widget_ops );
 		$this->alt_option_name = 'widget_custom_post_type_recent_posts';
 	}
 	public function widget( $args, $instance ) {
@@ -35,12 +35,28 @@ class WP_Custom_Post_Type_Widgets_Recent_Posts extends WP_Widget {
 				<?php if ( $title ) {
 					echo $args['before_title'] . $title . $args['after_title'];
 				} ?>
-				<ul>
+				<ul class="recent-posts">
 				<?php while ( $r->have_posts() ) : $r->the_post(); ?>
-					<li><a href="<?php the_permalink() ?>"><?php get_the_title() ? the_title() : the_ID(); ?></a>
-					<?php if ( $show_date ) : ?>
-						<span class="post-date"><?php echo get_the_date(); ?></span>
-					<?php endif; ?>
+					<li>
+                        <a href="<?php the_permalink() ?>" class="recent-posts__single">
+                            
+                            <div class="recent-posts__thumb thumbnail">
+                                <?php the_post_thumbnail(); ?> 
+                            </div>
+                            <div class="recent-posts__content">
+                                <?php the_title(); ?>
+                                <?php if ( $show_date ) : ?>
+                                    <span class="post-date"><?php echo get_the_date(); ?></span>
+                                <?php endif; ?>
+                                <?php if ( $posttype == 'recipes' ) : ?>
+                                <div class="recipe--info">
+                                    <span class="recipe__badge">B:&nbsp;<?php echo get_field('bialko'); ?>g</span><span class="spacer"></span>
+                                    <span class="recipe__badge">W:&nbsp;<?php echo get_field('weglowodany'); ?>g</span><span class="spacer"></span>
+                                    <span class="recipe__badge">T:&nbsp;<?php echo get_field('tluszcze'); ?>g</span>
+                                </div><!-- .recent-post__content -->
+                                <?php endif; ?>
+                            </div>
+                        </a>
 					</li>
 				<?php endwhile; ?>
 				</ul>

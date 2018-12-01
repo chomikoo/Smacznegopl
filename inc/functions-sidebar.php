@@ -4,7 +4,7 @@
     
     register_sidebar( array(
         'name' => __( 'Strona główna', 'smacznegopl' ),
-        'id' => 'sidebar-1',
+        'id' => 'right-sidebar',
         'description' => __( 'The main sidebar appears on the right on each page except the front page template', 'wpb' ),
         'before_widget' => '<section id="%1$s" class="widget %2$s">',
         'after_widget' => '</section>',
