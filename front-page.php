@@ -169,7 +169,7 @@ get_header(); ?>
 		</div>
 	</main>
 
-	
+	<?php get_template_part('template-parts/search-overlay'); ?>
 <!-- </div>.wrap -->
 
 

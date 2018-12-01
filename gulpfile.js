@@ -57,6 +57,7 @@ const jsMain = jsSRC + 'script.js';
 const jsAll = [
 	jsVendors + 'slick.js',
 	jsVendors + 'instafeed.js',
+	jsSRC + 'live-search.js',
 	jsMain
 ];
 
