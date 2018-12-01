@@ -21,6 +21,10 @@ require $function_path . 'functions-acf.php';
 require $function_path . 'functions-cleanup.php';
 require $function_path . 'functions-breadcrumbs.php';
 require $function_path . 'functions-restapi.php';
+require $function_path . 'functions-sidebar.php';
+require $function_path . 'functions-widgets.php';
+
+
 
 
 

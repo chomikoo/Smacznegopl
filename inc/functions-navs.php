@@ -125,6 +125,8 @@ add_filter('nav_menu_css_class', 'chomikoo_menu_classes', 1, 3);
 				'format' => '/page/%#%',
 				'current' => $current_page,
 				'total' => $total_pages,
+				'prev_text'          => __('«'),
+				'next_text'          => __('»'),
 			));
 		}
 	}
