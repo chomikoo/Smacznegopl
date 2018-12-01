@@ -26,19 +26,51 @@ function relatedRecipesResults($data) {
         's' => sanitize_text_field( $data['term'] )
     ));
 
-    $searchResults = array();
+    $searchResults = array(
+        'generalInfo' => array(),
+        'recipes' => array(),
+        'products' => array(),
+    );
 
     while($search->have_posts()) {
         $search->the_post();
-        array_push($searchResults, array(
-            'id'    => get_the_ID(),
-            'posttype' => get_post_type(),
-            'title' => get_the_title(),
-            'permalink' => get_the_permalink(),
-            'thumbnail' => get_the_post_thumbnail(),
-            'acf'   => get_fields(),
-            )
-        );
+
+        if(get_post_type() == 'post' || get_post_type() == 'page') {
+            array_push($searchResults['generalInfo'], array(
+                'id'    => get_the_ID(),
+                // 'posttype' => get_post_type(),
+                'title' => get_the_title(),
+                // 'permalink' => get_the_permalink(),
+                // 'thumbnail' => get_the_post_thumbnail(),
+                // 'acf'   => get_fields(),
+                )
+            );
+        }
+
+        if(get_post_type() == 'recipes') {
+            array_push($searchResults['recipes'], array(
+                'id'    => get_the_ID(),
+                // 'posttype' => get_post_type(),
+                'title' => get_the_title(),
+                // 'permalink' => get_the_permalink(),
+                // 'thumbnail' => get_the_post_thumbnail(),
+                'acf'   => get_fields(),
+                )
+            );
+        }
+
+        if(get_post_type() == 'products') {
+            array_push($searchResults['products'], array(
+                'id'    => get_the_ID(),
+                // 'posttype' => get_post_type(),
+                'title' => get_the_title(),
+                // 'permalink' => get_the_permalink(),
+                // 'thumbnail' => get_the_post_thumbnail(),
+                // 'acf'   => get_fields(),
+                )
+            );
+        }
+        
     }
 
     return $searchResults;
@@ -61,8 +93,9 @@ function recipesWithSimilarIngredients( $postID ) {
 
     if( !is_wp_error( $response ) && $response['response']['code'] == 200) {
         $recipesPosts = json_decode( $response['body'], true );
-        foreach( $recipesPosts as $recipes) {
-            if( $recipes[posttype] == 'recipes' ) {
+        // echo $recipesPosts['recipes'][0]['title'];
+        foreach( $recipesPosts['recipes'] as $recipes) {
+            // if( $recipes[posttype] == 'recipes' ) {
 
                 // $ingredientsArr = $recipe["acf"]["przepis"][0]["skladniki"];
                 $list_recipes = $recipes["acf"]["przepis"];
@@ -85,7 +118,7 @@ function recipesWithSimilarIngredients( $postID ) {
 
                     }
                 }
-            }
+            // }
         }
     }
 }
