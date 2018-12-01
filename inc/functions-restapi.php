@@ -20,18 +20,19 @@ function customRoute() {
     ));
 }
 
-function relatedRecipesResults() {
-    $recipes = new WP_Query(array(
-        'post_type' => 'recipes',
-        // 's' => '168'
+function relatedRecipesResults($data) {
+    $search = new WP_Query(array(
+        'post_type' => array('post','page','recipes','products'),
+        's' => sanitize_text_field( $data['term'] )
     ));
 
-    $recipeResults = array();
+    $searchResults = array();
 
-    while($recipes->have_posts()) {
-        $recipes->the_post();
-        array_push($recipeResults, array(
+    while($search->have_posts()) {
+        $search->the_post();
+        array_push($searchResults, array(
             'id'    => get_the_ID(),
+            'posttype' => get_post_type(),
             'title' => get_the_title(),
             'permalink' => get_the_permalink(),
             'thumbnail' => get_the_post_thumbnail(),
@@ -40,7 +41,7 @@ function relatedRecipesResults() {
         );
     }
 
-    return $recipeResults;
+    return $searchResults;
 }
 
 
@@ -61,24 +62,27 @@ function recipesWithSimilarIngredients( $postID ) {
     if( !is_wp_error( $response ) && $response['response']['code'] == 200) {
         $recipesPosts = json_decode( $response['body'], true );
         foreach( $recipesPosts as $recipes) {
-            // $ingredientsArr = $recipe["acf"]["przepis"][0]["skladniki"];
-            $list_recipes = $recipes["acf"]["przepis"];
+            if( $recipes[posttype] == 'recipes' ) {
 
-            foreach ($list_recipes as $recipe) {
-                // echo $recipe['title'];
-                $ingredientsArr = $recipe["skladniki"];
-                
-                if( is_array($ingredientsArr) ) {
+                // $ingredientsArr = $recipe["acf"]["przepis"][0]["skladniki"];
+                $list_recipes = $recipes["acf"]["przepis"];
+                foreach ($list_recipes as $recipe) {
+                    $ingredientsArr = $recipe["skladniki"];
                     
-                    foreach( $ingredientsArr as $ingredient )  {
+                    if( is_array($ingredientsArr) ) {
                         
-                        if( $postID == $ingredient["skladnik"]["ID"] ) {
-                            global $post; 
-                            $post = get_post($recipes["id"]); 
-                            setup_postdata($post);
-                            get_template_part( 'template-parts/recipe-box' );
-                            wp_reset_postdata();    
+                        foreach( $ingredientsArr as $ingredient )  {
+                            
+                            if( $postID == $ingredient["skladnik"]["ID"] ) {
+                                global $post; 
+                                $post = get_post($recipes["id"]); 
+                                setup_postdata($post);
+                                get_template_part( 'template-parts/recipe-box' );
+                                wp_reset_postdata();    
+                            }
+
                         }
+
                     }
                 }
             }

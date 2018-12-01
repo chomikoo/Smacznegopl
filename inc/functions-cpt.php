@@ -42,9 +42,9 @@
             'hierarchical'              => false,
             'menu_icon'                 => 'dashicons-media-text',
             'menu_position'             => 5,
-            // 'show_in_rest'              => true,
-            // 'rest_base'                 => 'recipes',
-            // 'rest_controller_class'     => 'WP_REST_Posts_Controller',
+            'show_in_rest'              => true,
+            'rest_base'                 => 'recipes',
+            'rest_controller_class'     => 'WP_REST_Posts_Controller',
             'rewrite'                   => array('slug' => 'przepisy'),
             'supports' => array(
                 'title','editor','author','thumbnail','excerpt','comments','custom-fields'

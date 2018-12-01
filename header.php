@@ -24,7 +24,7 @@
             <div class="header__container container">
                 <?php get_template_part('template-parts/header/navbar'); ?>
                 <h1 class="header__logo logo"><a href="<?php echo get_home_url(); ?>" class="header__link">Smacznego.pl</a></h1>
-                <button class="btn btn--search">
+                <button id="open-search" class="btn btn--search">
                     <span class="fas fa-search"></span>
                 </button>
             </div>

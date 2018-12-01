@@ -22,7 +22,6 @@ function chomikoo_load_scripts() {
 		wp_enqueue_script( 'recipe', THEME_URL . 'src/js/recipe.js', array('jquery'), $ver, 'all'  );	
 	}
 
-	
 	wp_enqueue_script( 'myscript', THEME_URL . 'dist/js/script.min.js', array('jquery'), $ver, 'all'  );
 }
 
