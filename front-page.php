@@ -12,6 +12,9 @@
  */
 
 get_header(); ?>
+
+<div class="wrap">
+
 	<main class="main front-page">
 		
 		<section class="top-carousel ">
@@ -154,6 +157,9 @@ get_header(); ?>
 
 	</main>
 
-<?php get_sidebar(); ?>
+	<?php get_sidebar(); ?>
+
+</div><!-- .wrap -->
+
 
 <?php get_footer();
