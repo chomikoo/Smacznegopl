@@ -23,6 +23,9 @@ function chomikoo_load_scripts() {
 	}
 
 	wp_enqueue_script( 'myscript', THEME_URL . 'dist/js/script.min.js', array('jquery'), $ver, 'all'  );
+	wp_localize_script('myscript', 'themeData', array(
+		'root_url' => get_site_url()
+	));
 }
 
 add_action( 'wp_enqueue_scripts', 'chomikoo_load_scripts' );

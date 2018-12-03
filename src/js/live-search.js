@@ -30,9 +30,9 @@
                         this.resultsDiv.html('<div class="spinner-loader"></div>')
                         this.isSpinnerVisible = true;
                     }
-                    this.typingTimer = setTimeout(this.getResults.bind(this) ,2000);
+                    this.typingTimer = setTimeout(this.getResults.bind(this) ,1000);
                 } else {
-                    this.resultsDiv.html('html');
+                    this.resultsDiv.html('');
                     this.isSpinnerVisible = false;
                 }
             }
@@ -40,8 +40,46 @@
         }
 
         getResults() {
-            // console.log(this.resultsDiv);
-            this.resultsDiv.html('Results');
+            // console.log(this.searchInput.val());
+            $.getJSON(themeData.root_url + '/wp-json/smacznego/v1/search?term=' + this.searchInput.val(), (data) => {
+                this.resultsDiv.html(`                                                                                      
+                    ${data.recipes.length ? '<div class="search__type"> <h2 class="search__title">Przepisy:</h2>' : ''}
+                    ${data.recipes.length ? '<ul class="search__list">' : ''}
+                        ${data.recipes.map(item => `
+                        <li class="search__element row">
+                            <div class="col-3 thumbnail">
+                                <img class="search__img" src="${(item.thumbnail) ? item.thumbnail : themeData.root_url+'/wp-content/themes/Smacznegopl/dist/img/placeholder.jpg'}" alt="${item.title}">
+                            </div>
+                            <a href="${item.permalink}" class="col-9">
+                                <h3>${item.title}</h3>
+                                <span>${item.acf.kcal}kcal</span>
+                                <span>${item.acf.bialko}g</span>
+                                <span>${item.acf.weglowodany}g</span>
+                                <span>${item.acf.tluszcze}g</span>
+                            </a>
+                        </li>`).join('')}
+                    ${data.recipes.length ? '</ul></div>' : ''}
+                    
+                    ${data.products.length ? '<div class="search__type"><h2 class="search__title">Produkty:</h2>' : ''}
+                    ${data.products.length ? '<ul class="search__list">' : ''}
+                        ${data.products.map(item => `
+                            <li class="search__element row">
+                            <div class="col-3 thumbnail">
+                                <img class="search__img" src="${(item.thumbnail) ? item.thumbnail : themeData.root_url+'/wp-content/themes/Smacznegopl/dist/img/placeholder.jpg'}" alt="${item.title}">
+                            </div>
+                            <a href="${item.permalink}" class="col-9">
+                                <h3>${item.title}</h3>
+                                <span>${item.acf.kcal}kcal</span>
+                                <span>${item.acf.bialko}g</span>
+                                <span>${item.acf.weglowodany}g</span>
+                                <span>${item.acf.tluszcze}g</span>
+                            </a>
+                        </li>`).join('')}
+                    ${data.products.length ? '</ul></div>' : ''}            
+                `);
+                
+                // console.log(data.recipes);
+            })
             this.isSpinnerVisible = false;
         }
 
@@ -64,8 +102,10 @@
         closeOverlay() {
             this.searchOverlay.removeClass("search--active");
             $('body').removeClass('no-scroll');
+            this.resultsDiv.html('');
             this.isOpenOverlay = false;
         }
+        
     }
 
     const search = new Search();

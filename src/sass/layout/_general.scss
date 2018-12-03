@@ -139,7 +139,7 @@ img {
 }
 
 .spinner-loader {
-    margin-top: 45px;
+    margin: $gapMedium*2 auto 0 auto;
     border-radius: 50%;
     width: 24px;
     height: 24px;

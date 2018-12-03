@@ -1,4 +1,4 @@
-<li class="slider__element container">
+<li class="slider__element">
     <a href="<?php echo get_permalink( get_the_id()); ?>" class="slider__link thumbnail">
 
         <?php the_post_thumbnail(  ) ?>

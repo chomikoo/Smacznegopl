@@ -38,11 +38,8 @@ function relatedRecipesResults($data) {
         if(get_post_type() == 'post' || get_post_type() == 'page') {
             array_push($searchResults['generalInfo'], array(
                 'id'    => get_the_ID(),
-                // 'posttype' => get_post_type(),
                 'title' => get_the_title(),
-                // 'permalink' => get_the_permalink(),
-                // 'thumbnail' => get_the_post_thumbnail(),
-                // 'acf'   => get_fields(),
+                'permalink' => get_the_permalink()
                 )
             );
         }
@@ -50,11 +47,10 @@ function relatedRecipesResults($data) {
         if(get_post_type() == 'recipes') {
             array_push($searchResults['recipes'], array(
                 'id'    => get_the_ID(),
-                // 'posttype' => get_post_type(),
                 'title' => get_the_title(),
-                // 'permalink' => get_the_permalink(),
-                // 'thumbnail' => get_the_post_thumbnail(),
                 'acf'   => get_fields(),
+                'thumbnail' => get_the_post_thumbnail_url(0,'thumbnail'),
+                'permalink' => get_the_permalink()
                 )
             );
         }
@@ -62,11 +58,10 @@ function relatedRecipesResults($data) {
         if(get_post_type() == 'products') {
             array_push($searchResults['products'], array(
                 'id'    => get_the_ID(),
-                // 'posttype' => get_post_type(),
                 'title' => get_the_title(),
-                // 'permalink' => get_the_permalink(),
-                // 'thumbnail' => get_the_post_thumbnail(),
-                // 'acf'   => get_fields(),
+                'permalink' => get_the_permalink(),
+                'thumbnail' => get_the_post_thumbnail_url(0,'thumbnail'),
+                'acf'   => get_fields()
                 )
             );
         }
@@ -81,8 +76,6 @@ function relatedRecipesResults($data) {
 /// GET RELATED POSTS 2 INGREDIENTS FOR ARCHIVE 
 
 function recipesWithSimilarIngredients( $postID ) {
-    // echo 'recipesWithSimilarIngredients';
-
     $urlApi = get_home_url() . '/wp-json/smacznego/v1/search';
     
     $response = wp_remote_get( 
