@@ -8,7 +8,7 @@
  */
 ?>
 
-<nav class="navbar">
+<nav class="navbar navbar--active">
     <?php
         wp_nav_menu( array( 
             'theme_location' => 'top-menu', 

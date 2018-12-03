@@ -20,6 +20,7 @@
 	// SUPPORTS
 
 	add_theme_support( 'post-thumbnails' ); 
+	
 
 	function chomikoo_template( $template = '' ) {
 

@@ -23,6 +23,8 @@ require $function_path . 'functions-breadcrumbs.php';
 require $function_path . 'functions-restapi.php';
 require $function_path . 'functions-sidebar.php';
 require $function_path . 'functions-widgets.php';
+require $function_path . 'functions-admin.php';
+
 
 
 

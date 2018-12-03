@@ -128,6 +128,7 @@
                 'hierarchical' => true,
                 'labels' => $type_taxonomy_labels,
                 'show_admin_column' => true,
+                'show_in_menu' => true,
                 'show_ui' => true,
                 'update_count_callback' => '_update_post_term_count',
                 'query_var' => true,

@@ -130,5 +130,3 @@ add_filter('nav_menu_css_class', 'chomikoo_menu_classes', 1, 3);
 			));
 		}
 	}
-	
-	
