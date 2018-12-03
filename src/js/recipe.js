@@ -1,68 +1,61 @@
 (function ($) {
     'use strict'
-    
-    console.log('Hello from recipe');
- 
-    const recipeList = [...document.querySelectorAll('.ingredients__quantity')];
-    const btnNutritionPlus = document.getElementById('portion-add');
-    const btnNutritionMin = document.getElementById('portion-minus');
-    
-    const recipeListVal = recipeList.map(element => eval(element.innerHTML));
-    const portionsInput = document.getElementById('jsPortions');
-    console.log(recipeListVal);
-
-    let portions = parseInt(portionsInput.value);
-
-    const onePortionRecipeArr = recipeListVal.map(element => Math.round((element / portions)*2)/2 );
-
-    btnNutritionPlus.addEventListener('click', () => {
-        portionAdd();
-    });
-
-    btnNutritionMin.addEventListener('click', () => {
-        portionMin();
-    });
-
-
-    const portionAdd = () => {
-        portions++;
-        updateRecipe(portions, onePortionRecipeArr, recipeList);
-    }
-    
-    
-    const portionMin = () => {
-        (portions > 1) ? portions-- : portions = 1;
-        updateRecipe(portions, onePortionRecipeArr, recipeList);
-    }
-    
-    
-    const updateRecipe = (i, arr, updetedArr) => {
-        portionsInput.value = i;
-        arr.map((element, j) => { updetedArr[j].innerHTML = (element > 0) ?  parseFloat(eval(element * i).toFixed(2)) : ''; });
-    }
-
-
-    // Validate numeric input
-    // function validateNumber(event) {
-    //     // this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
-    // }
-
-    function validateNumber(evt) {
-        const charCode = (evt.which) ? evt.which : event.keyCode;
-        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-            updateRecipe(portions, onePortionRecipeArr, recipeList);
-            console.log(`Używaj tylko liczb`);
-            return false;
+    class Recipe {
+        constructor() {
+            console.log('Hello from recipe');   
+            this.recipeList = [...document.querySelectorAll('.ingredients__quantity')];
+            this.btnNutritionPlus = document.getElementById('portion-add');
+            this.btnNutritionMin = document.getElementById('portion-minus');
+            this.recipeListVal = this.recipeList.map(element => eval(element.innerHTML));
+            this.portionsInput = document.getElementById('jsPortions');
+            
+            console.log(this.recipeListVal);
+            
+            this.portions = parseInt(this.portionsInput.value);
+            this.onePortionRecipeArr = this.recipeListVal.map(element => Math.round((element / this.portions)*2)/2 );                        
+            this.events();
         }
-        return true;
+
+        events() {
+            this.btnNutritionPlus.addEventListener('click', () => { this.portionAdd() });
+            this.btnNutritionMin.addEventListener('click', () => { this.portionMin()});
+            this.portionsInput.addEventListener('keyup', event => {
+                // console.log(this.validateNumber(event));
+                if( this.validateNumber(event) ) {
+                    this.updateRecipe(this.portionsInput.value, this.onePortionRecipeArr, this.recipeList);
+                }
+            });
+        }
+        
+        portionAdd() {
+            this.portions++;
+            this.updateRecipe(this.portions, this.onePortionRecipeArr, this.recipeList);
+        }
+                      
+        portionMin() {
+            (this.portions > 1) ? this.portions-- : this.portions = 1;
+            this.updateRecipe(this.portions, this.onePortionRecipeArr, this.recipeList);
+        }
+            
+        updateRecipe(i, arr, updetedArr) {
+            this.portionsInput.value = i;
+            arr.map((element, j) => { updetedArr[j].innerHTML = (element > 0) ?  parseFloat(eval(element * i).toFixed(2)) : ''; });
+        }
+
+        validateNumber(evt) {
+            const charCode = (evt.which) ? evt.which : event.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                this.updateRecipe(this.portions, this.onePortionRecipeArr, this.recipeList);
+                console.log(`Używaj tylko liczb`);
+                return false;
+            }
+            return true;
+        }
+        
+
+        
     }
 
-    portionsInput.addEventListener('keyup', event => {
-        console.log(validateNumber(event));
-        if( validateNumber(event) ) {
-            updateRecipe(portionsInput.value, onePortionRecipeArr, recipeList);
-        }
-    });
-
+    const recipe = new Recipe();
 
 })(jQuery)
