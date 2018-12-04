@@ -29,6 +29,14 @@ function chomikoo_menu_classes($classes, $item, $args) {
 }
 add_filter('nav_menu_css_class', 'chomikoo_menu_classes', 1, 3);
 	
+// class Walker_Nav_Primary extends Walker_Nav_menu {
+// 	function start_lvl( &$output, $depth) {
+// 		$indent = str_repeat("\t", $depth);
+// 		$submenu = ($depth > 0) ? ' sub-menu' : '';
+// 		$output .= "\n$indent<ul class=\"dropdown-menu$submenu depth_$depth\">\n";
+// 	}
+
+// }
 
 // POST NAV
 	function chomikoo_the_post_nav() {

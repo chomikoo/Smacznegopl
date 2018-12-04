@@ -41,15 +41,19 @@
         background-color:  $c-overlay-search;
         transition: all 0.2s ease-in;
     }
-    .fa-search {
+    .fa-search,
+    .btn--close {
         position: absolute;
-        bottom: 15px; left: 5px;
+        top: 50%;
+        transform: translate(0, -50%);
+        color: $c-green;
+    }
+    .fa-search {
+        left: 5px;
     }
 
     .btn--close {
-        position: absolute;
-        top: 50%; right: 10px;
-        transform: translate(0, -50%);
+        right: 10px;
     }
 
     // Results

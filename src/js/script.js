@@ -2,7 +2,25 @@
 	'use strict'
 	console.log('Hello from script.js ');
 
+	/////////////////////
+	// Navigation
+	/////////////////////
+	const navbar = $('.navbar');
 
+	const hamburger = $('#hamburger');
+	hamburger.on('click', function() {
+		navbar.toggleClass('active');
+		$(this).toggleClass('active');
+		$('body').toggleClass('no-scroll');
+	})
+
+	navbar.find('.sub-menu').hide();
+	navbar.find('.menu-item-has-children').on('click', function(e) {
+		e.preventDefault();
+		console.log('Open sub menu');
+		$(this).toggleClass('open');
+		$(this).find('.sub-menu').slideToggle();
+	})
 	/////////////////////
 	// Init frontpage slider
 	/////////////////////

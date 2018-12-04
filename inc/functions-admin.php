@@ -1,5 +1,7 @@
 <?php 
 
+
+// Thumbnails in admin column
 add_filter('manage_posts_columns', 'posts_columns', 5);
 add_action('manage_posts_custom_column', 'posts_custom_columns', 5, 2);
  

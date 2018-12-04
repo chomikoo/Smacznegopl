@@ -2,6 +2,7 @@
 
     class Search {
         constructor() {
+            console.log('hello from constructor');
             this.openBtn = $('#open-search');
             this.closeBtn = $('#close-search');
             this.searchOverlay = $('#search-overlay');
@@ -40,7 +41,6 @@
         }
 
         getResults() {
-            // console.log(this.searchInput.val());
             $.getJSON(themeData.root_url + '/wp-json/smacznego/v1/search?term=' + this.searchInput.val(), (data) => {
                 this.resultsDiv.html(`                                                                                      
                     ${data.recipes.length ? '<div class="search__type"> <h2 class="search__title">Przepisy:</h2>' : ''}
@@ -84,7 +84,6 @@
         }
 
         keyPressDispatcher(e) {
-            console.log(e.keyCode);
             if(e.keyCode == 83 && !this.isOpenOverlay && $('input, textarea').is(':focus')) {
                 this.openOverlay;
             }
@@ -105,7 +104,6 @@
             this.resultsDiv.html('');
             this.isOpenOverlay = false;
         }
-        
     }
 
     const search = new Search();

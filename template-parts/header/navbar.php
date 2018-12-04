@@ -8,12 +8,13 @@
  */
 ?>
 
-<nav class="navbar navbar--active">
+<nav class="navbar">
     <?php
         wp_nav_menu( array( 
             'theme_location' => 'top-menu', 
             'container' => 'ul',
-            'menu_class' => 'navbar__menu'
+            'menu_class' => 'navbar__menu',
+            // 'walker' => new Walker_Nav_Primary()
             // 'items_wrap' => '<ul id="main-menu" class="navbar__menu">%3$s</ul>',
             ) ); 
     ?>

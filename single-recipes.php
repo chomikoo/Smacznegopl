@@ -91,7 +91,6 @@
                                                 <?php echo $header ?>&nbsp;:
                                             </h2>
 
-                                            <!-- <div class="portions"> -->
                                             <?php if( $i == 0) { 
                                                 $i++;
                                             ?>
@@ -105,7 +104,6 @@
                                                 </button>
                                             </div>
                                             <?php } ?>
-                                            <!-- </div> -->
 
                                         </div>
 

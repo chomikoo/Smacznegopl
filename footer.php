@@ -47,6 +47,7 @@
 		</div>
 
 	</footer>
+	<?php get_template_part('template-parts/search-overlay'); ?>
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
