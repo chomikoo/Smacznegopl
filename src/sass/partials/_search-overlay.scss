@@ -1,6 +1,9 @@
-.search {
+.custom-search {
     $s: &;
     display: none;
+    &--page {
+        display: flex;
+    }
 
     &--active {
         position: fixed;
@@ -20,6 +23,7 @@
 
     .form-group {
         position: relative;
+        display: flex;
         margin: 0 0 $gapMedium 0;
     }
 
@@ -54,6 +58,12 @@
 
     .btn--close {
         right: 10px;
+    }
+
+    .btn--submit {
+        border-radius: $borderR;
+        background-color: $c-green;
+        color: $white;
     }
 
     // Results

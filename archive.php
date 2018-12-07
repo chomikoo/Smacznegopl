@@ -29,12 +29,12 @@ get_header(); ?>
 				if( have_posts() ):
 
 					echo '<div class="page-limit" data-page="' . $_SERVER["REQUEST_URI"] . '">';
-					echo '<div class="row mx-auto">';
-					while( have_posts() ):  the_post();
+						echo '<div class="row mx-auto">';
+						while( have_posts() ):  the_post();
 
-						get_template_part( 'template-parts/recipe-box' );
-					endwhile;
-					echo '</div>';
+							get_template_part( 'template-parts/recipe-box' );
+						endwhile;
+						echo '</div>';
 					echo '</div>';
 
 				endif;

@@ -1,0 +1,12 @@
+.widget_about_me {
+    .aboutme {
+        &__img {
+            max-width: 300px;
+            max-height: 300px;
+            width: 100%;
+            height: auto;
+            margin: 0 0 $gapSmall 0;
+            border-radius: $borderR;
+        }
+    }
+}

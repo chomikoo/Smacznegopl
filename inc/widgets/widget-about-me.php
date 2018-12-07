@@ -86,19 +86,19 @@ class About_Me extends WP_Widget {
 		// WordPress core before_widget hook (always include )
 		echo $before_widget;
 		// Display the widget
-		echo '<div class="widget-text wp_widget_plugin_box">';
+		echo '<div class="aboutme">';
 			// Display widget title if defined
 			if ( $title ) {
 				echo $before_title . $title . $after_title;
 			}
-	
-			// Display textarea field
-			if ( $textarea ) {
-				echo '<p>' . $textarea . '</p>';
-			}
+			
 			// Display img field
 			if ( $img ) {
-				echo '<img src="' . $img . '" alt="autor bloga" />';
+				echo '<div class="aboutme__img thumbnail"><img src="' . $img . '" alt="autor bloga" /></div>';
+			}
+			// Display textarea field
+			if ( $textarea ) {
+				echo '<p class="aboutme__content">' . $textarea . '</p>';
 			}
 
 		echo '</div>';

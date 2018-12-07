@@ -10,6 +10,17 @@
     &--search {
         width: 45px;
         height: 45px;
+        line-height: 45px;
+        text-align: center;
+    }
+
+    &--submit {
+        border-radius: 0 5px 5px 0;
+        border: 1px solid #7bbf44;
+        background: #fff;
+        color: #7bbf44;
+        width: 25%;
+        transition: all 0.3s ease-in;
     }
 
     &--control {

@@ -86,7 +86,7 @@ get_header(); ?>
 
 		<?php get_template_part('template-parts/section-spacer'); ?>
 
-		<div class="wrapper container <?php echo ( is_active_sidebar( 'right-sidebar' ) ) ? 'row' : '' ?>">
+		<div class="wrapper container <?php echo ( is_active_sidebar( 'right-sidebar' ) ) ? 'row align-items-fs' : '' ?>">
 
 		<?php if( is_active_sidebar( 'right-sidebar' ) ) { ?>
 

@@ -1,4 +1,19 @@
 .widget {
+    width: 100%;
+    overflow: hidden;
+    @include breakpoint(sm) {
+        width: 50%;
+    }
+    @include breakpoint(xl) {
+        width: 100%;
+    }
+    margin: 0 0 $gapMedium 0;
+    &:last-of-type {
+        margin: 0;
+    }
+    &-title {
+        margin: 0 0 $gapSmall 0;
+    }
     &__recent-posts {
         display: flex;
         flex-direction: column;

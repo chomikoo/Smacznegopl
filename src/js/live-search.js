@@ -43,12 +43,12 @@
         getResults() {
             $.getJSON(themeData.root_url + '/wp-json/smacznego/v1/search?term=' + this.searchInput.val(), (data) => {
                 this.resultsDiv.html(`                                                                                      
-                    ${data.recipes.length ? '<div class="search__type"> <h2 class="search__title">Przepisy:</h2>' : ''}
-                    ${data.recipes.length ? '<ul class="search__list">' : ''}
+                    ${data.recipes.length ? '<div class="custom-search__type"> <h2 class="custom-search__title">Przepisy:</h2>' : ''}
+                    ${data.recipes.length ? '<ul class="custom-search__list">' : ''}
                         ${data.recipes.map(item => `
-                        <li class="search__element row">
+                        <li class="custom-search__element row">
                             <div class="col-3 thumbnail">
-                                <img class="search__img" src="${(item.thumbnail) ? item.thumbnail : themeData.root_url+'/wp-content/themes/Smacznegopl/dist/img/placeholder.jpg'}" alt="${item.title}">
+                                <img class="custom-search__img" src="${(item.thumbnail) ? item.thumbnail : themeData.root_url+'/wp-content/themes/Smacznegopl/dist/img/placeholder.jpg'}" alt="${item.title}">
                             </div>
                             <a href="${item.permalink}" class="col-9">
                                 <h3>${item.title}</h3>
@@ -60,12 +60,12 @@
                         </li>`).join('')}
                     ${data.recipes.length ? '</ul></div>' : ''}
                     
-                    ${data.products.length ? '<div class="search__type"><h2 class="search__title">Produkty:</h2>' : ''}
-                    ${data.products.length ? '<ul class="search__list">' : ''}
+                    ${data.products.length ? '<div class="custom-search__type"><h2 class="custom-search__title">Produkty:</h2>' : ''}
+                    ${data.products.length ? '<ul class="custom-search__list">' : ''}
                         ${data.products.map(item => `
-                            <li class="search__element row">
+                            <li class="custom-search__element row">
                             <div class="col-3 thumbnail">
-                                <img class="search__img" src="${(item.thumbnail) ? item.thumbnail : themeData.root_url+'/wp-content/themes/Smacznegopl/dist/img/placeholder.jpg'}" alt="${item.title}">
+                                <img class="custom-search__img" src="${(item.thumbnail) ? item.thumbnail : themeData.root_url+'/wp-content/themes/Smacznegopl/dist/img/placeholder.jpg'}" alt="${item.title}">
                             </div>
                             <a href="${item.permalink}" class="col-9">
                                 <h3>${item.title}</h3>
@@ -93,13 +93,14 @@
         }
 
         openOverlay() {
-            this.searchOverlay.addClass("search--active");
+            this.searchOverlay.addClass("custom-search--active");
             $('body').addClass('no-scroll');
             this.isOpenOverlay = true;
+            return false;
         }
 
         closeOverlay() {
-            this.searchOverlay.removeClass("search--active");
+            this.searchOverlay.removeClass("custom-search--active");
             $('body').removeClass('no-scroll');
             this.resultsDiv.html('');
             this.isOpenOverlay = false;
