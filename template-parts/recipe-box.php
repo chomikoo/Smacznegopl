@@ -33,7 +33,8 @@
         </div>
         
         <div class="recipe__excerpt">
-            <?php if(has_excerpt($recipe->id)) {
+            <!-- <?php echo $recipe->id; ?> -->
+            <?php if(has_excerpt($post->id)) {
                 the_excerpt();
             } else {
                 echo custom_field_excerpt('wstep', 20); 

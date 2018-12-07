@@ -7,3 +7,12 @@ function latest_cpt_init() {
 }
 
 add_action( 'widgets_init', 'latest_cpt_init' );
+
+function about_me() {
+
+    require get_template_directory() . '/inc/widgets/widget-about-me.php';
+    register_widget( 'About_Me' );
+
+}
+
+add_action( 'widgets_init', 'about_me' );

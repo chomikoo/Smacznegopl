@@ -148,3 +148,10 @@ img {
     animation: spin 1s infinite linear;
 }
 
+
+// Widget & Plugins Mod
+
+#sb_instagram .sbi_photo_wrap {
+    border-radius: $borderR;
+    overflow: hidden;
+}

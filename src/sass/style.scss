@@ -62,6 +62,8 @@
 @import "partials/nutrition-table";  
 @import "partials/pagination";  
 @import "partials/search-overlay";  
+@import "partials/tabs";  
+
 
 
 
@@ -78,6 +80,8 @@
 @import "pages/archive";    
 @import "pages/front";    
 @import "pages/recipe-single";    
+@import "pages/calculators";    
+
 
  
 @import "layout/animations";   
@@ -90,3 +94,6 @@
 --------------------------------------------------------------*/ 
 
 @import "widgets/recent-posts";   
+@import "widgets/aboutme";   
+   
+

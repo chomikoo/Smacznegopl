@@ -58,6 +58,7 @@ const jsAll = [
 	jsVendors + 'slick.js',
 	jsVendors + 'instafeed.js',
 	jsSRC + 'live-search.js',
+	// jsSRC + 'calculators.js',
 	jsMain
 ];
 

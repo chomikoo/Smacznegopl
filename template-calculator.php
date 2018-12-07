@@ -93,7 +93,7 @@ get_header(); ?>
 				?>
 			<form id="bmrForm" class="calculator__form">
 
-				<div role="group" class="calculator__radio radio row no-gutters justify-content-between">
+				<div role="group" class="calculator__radio radio row justify-sb">
 
 					<div class="radio__group col-auto">
 						<input class="radio__input" id="bmrM" type="radio" value="m" name="bmr_gender">
@@ -111,7 +111,7 @@ get_header(); ?>
 
 				</div>
 
-				<div role="group" class="calculator__text d-flex flex-column">
+				<div role="group" class="calculator__text">
 
 					<div class="calculator__group">
 
@@ -204,7 +204,7 @@ get_header(); ?>
 	?>
 			<form id="pwForm" class="calculator__form">
 
-				<div role="group" class="calculator__radio radio row no-gutters justify-content-between">
+				<div role="group" class="calculator__radio radio row justify-sb">
 
 					<div class="radio__group col-auto">
 						<input class="radio__input" id="pwM" type="radio" value="m" name="pw_gender">
@@ -222,7 +222,7 @@ get_header(); ?>
 
 				</div>
 
-				<div role="group" class="calculator__text d-flex flex-column">
+				<div role="group" class="calculator__text">
 
 					<div class="calculator__group">
 
@@ -266,7 +266,7 @@ get_header(); ?>
 		?>
 			<form id="bfForm" class="calculator__form">
 
-				<div role="group" class="calculator__radio radio row no-gutters justify-content-between">
+				<div role="group" class="calculator__radio radio row justify-sb">
 
 					<div class="radio__group col-auto">
 						<input class="radio__input" id="bfM" type="radio" value="m" name="bf_gender">
@@ -284,7 +284,7 @@ get_header(); ?>
 
 				</div>
 
-				<div role="group" class="calculator__text d-flex flex-column">
+				<div role="group" class="calculator__text">
 
 					<div class="calculator__group">
 
