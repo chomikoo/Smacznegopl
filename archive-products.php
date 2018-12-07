@@ -32,7 +32,7 @@ get_header(); ?>
 					echo '<div class="row mx-auto">';
 					while( have_posts() ):  the_post();
 
-						get_template_part( 'template-parts/product-box' );
+						get_template_part( 'template-parts/content-products' );
 
 					endwhile;
 					echo '</div>';

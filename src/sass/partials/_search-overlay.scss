@@ -88,3 +88,10 @@
     }
 
 }
+
+.search {
+    &__header {
+        // margin: $gapMedium 0;
+        padding: $gapMedium 15px;
+    }
+}
