@@ -16,14 +16,15 @@
 
 	navbar.find('.sub-menu').hide();
 	navbar.find('.menu-item-has-children').on('click', function(e) {
-		e.preventDefault();
+		// e.preventDefault();
 		console.log('Open sub menu');
 		$(this).toggleClass('open');
 		$(this).find('.sub-menu').slideToggle();
 	})
-	/////////////////////
+
+	/////////////////////////
 	// Init frontpage slider
-	/////////////////////
+	/////////////////////////
 
 	$('.slider__list').slick({
 		dots: false,
@@ -45,9 +46,10 @@
 		]
 	});
 
-	/////////////////////
-	// equal slide height
-	/////////////////////
+	////////////////////////
+	// equal slide height //
+	////////////////////////
+
 	const setSlidesHeight = (element) => {
 		const slickWrapper = $(element);
 		const slickWrapperH = slickWrapper.height();
