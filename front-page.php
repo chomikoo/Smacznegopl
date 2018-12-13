@@ -108,8 +108,8 @@ get_header(); ?>
 								) );
 								while ( $newsest_recipes_arg->have_posts() ) :
 									$newsest_recipes_arg->the_post();
-									
-									get_template_part( 'template-parts/recipe-box' );
+
+									get_template_part( 'template-parts/content', get_post_type() );
 									
 								endwhile;
 							wp_reset_postdata();

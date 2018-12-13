@@ -15,7 +15,8 @@
 		define('THEME_URL', WP_CONTENT_URL.'/themes/'.get_template().'/');
 	}
 
-
+	// Disable gutenberg
+	add_filter('use_block_editor_for_post', '__return_false');
 
 	// SUPPORTS
 

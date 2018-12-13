@@ -1,0 +1,93 @@
+
+.input-text {
+    $i: &;
+    position: relative;
+    &__label {
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        transform: translate(0, -50%);
+        transition: all 0.2s ease-in;
+        background: $white;
+        font-size: 15px;
+    }
+
+    &__input {
+        border: none;
+        border-bottom: 1px solid $c-grey;
+        padding: 5px;
+        &:focus {
+            // outline: $c-green;
+            outline: 2px solid $c-green;
+        }
+        &:not(:placeholder-shown)  ~ #{$i}__label ,
+        &:focus ~ #{$i}__label {
+            transform: translate(0px, -30px );
+            font-size: 0.8em;
+            // opacity: 0.6;
+        }
+    }
+}
+
+.input-select {
+    width: 100%;
+    padding: 5px;
+    &:focus {
+        outline: 2px solid $c-green;
+    }
+}
+
+.input-checkbox {
+    $ic: &;
+    cursor: pointer;
+    &__input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+
+        &:checked ~ #{$ic}__ico {
+            &::after {
+                display: block;
+            }
+        }
+    }
+    
+    &__label {
+        padding: 0 0 0 30px;
+        z-index: 2;
+    }
+    
+    &__ico {
+        position: absolute;
+        top: 3px;
+        left: 0;
+        z-index: 0;
+        height: 16px;
+        width: 16px;
+        background: $white;
+        border: 1px solid $c-grey-l;
+        border-radius: 1px;
+        &::after {
+            content: '';
+            position: absolute;
+            display: none;
+            left: 5px;
+            top: 0px;
+            width: 5px;
+            height: 12px;
+            border: solid $c-green;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        
+    }
+    &:hover {
+        #{$ic}__ico {
+            border: 1px solid $c-grey;
+        }
+    }
+}
+
+.input-radio {
+
+}

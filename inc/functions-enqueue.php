@@ -26,13 +26,23 @@ function chomikoo_load_scripts() {
 		wp_enqueue_script( 'calculators', THEME_URL . 'src/js/calculators.js', array('jquery'), $ver, 'all'  );	
 	}
 
-	wp_enqueue_script( 'myscript', THEME_URL . 'dist/js/script.min.js', array('jquery'), $ver, 'all'  );
-	wp_localize_script('myscript', 'themeData', array(
-		'root_url' => get_site_url()
-	));
+	// if( archive ) {}
+		
+		wp_enqueue_script( 'myscript', THEME_URL . 'dist/js/script.min.js', array('jquery'), $ver, 'all'  );
+		wp_localize_script('myscript', 'themeData', array(
+			'root_url' => get_site_url()
+		));
+	}
+	
+	add_action( 'wp_enqueue_scripts', 'chomikoo_load_scripts' );
+	
+function chomikoo_ajax_filter_scripts() {
+	
+		wp_enqueue_script( 'filter-script', THEME_URL . 'src/js/frontend/filter-ajax.js', array('jquery'), $ver, 'all'  );
+		wp_localize_script( 'filter-script', 'ajax_url', admin_url('admin-ajax.php') );
+	
 }
 
-add_action( 'wp_enqueue_scripts', 'chomikoo_load_scripts' );
 
 function chomikoo_admin_scripts() {
 

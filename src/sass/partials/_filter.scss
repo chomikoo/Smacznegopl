@@ -1,0 +1,30 @@
+.filter {
+    &-form {
+        padding: 25px;
+    
+        .btn--submit {
+            padding: 5px 10px;
+            min-width: 150px;
+            transition: all 0.2s ease-in;
+            border-radius: $borderR;
+            &:hover {
+                color: $white;
+                background: $c-green;
+            }
+        }
+
+
+
+    }
+
+    &__group {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0 0 $gapSmall 0;
+    }
+
+
+
+}

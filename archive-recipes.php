@@ -22,6 +22,8 @@ get_header(); ?>
 			</div>
 		</header>
 
+		<?php echo do_shortcode('[chomikoo_ajax_filter]') ?>
+
 		<section class="container archive__container">
 			
 			<?php 
@@ -29,7 +31,7 @@ get_header(); ?>
 				if( have_posts() ):
 
 					echo '<div class="page-limit" data-page="' . $_SERVER["REQUEST_URI"] . '">';
-					echo '<div class="row mx-auto">';
+					echo '<div id="ajax_filter_results" class="row mx-auto">';
 					while( have_posts() ):  the_post();
 
 						get_template_part( 'template-parts/content-recipes' );

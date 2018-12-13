@@ -22,7 +22,7 @@ get_header(); ?>
 			</div>
 		</header>
 
-		<section class="container archive__container">
+		<section id="archive_container" class="container archive__container">
 			
 			<?php 
 

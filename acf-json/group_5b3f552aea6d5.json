@@ -16,12 +16,12 @@
                 "id": ""
             },
             "choices": {
-                "bialko": "Duża zawartość białka",
-                "weglowodany": "Duża zawartość węglowodanów",
-                "tluszcze": "Duża zawartość błonnika",
-                "cukier": "Bez cukru",
-                "lackmeat": "Bez mięsa",
-                "glutenfree": "Bez glutenu",
+                "proteins": "Duża zawartość białka",
+                "carbs": "Duża zawartość węglowodanów",
+                "fat": "Duża zawartość błonnika",
+                "sugar": "Bez cukru",
+                "meat": "Bez mięsa",
+                "gluten": "Bez glutenu",
                 "vege": "Vege"
             },
             "allow_custom": 1,
@@ -238,7 +238,7 @@
                                 "products"
                             ],
                             "taxonomy": [],
-                            "allow_null": 0,
+                            "allow_null": 1,
                             "multiple": 0,
                             "return_format": "object",
                             "ui": 1
@@ -489,7 +489,6 @@
     "instruction_placement": "label",
     "hide_on_screen": [
         "the_content",
-        "custom_fields",
         "discussion",
         "comments",
         "revisions",
@@ -501,5 +500,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1543319361
+    "modified": 1544708585
 }

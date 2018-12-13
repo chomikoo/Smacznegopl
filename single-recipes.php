@@ -88,7 +88,7 @@
                                         <div class="ingredients__head">
 
                                             <h2 class="ingredients__title">
-                                                <?php echo $header ?>&nbsp;:
+                                                <?php echo $header ?>
                                             </h2>
 
                                             <?php if( $i == 0) { 

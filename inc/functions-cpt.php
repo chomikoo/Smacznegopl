@@ -134,6 +134,41 @@
                 'query_var' => true,
                 'rewrite' => array('slug' => 'type' )
         ));
+
+        // Meal information
+        $info_taxonomy_labels = array(
+            'name'              => __('Dodatkowe informacje'),
+            'singular_name'     => __('Dodatkowe informacje'),
+            'search_items'      => __('Wyszukaj info'),
+            'popular_items'     => __('Najpopularniejsze informacje'),
+            'all_items'         => __('Wszystkie informacje'),
+            'most_used_items'   => null,
+            'parent_item'       => null,
+            'parent_item_colon' => null,
+            'edit_item'         => __('Edytuj informacje') ,
+            'update_item'       => __('Aktualizuj informacje'),
+            'add_new_item'      => __('Dodaj nową informacje'),
+            'new_item_name'     => __('Nazwa nowej informacji'),
+            'separate_items_with_commas'    => __('Oddziel typy przecinkiem'),
+            'add_or_remove_items'           => __('Dodaj lub usuń typy'),
+            'choose_from_most_used'         => __('Wybierz spośród najczęścież używanych typów'),
+            'menu_name'                     => __('Informacje'),
+        );
+        // Type
+        register_taxonomy(
+            'recipe-info',
+            array('recipes'),
+            array(
+                'hierarchical' => false,
+                'labels' => $info_taxonomy_labels,
+                'show_admin_column' => true,
+                'show_in_menu' => true,
+                'show_ui' => true,
+                // 'update_count_callback' => '_update_post_term_count',
+                'query_var' => true,
+                'rewrite' => array('slug' => 'information' )
+        ));
+
         /*
          * Product type Taxonomy
          */

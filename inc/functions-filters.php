@@ -1,0 +1,262 @@
+<?php
+/**
+ * Portfolio: Custom Recipes Filter
+ *
+ * @package WordPress
+ * @subpackage Smaczegopl
+ * 
+ */
+
+
+ // Shortcode
+/**
+* chomikoo_ajax_filter
+*/
+
+add_shortcode( 'chomikoo_ajax_filter', 'chomikoo_ajax_filter_shortcode' );
+
+function chomikoo_ajax_filter_shortcode() {
+
+    chomikoo_ajax_filter_scripts();
+
+    ob_start(); ?>
+
+    <section class="container recipe-filter">
+        
+        <form id="recipe-filter" class="filter-form" action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST">
+            <div class="filter__group">
+            <?php 
+                if( $terms = get_terms( 
+                    array(
+                        'taxonomy' => 'meal-type',
+                        'orderby' => 'name',
+                        'hide_empty' => false
+                        )) 
+                        ) : // to make it simple I use default categories
+                        echo '<select id="category_filter" class="input-select" name="category_filter"><option value="">Wybierz typ</option>';
+                        foreach ( $terms as $term ) :
+                            echo '<option value="' . $term->slug . '">' . $term->name . '</option>'; // ID of the category as the value of an option
+                        endforeach;
+                        echo '</select>';
+                    endif; 
+                    ?>
+            </div>
+            <div class="filter__group">
+                <div class="input-text">
+                    <input class="input-text__input" id="kcal_min" name="kcal_min" type="text" placeholder=" "/>
+                    <label class="input-text__label" for="kcal_min">Min Kcal</label>
+                </div>
+                
+                <div class="input-text">
+                    <input class="input-text__input" id="kcal_max" name="kcal_max" type="text" placeholder=" "/>
+                    <label class="input-text__label" for="kcal_max">Max Kcal</label>
+                </div>
+            </div>
+
+            <div class="filter__group">            
+                <div class="input-text">
+                    <input class="input-text__input" id="time_min" name="time_min" type="text" placeholder=" "/>
+                    <label class="input-text__label" for="time_min"><?php _e('Czas min [min]', 'Smacznegopl'); ?></label>
+                </div>
+
+                <div class="input-text">
+                    <input class="input-text__input" id="time_max" name="time_max" type="text" placeholder=" "/>
+                    <label class="input-text__label" for="time_max"><?php _e('Czas max [min]', 'Smacznegopl'); ?></label>
+                </div>
+            </div>
+
+            <div class="filter__group input-checkbox">
+                <input class="input-checkbox__input" id="checkbox_vege" type="checkbox" name="vege" />
+                <label class="input-checkbox__label" for="checkbox_vege"><?php _e('Vege', 'Smaczegopl'); ?></label>
+                <span class="input-checkbox__ico"></span>
+            </div> 
+
+            <div class="filter__group input-checkbox">
+                <input class="input-checkbox__input" id="checkbox_meat" type="checkbox" name="meat" />
+                <label class="input-checkbox__label" for="checkbox_meat"><?php _e('Bez miesa', 'Smaczegopl'); ?></label>
+                <span class="input-checkbox__ico"></span>
+            </div>
+
+            <div class="filter__group input-checkbox">
+                <input class="input-checkbox__input" id="checkbox_sugar" type="checkbox" name="sugar" />
+                <label class="input-checkbox__label" for="checkbox_sugar"><?php _e('Bez cukru', 'Smaczegopl'); ?></label>
+                <span class="input-checkbox__ico"></span>
+            </div>
+
+            <div class="filter__group input-checkbox">
+                <input class="input-checkbox__input" id="checkbox_gluten" type="checkbox" name="gluten" />
+                <label class="input-checkbox__label" for="checkbox_gluten"><?php _e('Bez glutenu', 'Smaczegopl'); ?></label>
+                <span class="input-checkbox__ico"></span>
+            </div>
+
+
+
+
+            <button class="btn btn--submit">Apply filter</button>
+            <input type="hidden" name="action" value="myfilter">
+
+        </form>
+    </section>
+
+    <?php 
+    return ob_get_clean();
+}
+
+
+add_action('wp_ajax_chomikoo_ajax_filter_function', 'chomikoo_ajax_filter_function_callback');
+add_action('wp_ajax_nopriv_chomikoo_ajax_filter_function', 'chomikoo_ajax_filter_function_callback');
+
+function chomikoo_ajax_filter_function_callback() {
+
+    $args = array(
+        'post_type' => 'recipes',
+        'post_per_page' => -1,
+        'orderby' => 'date',
+        'order' => 'DESC'
+    );
+
+
+
+    if( !empty($_POST['category_filter']) ) {
+        $args['tax_query'] = array(
+            'relation' => 'AND',
+            array(
+                'taxonomy' => 'meal-type',
+                'field' => 'slug',
+                'terms' => $_POST['category_filter'],
+                'include_children' => false,
+                'operator' => 'IN'
+            ),
+
+        );
+    }
+
+    if( !empty($_POST['recipe_assets']) ) {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'recipe-info',
+                'field' => 'slug',
+                'terms' => $_POST['recipe_assets'],
+                'operator' => 'IN'
+            )
+        );
+    }
+    // ======= //
+    //   KCAL
+    // ======= //
+
+    // create $args['meta_query'] array if one of the following fields is filled
+	if( isset( $_POST['kcal_min'] ) && $_POST['kcal_min'] || isset( $_POST['kcal_max'] ) && $_POST['kcal_max'] ) {
+        $args['meta_query'] = array( 'relation'=>'AND' ); 
+    }
+
+    // if both minimum kcal and maximum kcal are specified we will use BETWEEN comparison
+    if( isset( $_POST['kcal_min'] ) && $_POST['kcal_min'] && isset( $_POST['kcal_max'] ) && $_POST['kcal_max'] ) {
+        $args['meta_query'][] = array(
+            'key' => 'kcal',
+            'value' => array( $_POST['kcal_min'], $_POST['kcal_max'] ),
+            'type' => 'numeric',
+            'compare' => 'between'
+        );
+    } else {
+        // if only min kcal is set
+        if( isset( $_POST['kcal_min'] ) && $_POST['kcal_min'] )
+            $args['meta_query'][] = array(
+                'key' => 'kcal',
+                'value' => $_POST['kcal_min'],
+                'type' => 'numeric',
+                'compare' => '>'
+            );
+
+        // if only max kcal is set
+        if( isset( $_POST['kcal_max'] ) && $_POST['kcal_max'] )
+            $args['meta_query'][] = array(
+                'key' => 'kcal',
+                'value' => $_POST['kcal_max'],
+                'type' => 'numeric',
+                'compare' => '<'
+            );
+    }
+    
+    // ======= //
+    //   TIME
+    // ======= //
+    // create $args['meta_query'] array if one of the following fields is filled
+	if( isset( $_POST['time_min'] ) && $_POST['time_min'] || isset( $_POST['time_max'] ) && $_POST['time_max'] ) {
+        $args['meta_query'] = array( 'relation'=>'AND' ); 
+    }
+
+    // if both minimum kcal and maximum kcal are specified we will use BETWEEN comparison
+    if( isset( $_POST['time_min'] ) && $_POST['time_min'] && isset( $_POST['time_max'] ) && $_POST['time_max'] ) {
+        $args['meta_query'][] = array(
+            'key' => 'czas',
+            'value' => array( $_POST['time_min'], $_POST['time_max'] ),
+            'type' => 'numeric',
+            'compare' => 'between'
+        );
+    } else {
+        // if only min kcal is set
+        if( isset( $_POST['time_min'] ) && $_POST['time_min'] ) {
+            $args['meta_query'][] = array(
+                'key' => 'czas',
+                'value' => $_POST['time_min'],
+                'type' => 'numeric',
+                'compare' => '>'
+            );
+        }
+
+        // if only max kcal is set
+        if( isset( $_POST['time_max'] ) && $_POST['time_max'] ) {
+            $args['meta_query'][] = array(
+                'key' => 'czas',
+                'value' => $_POST['time_max'],
+                'type' => 'numeric',
+                'compare' => '<'
+            );
+        }
+    }
+
+    // ==============
+    // RECIPE ASSETS
+    // ==============
+    // $recipe_assets = get_field('additional_info');
+    // $args['meta_query'] = array( 'relation'=>'OR' ); 
+
+ 
+
+    // $string = $_POST['recipe_assets'];
+
+	$query = new WP_Query( $args );
+ 
+	if( $query->have_posts() ) {
+        $result = array();
+
+		while( $query->have_posts() ){
+             $query->the_post();
+
+            $result[] = array(
+                "id" => get_the_ID(),
+                "title" => get_the_title(),
+                "author" => get_the_author(),
+                "thumbnail" => get_the_post_thumbnail(get_the_ID(),'full'),                "date" => get_the_date( 'd F Y' ),
+                "permalink" => get_permalink(),
+                "kcal" => get_field('kcal'),
+                "time" => min_2_h( get_field('czas') ),
+                "proteins" => get_field('bialko'),
+                "carbs" => get_field('weglowodany'),
+                "fats" => get_field('tluszcze'),
+                "excerpt" => custom_field_excerpt('wstep', 20),
+            ) ;
+            
+        }
+        wp_reset_postdata();
+
+        echo json_encode( $result );
+
+    } else {
+        echo __('Niestety nie znaleziono postów pasujących do kryteriów wyszukiwania', 'Smaczegopl');
+    }
+ 
+	die();
+
+}

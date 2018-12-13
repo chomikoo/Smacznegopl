@@ -24,6 +24,10 @@ require $function_path . 'functions-restapi.php';
 require $function_path . 'functions-sidebar.php';
 require $function_path . 'functions-widgets.php';
 require $function_path . 'functions-admin.php';
+require $function_path . 'functions-filters.php';
+// require $function_path . 'functions-shortcodes.php';
+
+
 
 
 
