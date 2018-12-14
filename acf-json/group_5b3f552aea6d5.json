@@ -3,35 +3,6 @@
     "title": "Przepis",
     "fields": [
         {
-            "key": "field_5b93aa2246681",
-            "label": "Informacje dodatkowe",
-            "name": "additional_info",
-            "type": "checkbox",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "proteins": "Duża zawartość białka",
-                "carbs": "Duża zawartość węglowodanów",
-                "fat": "Duża zawartość błonnika",
-                "sugar": "Bez cukru",
-                "meat": "Bez mięsa",
-                "gluten": "Bez glutenu",
-                "vege": "Vege"
-            },
-            "allow_custom": 1,
-            "save_custom": 1,
-            "default_value": [],
-            "layout": "horizontal",
-            "toggle": 0,
-            "return_format": "array"
-        },
-        {
             "key": "field_5b3f611bb113c",
             "label": "Waga porcji",
             "name": "waga_porcji",
@@ -500,5 +471,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1544708585
+    "modified": 1544785385
 }

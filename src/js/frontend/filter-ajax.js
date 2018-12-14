@@ -18,6 +18,9 @@
             var category_filter = filterForm.find('#category_filter').val();
             console.log('category_filter ' + category_filter);
 
+            var sort_terms = filterForm.find('#sort_terms').val();
+            console.log('sort_terms ' + sort_terms);
+
             var kcal_min = filterForm.find('#kcal_min').val();
             console.log('#kcal_min ' + kcal_min);
 
@@ -52,7 +55,8 @@
 
             const data = {
                 action : "chomikoo_ajax_filter_function",
-                category_filter : category_filter,
+                category_filter,
+                sort_terms,
                 kcal_min,
                 kcal_max,
                 time_min,
@@ -68,7 +72,7 @@
 
             })
             .done(function(response){
-                // console.log('Ajax Done');
+                console.log('Ajax Done');
                 // console.log(response);
                 
                 let resultTemplate = JSON.parse(response).map( (element) => 
@@ -76,13 +80,20 @@
                     <article class="recipe recipe-${element.id} col-12 col-sm-6 col-md-4">
                         <a href="${element.permalink}" class="recipe__thumbnail thumbnail">
                             <img ${element.thumbnail} />
+                            <div class="recipe__info recipe__info--thumbnail">    
+                                <span class="recipe__badge">${element.kcal}kcal</span><span class="spacer"></span>
+                                <span class="recipe__badge"><span class="far fa-clock">$nbsp;</span>&nbsp;${element.time}</span></br>
+                                <span class="recipe__badge">B:&nbsp;${element.proteins}g</span><span class="spacer"></span>
+                                <span class="recipe__badge">W:&nbsp;${element.carbs}g</span><span class="spacer"></span>
+                                <span class="recipe__badge">T:&nbsp;${element.fats}g</span><span class="spacer"></span>
+                            </div>
                         </a>
 
                         <div class="recipe__content">
 
                             <span class="recipe__post-type">Przepis</span> 
                             
-                            <h2 class="recipe__title"><span class="bold">Przepis:</span> ${element.title}</h2>
+                            <h2 class="recipe__title"><span class="bold">Przepis:</span>${element.title}</h2>
                             
                             <div class="recipe__info recipe__info--nutrition">    
                                 <span class="recipe__badge">${element.kcal}kcal</span><span class="spacer"></span>
@@ -118,9 +129,6 @@
                 console.log('Fail');
             })
 
-            // console.log('checkbox' ,filterForm.find('input[type="checkbox"]').val())
-
-  
             })
     });
 })(jQuery)

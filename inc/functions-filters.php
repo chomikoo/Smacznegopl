@@ -40,6 +40,16 @@ function chomikoo_ajax_filter_shortcode() {
                         echo '</select>';
                     endif; 
                     ?>
+
+                    <select id="sort_terms" class="input-select">
+                        <option value=""><?php _e('Sortuj'); ?></option>
+                        <option value="date"><?php _e('Data'); ?></option>
+                        <option value="kcal"><?php _e('Kcal'); ?></option>
+                        <option value="bialko"><?php _e('Białko'); ?></option>
+                        <option value="weglowodany"><?php _e('Weglowodany'); ?></option>
+                        <option value="tluszcze"><?php _e('Tłuszcze'); ?></option>
+                        <option value="czas"><?php _e('Czas'); ?></option>
+                    </select>
             </div>
             <div class="filter__group">
                 <div class="input-text">
@@ -64,37 +74,35 @@ function chomikoo_ajax_filter_shortcode() {
                     <label class="input-text__label" for="time_max"><?php _e('Czas max [min]', 'Smacznegopl'); ?></label>
                 </div>
             </div>
-
-            <div class="filter__group input-checkbox">
-                <input class="input-checkbox__input" id="checkbox_vege" type="checkbox" name="vege" />
-                <label class="input-checkbox__label" for="checkbox_vege"><?php _e('Vege', 'Smaczegopl'); ?></label>
-                <span class="input-checkbox__ico"></span>
-            </div> 
-
-            <div class="filter__group input-checkbox">
-                <input class="input-checkbox__input" id="checkbox_meat" type="checkbox" name="meat" />
-                <label class="input-checkbox__label" for="checkbox_meat"><?php _e('Bez miesa', 'Smaczegopl'); ?></label>
-                <span class="input-checkbox__ico"></span>
+            <div class="row mx-auto">
+                    <div class="filter__group input-checkbox col-12 col-md-3">
+                        <input class="input-checkbox__input" id="checkbox_vege" type="checkbox" name="vege" />
+                    <label class="input-checkbox__label" for="checkbox_vege"><?php _e('Vege', 'Smaczegopl'); ?></label>
+                    <span class="input-checkbox__ico"></span>
+                </div> 
+                
+                <div class="filter__group input-checkbox col-12 col-md-3">
+                    <input class="input-checkbox__input" id="checkbox_meat" type="checkbox" name="meat" />
+                    <label class="input-checkbox__label" for="checkbox_meat"><?php _e('Bez miesa', 'Smaczegopl'); ?></label>
+                    <span class="input-checkbox__ico"></span>
+                </div>
+                
+                <div class="filter__group input-checkbox col-12 col-md-3">
+                    <input class="input-checkbox__input" id="checkbox_sugar" type="checkbox" name="sugar" />
+                    <label class="input-checkbox__label" for="checkbox_sugar"><?php _e('Bez cukru', 'Smaczegopl'); ?></label>
+                    <span class="input-checkbox__ico"></span>
+                </div>
+                
+                <div class="filter__group input-checkbox col-12 col-md-3">
+                    <input class="input-checkbox__input" id="checkbox_gluten" type="checkbox" name="gluten" />
+                    <label class="input-checkbox__label" for="checkbox_gluten"><?php _e('Bez glutenu', 'Smaczegopl'); ?></label>
+                    <span class="input-checkbox__ico"></span>
+                </div>
             </div>
-
-            <div class="filter__group input-checkbox">
-                <input class="input-checkbox__input" id="checkbox_sugar" type="checkbox" name="sugar" />
-                <label class="input-checkbox__label" for="checkbox_sugar"><?php _e('Bez cukru', 'Smaczegopl'); ?></label>
-                <span class="input-checkbox__ico"></span>
-            </div>
-
-            <div class="filter__group input-checkbox">
-                <input class="input-checkbox__input" id="checkbox_gluten" type="checkbox" name="gluten" />
-                <label class="input-checkbox__label" for="checkbox_gluten"><?php _e('Bez glutenu', 'Smaczegopl'); ?></label>
-                <span class="input-checkbox__ico"></span>
-            </div>
-
-
-
 
             <button class="btn btn--submit">Apply filter</button>
             <input type="hidden" name="action" value="myfilter">
-
+            
         </form>
     </section>
 
@@ -111,10 +119,11 @@ function chomikoo_ajax_filter_function_callback() {
     $args = array(
         'post_type' => 'recipes',
         'post_per_page' => -1,
-        'orderby' => 'date',
+        // 'paged' => $_POST["page"]+1,
+        'orderby' => 'meta_value_num',
+        'meta_key' => $_POST['sort_terms'], 
         'order' => 'DESC'
     );
-
 
 
     if( !empty($_POST['category_filter']) ) {
@@ -216,15 +225,6 @@ function chomikoo_ajax_filter_function_callback() {
         }
     }
 
-    // ==============
-    // RECIPE ASSETS
-    // ==============
-    // $recipe_assets = get_field('additional_info');
-    // $args['meta_query'] = array( 'relation'=>'OR' ); 
-
- 
-
-    // $string = $_POST['recipe_assets'];
 
 	$query = new WP_Query( $args );
  
@@ -235,6 +235,7 @@ function chomikoo_ajax_filter_function_callback() {
              $query->the_post();
 
             $result[] = array(
+                'key' =>$_POST['sort_terms'],
                 "id" => get_the_ID(),
                 "title" => get_the_title(),
                 "author" => get_the_author(),
@@ -248,6 +249,8 @@ function chomikoo_ajax_filter_function_callback() {
                 "excerpt" => custom_field_excerpt('wstep', 20),
             ) ;
             
+            // get_template_part('../template-parts/content-recipes');
+
         }
         wp_reset_postdata();
 

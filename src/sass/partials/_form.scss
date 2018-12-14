@@ -2,6 +2,7 @@
 .input-text {
     $i: &;
     position: relative;
+    width: 49%;
     &__label {
         position: absolute;
         top: 50%;
@@ -16,6 +17,7 @@
         border: none;
         border-bottom: 1px solid $c-grey;
         padding: 5px;
+        width: 100%;
         &:focus {
             // outline: $c-green;
             outline: 2px solid $c-green;

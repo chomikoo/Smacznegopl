@@ -8,6 +8,15 @@
 <article class="recipe recipe-<?php the_ID(); ?> <?php echo (is_search()) ? 'col-12' : 'col-12 col-sm-6 col-md-4'; ?> ">
     <a href="<?php the_permalink(); ?>" class="recipe__thumbnail thumbnail">
         <img <?php responsive_thumbnail( get_the_ID(), 'thumb-640', '1200px' )?> />
+        <?php if ( $postType->name == 'recipes' ) { ?>
+            <div class="recipe__info recipe__info--thumbnail">    
+                <span class="recipe__badge"><?php echo get_field('kcal'); ?>kcal</span><span class="spacer"></span>
+                <span class="recipe__badge">B:&nbsp;<?php echo get_field('bialko'); ?>g</span><span class="spacer"></span>
+                <span class="recipe__badge">W:&nbsp;<?php echo get_field('weglowodany'); ?>g</span><span class="spacer"></span>
+                <span class="recipe__badge">T:&nbsp;<?php echo get_field('tluszcze'); ?>g</span><span class="spacer"></span>
+                <span class="recipe__badge"><span class="far fa-clock"></span>&nbsp;<?php echo min_2_h( get_field('czas') ); ?></span>
+            </div>
+        <?php } ?>
     </a>
 
     <div class="recipe__content">

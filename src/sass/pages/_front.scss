@@ -9,9 +9,15 @@
     margin: 0 auto;
 }
 .meal-terms {
+    $mt: &;
     &__element {
         height: 400px;
         padding: 0 15px;
+
+        &:hover #{$mt}__link:after {
+            // transform: translate(-100%, 0);
+            opacity: 0.5;
+        }
     }
     &__link {
         position: relative;
@@ -30,6 +36,7 @@
             z-index: 0;
             background: $black;
             background: $bg-gradient-90deg;
+            transition: all 0.2s ease-in;
         }
     }
 

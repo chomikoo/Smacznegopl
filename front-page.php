@@ -159,8 +159,7 @@ get_header(); ?>
 					
 				</section><!-- instagram -->
 
-			<?php if( is_active_sidebar( 'right-sidebar' ) ) { ?>
-			
+			<?php if( is_active_sidebar( 'right-sidebar' ) ) { ?>			
 			</div><!-- .recipes-wrapper -->
 			<?php } ?>
 
