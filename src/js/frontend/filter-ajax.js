@@ -93,7 +93,7 @@
 
                             <span class="recipe__post-type">Przepis</span> 
                             
-                            <h2 class="recipe__title"><span class="bold">Przepis:</span>${element.title}</h2>
+                            <h2 class="recipe__title"><span class="bold">Przepis:</span> ${element.title}</h2>
                             
                             <div class="recipe__info recipe__info--nutrition">    
                                 <span class="recipe__badge">${element.kcal}kcal</span><span class="spacer"></span>

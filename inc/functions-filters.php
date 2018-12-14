@@ -33,17 +33,18 @@ function chomikoo_ajax_filter_shortcode() {
                         'hide_empty' => false
                         )) 
                         ) : // to make it simple I use default categories
+                        $current_term = get_queried_object()->slug;
                         echo '<select id="category_filter" class="input-select" name="category_filter"><option value="">Wybierz typ</option>';
                         foreach ( $terms as $term ) :
-                            echo '<option value="' . $term->slug . '">' . $term->name . '</option>'; // ID of the category as the value of an option
+                            echo '<option value="' . $term->slug  . '" ' . ($term->slug == $current_term ? "selected" : ""). '>' . $term->name . '</option>'; // ID of the category as the value of an option
                         endforeach;
                         echo '</select>';
                     endif; 
                     ?>
 
                     <select id="sort_terms" class="input-select">
-                        <option value=""><?php _e('Sortuj'); ?></option>
-                        <option value="date"><?php _e('Data'); ?></option>
+                        <!-- <option value=""><?php _e('Sortuj'); ?></option> -->
+                        <option value=""><?php _e('Data'); ?></option>
                         <option value="kcal"><?php _e('Kcal'); ?></option>
                         <option value="bialko"><?php _e('Białko'); ?></option>
                         <option value="weglowodany"><?php _e('Weglowodany'); ?></option>
@@ -235,7 +236,6 @@ function chomikoo_ajax_filter_function_callback() {
              $query->the_post();
 
             $result[] = array(
-                'key' =>$_POST['sort_terms'],
                 "id" => get_the_ID(),
                 "title" => get_the_title(),
                 "author" => get_the_author(),
@@ -247,6 +247,7 @@ function chomikoo_ajax_filter_function_callback() {
                 "carbs" => get_field('weglowodany'),
                 "fats" => get_field('tluszcze'),
                 "excerpt" => custom_field_excerpt('wstep', 20),
+                // "term" => $_POST['category_filter']
             ) ;
             
             // get_template_part('../template-parts/content-recipes');
