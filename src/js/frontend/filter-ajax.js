@@ -8,6 +8,16 @@
                 this.$filterForm = $('#recipe-filter');
                 this.$resultDiv = $('#ajax_filter_results');
                 this.events();
+
+
+                this.$loadMoreBtn = $('#btn_loadmore:not(.loading)');
+                this.$btnText = this.$loadMoreBtn.find('.btn__text');
+                this.$btnIco = this.$loadMoreBtn.find('.icon--loading');
+    
+                this.events();
+                this.page = this.$loadMoreBtn.data('page');
+                this.newPage = this.page+1;
+                this.ajaxUrl = this.$loadMoreBtn.data('url');
     
                 this.kcal_min = '',
                 this.kcal_max = '',
@@ -62,6 +72,7 @@
     
                 const data = {
                     action : "chomikoo_ajax_filter_function",
+                    page: this.page,
                     category_filter: this.category_filter,
                     sort_terms: this.sort_terms,
                     kcal_min: this.kcal_min,
@@ -144,8 +155,14 @@
     class LoadMore {
         constructor(){
             console.log('hello from LoadMore constructor');
-            this.$loadMoreBtn = $('#btn_loadmore');
+            this.$loadMoreBtn = $('#btn_loadmore:not(.loading)');
+            this.$btnText = this.$loadMoreBtn.find('.btn__text');
+            this.$btnIco = this.$loadMoreBtn.find('.icon--loading');
+
             this.events();
+            this.page = this.$loadMoreBtn.data('page');
+            this.newPage = this.page+1;
+            this.ajaxUrl = this.$loadMoreBtn.data('url');
             this.isLoading = false;
         }
 
@@ -156,7 +173,21 @@
     
         getPosts(e) {
             e.preventDefault();
+            if(!this.isLoading) {
+                this.$btnText.html('Ładuje ...');
+                this.$loadMoreBtn.addClass('loading');
+                this.isLoading = true;
+            } else {
+                this.$btnText.html('Ładuj nastepne');
+                this.$loadMoreBtn.removeClass('loading');
+                this.isLoading = false;
+            }
             console.log('Clicked Load');
+            console.log(this.ajaxUrl);
+
+
+
+
         }
     
     }

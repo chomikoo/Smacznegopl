@@ -47,9 +47,8 @@ get_header(); ?>
 		</section><!-- .container -->
 
 		<div class="paginaiton paginaiton--ajax container">
-			<!-- <?php chomikoo_pagination_nav(); ?> -->
-			<button id="btn_loadmore" class="btn btn--loadmore">
-				<span class="fas fa-cookie-bite"></span>
+			<button id="btn_loadmore" class="btn btn--loadmore" data-page="1" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
+				<span class="icon--loading fas fa-cookie-bite"></span>
 				<span class="btn__text">Ładuj nastepne</span>
 			</button>
 		</div>

@@ -19,10 +19,20 @@
             }
             &:hover {
                 span,
-                .fa-cookie-bite {
+                .icon--loading {
                     transform: translate(0, 0);
                 }
             }   
+
+            &.loading {
+                .icon--loading {
+                    transform: translate(0, 0);
+                    animation: spin 3s infinite;
+                }
+                span {
+                    transform: translate(0, 0);
+                }
+            }
         }
         .fa-cookie-bite {
             color: $c-green;

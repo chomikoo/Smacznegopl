@@ -119,7 +119,8 @@ function chomikoo_ajax_filter_function_callback() {
 
     $args = array(
         'post_type' => 'recipes',
-        'post_per_page' => -1,
+        'paged' => $_POST['page']+1,
+        // 'post_per_page' => -1,
         // 'paged' => $_POST["page"]+1,
         'orderby' => 'meta_value_num',
         'meta_key' => $_POST['sort_terms'], 
