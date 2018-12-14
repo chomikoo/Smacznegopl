@@ -4,6 +4,34 @@
     margin: 0 auto $gapMedium*2 auto;
     text-align: center;
     // max-width: 400px;
+
+    &--ajax {
+        .btn {
+            $btn: &;
+            border: 1px solid $c-green;
+            border-radius: $borderR;
+            padding: 5px 10px;
+            overflow: hidden;
+            &__text {
+                display: inline-block;
+                transform: translate(-10px, 0);
+                transition: all 0.2s ease-in;
+            }
+            &:hover {
+                span,
+                .fa-cookie-bite {
+                    transform: translate(0, 0);
+                }
+            }   
+        }
+        .fa-cookie-bite {
+            color: $c-green;
+            margin: 0 5px 0 0;
+            transform: translate(-200%, 0);
+            transition: all 0.2s ease-in;
+        }
+    }
+
     .page-numbers {
         display: inline-block;
         width: 25px;

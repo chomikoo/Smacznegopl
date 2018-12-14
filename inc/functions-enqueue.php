@@ -46,7 +46,7 @@ function chomikoo_ajax_filter_scripts() {
 
 function chomikoo_admin_scripts() {
 
-	wp_enqueue_script('admin_js', THEME_URL . 'src/js/backend/admin_script.js', array('jquery'));
+	wp_enqueue_script('admin_js', THEME_URL . 'src/js/backend/admin_script.js', array('jquery'), $ver, 'all');
 
 }
 

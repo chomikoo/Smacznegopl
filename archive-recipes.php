@@ -46,8 +46,12 @@ get_header(); ?>
 
 		</section><!-- .container -->
 
-		<div class="paginaiton container">
-			<?php chomikoo_pagination_nav(); ?>
+		<div class="paginaiton paginaiton--ajax container">
+			<!-- <?php chomikoo_pagination_nav(); ?> -->
+			<button id="btn_loadmore" class="btn btn--loadmore">
+				<span class="fas fa-cookie-bite"></span>
+				<span class="btn__text">Ładuj nastepne</span>
+			</button>
 		</div>
 
 	</main>
