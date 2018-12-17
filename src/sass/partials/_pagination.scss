@@ -12,6 +12,9 @@
             border-radius: $borderR;
             padding: 5px 10px;
             overflow: hidden;
+            * {
+                pointer-events: none;
+            }
             &__text {
                 display: inline-block;
                 transform: translate(-10px, 0);
