@@ -24,20 +24,29 @@ get_header(); ?>
 
 		<?php echo do_shortcode('[chomikoo_ajax_filter]') ?>
 
-		<section class="container archive__container">
+		<?php if( is_paged() ){ ?>
+			<div class="paginaiton paginaiton--ajax container">
+				<button id="btn_loadmore" class="btn btn--loadmore" data-page="<?php echo chomikoo_check_paged(1); ?>" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
+					<span class="icon--loading fas fa-cookie-bite"></span>
+					<span class="btn__text">Ładuj poprzednie</span>
+				</button>
+			</div>
+		<?php } ?>
+
+		<section id="ajax_filter_results" class="container archive__container">
 			
 			<?php 
 
 				if( have_posts() ):
 
-					echo '<div class="page-limit" data-page="' . $_SERVER["REQUEST_URI"] . '">';
-					echo '<div id="ajax_filter_results" class="row mx-auto">';
+					echo '<div class="page-limit" data-page="/' . chomikoo_check_paged() . '">';
+					// echo '<div id="ajax_filter_results" class="row mx-auto">';
 					while( have_posts() ):  the_post();
 
 						get_template_part( 'template-parts/content-recipes' );
 						
 					endwhile;
-					echo '</div>';
+					// echo '</div>';
 					echo '</div>';
 
 				endif;
@@ -47,7 +56,7 @@ get_header(); ?>
 		</section><!-- .container -->
 
 		<div class="paginaiton paginaiton--ajax container">
-			<button id="btn_loadmore" class="btn btn--loadmore" data-page="1" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
+			<button id="btn_loadmore" class="btn btn--loadmore" data-page="<?php echo chomikoo_check_paged(1); ?>" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
 				<span class="icon--loading fas fa-cookie-bite"></span>
 				<span class="btn__text">Ładuj nastepne</span>
 			</button>

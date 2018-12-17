@@ -230,36 +230,44 @@ function chomikoo_ajax_filter_function_callback() {
  
 	if( $query->have_posts() ) {
         $result = array();
+        
+        echo '<div class="page-limit" data-page="/page/' . $_POST['page'] . '">';
 
 		while( $query->have_posts() ){
              $query->the_post();
+             
 
-            $result[] = array(
-                "id" => get_the_ID(),
-                "title" => get_the_title(),
-                "author" => get_the_author(),
-                "thumbnail" => get_the_post_thumbnail(get_the_ID(),'full'),                "date" => get_the_date( 'd F Y' ),
-                "permalink" => get_permalink(),
-                "kcal" => get_field('kcal'),
-                "time" => min_2_h( get_field('czas') ),
-                "proteins" => get_field('bialko'),
-                "carbs" => get_field('weglowodany'),
-                "fats" => get_field('tluszcze'),
-                "excerpt" => custom_field_excerpt('wstep', 20),
-                // "term" => $_POST['category_filter']
-            ) ;
+            get_template_part('template-parts/content-recipes');
             
-            // get_template_part('../template-parts/content-recipes');
-
+            
         }
         wp_reset_postdata();
-
-        echo json_encode( $result );
+        
+        echo '</div>';
+        // echo json_encode( $result );
 
     } else {
         echo __('Niestety nie znaleziono postów pasujących do kryteriów wyszukiwania', 'Smaczegopl');
     }
  
 	die();
+
+}
+
+
+
+function chomikoo_check_paged( $num = null ){
+    $output = '';
+
+    if( is_paged() ){
+        $output = 'page/' . get_query_var( 'paged' ); 
+    }
+
+    if( $num == 1){
+        $paged = (get_query_var( 'paged' ) == 0 ? 1 : get_query_var( 'paged' ) );
+        return $paged;
+    } else {
+        return $output;
+    }
 
 }

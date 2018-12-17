@@ -4,6 +4,7 @@
 
         class AjaxFilter {
             constructor() {
+                this.$window = $(window);
                 this.$filterForm = $('#recipe-filter');
                 this.$resultDiv = $('#ajax_filter_results');
                                
@@ -16,12 +17,32 @@
                 this.time_min = '',
                 this.time_max = '',
                 this.recipe_assets = [];
+
+                this.last_scroll = 0;
+
                 this.events();
             }
             
             events() {
                 this.$filterForm.on('submit', this.getResults.bind(this));
                 this.$loadMoreBtn.on('click', this.getMorePosts.bind(this));
+                this.$window.on('scroll', this.updateURL.bind(this));
+            }
+
+            updateURL() {
+                let scroll = $(window).scrollTop();
+                if( Math.abs( scroll - this.last_scroll ) > $(window).height()*0.1 ) {
+                    this.last_scroll = scroll;
+              
+                    $('.page-limit').each(function( index ){
+                        if( isVisible( $(this) ) ){
+                            // console.log($(this).attr("data-page"));
+                            history.replaceState( null, null, $(this).attr("data-page") );
+                            return(false);
+                        }
+                    });
+                }
+
             }
 
             prepareData(page = 1) {
@@ -78,9 +99,8 @@
                     type: this.$filterForm.attr('method'),
                 })
                 .done(function(response){
-                    // console.log(response);
-                    const resultTemplate = this.renderArticle(response);
-                    $('#ajax_filter_results').html(resultTemplate);
+                    // console.log(response)
+                    $('#ajax_filter_results').html('').append( response );
 
                     this.revealArticles();
                  }
@@ -110,10 +130,10 @@
                     type: this.$filterForm.attr('method'),
                 })
                 .done(function(response){
-                    console.log(response);
+                    // console.log(response);
                     this.$loadMoreBtn.attr('data-page', this.newPage);
-                    const resultTemplate = this.renderArticle(response);
-                    $('#ajax_filter_results').append(resultTemplate);
+
+                    $('#ajax_filter_results').append(response);
 
                     setTimeout(()=> {
                         this.$btnText.html('Ładuj nastepne');
@@ -128,56 +148,7 @@
          
             }
 
-            renderArticle(response) {
-                return JSON.parse(response).map( (element) => 
-                `
-                <article class="recipe recipe-${element.id} col-12 col-sm-6 col-md-4">
-                    <a href="${element.permalink}" class="recipe__thumbnail thumbnail">
-                        <img ${element.thumbnail} />
-                        <div class="recipe__info recipe__info--thumbnail">    
-                            <span class="recipe__badge">${element.kcal}kcal</span><span class="spacer"></span>
-                            <span class="recipe__badge"><span class="far fa-clock">$nbsp;</span>&nbsp;${element.time}</span></br>
-                            <span class="recipe__badge">B:&nbsp;${element.proteins}g</span><span class="spacer"></span>
-                            <span class="recipe__badge">W:&nbsp;${element.carbs}g</span><span class="spacer"></span>
-                            <span class="recipe__badge">T:&nbsp;${element.fats}g</span><span class="spacer"></span>
-                        </div>
-                    </a>
-
-                    <div class="recipe__content">
-
-                        <span class="recipe__post-type">Przepis</span> 
-                        
-                        <h2 class="recipe__title"><span class="bold">Przepis:</span> ${element.title}</h2>
-                        
-                        <div class="recipe__info recipe__info--nutrition">    
-                            <span class="recipe__badge">${element.kcal}kcal</span><span class="spacer"></span>
-                            <span class="recipe__badge">B:&nbsp;${element.proteins}g</span><span class="spacer"></span>
-                            <span class="recipe__badge">W:&nbsp;${element.carbs}g</span><span class="spacer"></span>
-                            <span class="recipe__badge">T:&nbsp;${element.fats}g</span><span class="spacer"></span>
-                            <span class="recipe__badge"><span class="far fa-clock"></span>&nbsp;${element.time}</span>
-                        </div>
-
-                        <div class="recipe__info">
-                            <span class="recipe__badge">${element.date}</span><span class="dot"></span>
-                            <span class="recipe__badge">${element.author}</span>
-                        </div>
-                        
-                        <div class="recipe__excerpt">
-                            ${element.excerpt}
-                        </div>
-                        
-                    </div>
-                    <footer class="recipe__footer">
-                        <a href="${element.permalink}" class="recipe__more">Czytaj dalej</a>
-                        <span class="bar"></span>
-                    </footer>
-
-                </article>
-                `
-            ).join('');               
-
-
-            }
+      
 
             revealArticles() {
                 const notRevealArticles = $('.recipe:not(.reveal)');
