@@ -81,6 +81,8 @@
                     // console.log(response);
                     const resultTemplate = this.renderArticle(response);
                     $('#ajax_filter_results').html(resultTemplate);
+
+                    this.revealArticles();
                  }
                 )
                 .fail(function() {
@@ -97,12 +99,9 @@
                 const data = this.prepareData(newPage);
                 
                 $('#btn_loadmore').attr('data-page', newPage);
-                
-                if(!this.isLoading) {
-                    this.$btnText.html('Ładuje ...');
-                    this.$loadMoreBtn.addClass('loading');
-                    this.isLoading = true;
-                } 
+       
+                this.$btnText.html('Ładuje ...');
+                this.$loadMoreBtn.addClass('loading');
     
                 $.ajax({
                     url: this.$filterForm.attr('action'),
@@ -116,9 +115,11 @@
                     const resultTemplate = this.renderArticle(response);
                     $('#ajax_filter_results').append(resultTemplate);
 
-                    this.$btnText.html('Ładuj nastepne');
-                    this.$loadMoreBtn.removeClass('loading');
-                    this.isLoading = false;
+                    setTimeout(()=> {
+                        this.$btnText.html('Ładuj nastepne');
+                        this.$loadMoreBtn.removeClass('loading');
+                        this.revealArticles();
+                    },500);
                  }
                 )
                 .fail(function() {
@@ -178,7 +179,20 @@
 
             }
 
+            revealArticles() {
+                const notRevealArticles = $('.recipe:not(.reveal)');
+                let i = 0;
+
+                setInterval(()=> {
+                    if( i >= notRevealArticles.length ) return false;
+                    const article = notRevealArticles[i];
+                    $(article).addClass('reveal');
+                    i++;
+                },200);
+            }
+
         }
+
         
         const ajaxFilter = new AjaxFilter();
         
