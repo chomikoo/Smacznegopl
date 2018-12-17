@@ -8,9 +8,10 @@
                 this.$filterForm = $('#recipe-filter');
                 this.$resultDiv = $('#ajax_filter_results');
                                
-                this.$loadMoreBtn = $('#btn_loadmore:not(.loading)');
+                this.$loadMoreBtn = $('.btn--loadmore:not(.loading)');
                 this.$btnText = this.$loadMoreBtn.find('.btn__text');
                 this.$btnIco = this.$loadMoreBtn.find('.icon--loading');
+                this.prev = this.$loadMoreBtn.data('prev');
                 
                 this.kcal_min = '',
                 this.kcal_max = '',
@@ -26,7 +27,7 @@
             events() {
                 this.$filterForm.on('submit', this.getResults.bind(this));
                 this.$loadMoreBtn.on('click', this.getMorePosts.bind(this));
-                this.$window.on('scroll', this.updateURL.bind(this));
+                // this.$window.on('scroll', this.updateURL.bind(this));
             }
 
             updateURL() {
@@ -36,16 +37,16 @@
               
                     $('.page-limit').each(function( index ){
                         if( isVisible( $(this) ) ){
-                            // console.log($(this).attr("data-page"));
-                            history.replaceState( null, null, $(this).attr("data-page") );
-                            return(false);
+                            console.log($(this).attr("data-page"));
+                            // history.replaceState( null, null, $(this).attr("data-page") );
+                            // return(false);
                         }
                     });
                 }
 
             }
 
-            prepareData(page = 1) {
+            prepareData(page = 1, prev = 1) {
 
                 this.category_filter = this.$filterForm.find('#category_filter').val();
                 this.sort_terms = this.$filterForm.find('#sort_terms').val();
@@ -73,6 +74,7 @@
                 const data = {
                     action : "chomikoo_ajax_filter_function",
                     page: page,
+                    prev: prev,
                     category_filter: this.category_filter,
                     sort_terms: this.sort_terms,
                     kcal_min: this.kcal_min,
@@ -81,14 +83,16 @@
                     time_max: this.time_max,
                     recipe_assets: this.recipe_assets
                 }
-
+                console.log(data);
                 return data;
             }
 
+
+            // Filter results
             getResults(e) {
                 e.preventDefault();
 
-                $('#btn_loadmore').attr('data-page', '1');
+                $('btn--loadmore').attr('data-page', '1');
 
                 const data = this.prepareData();
     
@@ -99,9 +103,7 @@
                     type: this.$filterForm.attr('method'),
                 })
                 .done(function(response){
-                    // console.log(response)
                     $('#ajax_filter_results').html('').append( response );
-
                     this.revealArticles();
                  }
                 )
@@ -110,15 +112,33 @@
                 })
             }
 
+            // Next & Prev pages
             getMorePosts(e) {
                 e.preventDefault();
-                
+                let prev = parseInt(e.target.dataset.prev);
                 let page = parseInt(e.target.dataset.page);
-                let newPage = page+1;
+                let newPage = page;
 
-                const data = this.prepareData(newPage);
+                if( e.target.dataset.prev ) {
+                    newPage = page-1;
+                    console.log("PREV BTN " + newPage);
+
+                } else {
+                    newPage = page+1;
+                    console.log("NEXT BTN " + newPage);
+                }
+                console.log(newPage);
                 
-                $('#btn_loadmore').attr('data-page', newPage);
+                const data = this.prepareData(newPage);
+
+                console.log('page ' + data.page);
+                
+
+                if( typeof prev === 'undefined' ){
+                    console.log('Page 0');
+                    this.prev = 0;
+                }
+                
        
                 this.$btnText.html('Ładuje ...');
                 this.$loadMoreBtn.addClass('loading');
@@ -130,24 +150,40 @@
                     type: this.$filterForm.attr('method'),
                 })
                 .done(function(response){
-                    // console.log(response);
-                    this.$loadMoreBtn.attr('data-page', this.newPage);
+                    // console.log( response );
+                    if( $('.btn__loadPrev').data('page') == 1 ) {
+                        console.log('KONIEC POSTÓW');
+                        
+                        $('#ajax_filter_results').append(
+                            `
+                            <div class="text-center">
+                                <h3>Koniec postów</h3>
+                                <p>Brak postów.</p>
+                            </div>
+                            `
+                        )
+                    } else {
+                        if( prev == 1) {
+                            $('#ajax_filter_results').prepend( response );
+                            $('.btn__loadPrev').attr('data-page', newPage);
+                        } else {
+                            $('#ajax_filter_results').append( response );
+                            $('.btn__loadNext').attr('data-page', newPage);
+                        }
 
-                    $('#ajax_filter_results').append(response);
-
-                    setTimeout(()=> {
-                        this.$btnText.html('Ładuj nastepne');
-                        this.$loadMoreBtn.removeClass('loading');
-                        this.revealArticles();
-                    },500);
-                 }
-                )
+                        setTimeout(()=> {
+                            this.$btnText.html('Ładuj nastepne');
+                            this.$loadMoreBtn.removeClass('loading');
+                            this.revealArticles();
+                        },500);
+                    }
+                })
                 .fail(function() {
                     console.log('Fail');
                 })
          
             }
-
+            
       
 
             revealArticles() {

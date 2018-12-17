@@ -117,9 +117,17 @@ add_action('wp_ajax_nopriv_chomikoo_ajax_filter_function', 'chomikoo_ajax_filter
 
 function chomikoo_ajax_filter_function_callback() {
 
+    $paged = $_POST['page'];
+    // $prev = $_POST['prev'];
+    echo $paged;
+    // if( $prev == 1 && $_POST['page'] != 1 ){
+    //     $paged = $_POST['page']-1;
+    // }
+
+
     $args = array(
         'post_type' => 'recipes',
-        'paged' => $_POST['page'],
+        'paged' => $paged,
         'orderby' => 'meta_value_num',
         'meta_key' => $_POST['sort_terms'], 
         'order' => 'DESC'
@@ -225,29 +233,25 @@ function chomikoo_ajax_filter_function_callback() {
         }
     }
 
-
 	$query = new WP_Query( $args );
  
 	if( $query->have_posts() ) {
         $result = array();
         
-        echo '<div class="page-limit" data-page="/page/' . $_POST['page'] . '">';
+        echo '<div class="page-limit" data-page="/page/' . $paged . '">';
 
 		while( $query->have_posts() ){
              $query->the_post();
              
-
             get_template_part('template-parts/content-recipes');
-            
             
         }
         wp_reset_postdata();
         
         echo '</div>';
-        // echo json_encode( $result );
 
     } else {
-        echo __('Niestety nie znaleziono postów pasujących do kryteriów wyszukiwania', 'Smaczegopl');
+        echo $paged;
     }
  
 	die();
