@@ -78,7 +78,7 @@
                     type: this.$filterForm.attr('method'),
                 })
                 .done(function(response){
-                    console.log(response);
+                    // console.log(response);
                     const resultTemplate = this.renderArticle(response);
                     $('#ajax_filter_results').html(resultTemplate);
                  }
@@ -102,12 +102,7 @@
                     this.$btnText.html('Ładuje ...');
                     this.$loadMoreBtn.addClass('loading');
                     this.isLoading = true;
-                } else {
-                    this.$btnText.html('Ładuj nastepne');
-                    this.$loadMoreBtn.removeClass('loading');
-                    this.isLoading = false;
-                }
-
+                } 
     
                 $.ajax({
                     url: this.$filterForm.attr('action'),
@@ -120,6 +115,10 @@
                     this.$loadMoreBtn.attr('data-page', this.newPage);
                     const resultTemplate = this.renderArticle(response);
                     $('#ajax_filter_results').append(resultTemplate);
+
+                    this.$btnText.html('Ładuj nastepne');
+                    this.$loadMoreBtn.removeClass('loading');
+                    this.isLoading = false;
                  }
                 )
                 .fail(function() {
