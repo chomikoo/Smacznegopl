@@ -39,7 +39,7 @@ get_header(); ?>
 
 				if( have_posts() ):
 
-					echo '<div class="page-limit" data-page="/' . chomikoo_check_paged() . '">';
+					echo '<div class="page-limit row" data-page="/' . chomikoo_check_paged() . '">';
 					// echo '<div id="ajax_filter_results" class="row mx-auto">';
 					while( have_posts() ):  the_post();
 

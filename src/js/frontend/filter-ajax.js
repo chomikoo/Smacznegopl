@@ -12,6 +12,8 @@
                 this.$btnText = this.$loadMoreBtn.find('.btn__text');
                 this.$btnIco = this.$loadMoreBtn.find('.icon--loading');
                 this.prev = this.$loadMoreBtn.data('prev');
+                this.pageURL = window.location.href;
+                this.tempURL = '';
                 
                 this.kcal_min = '',
                 this.kcal_max = '',
@@ -27,19 +29,36 @@
             events() {
                 this.$filterForm.on('submit', this.getResults.bind(this));
                 this.$loadMoreBtn.on('click', this.getMorePosts.bind(this));
-                // this.$window.on('scroll', this.updateURL.bind(this));
+                this.$window.on('scroll', this.updateURL.bind(this));
             }
 
             updateURL() {
                 let scroll = $(window).scrollTop();
+                const arrayURL = this.pageURL.replace(/\/$/, "").split('/');
+                
                 if( Math.abs( scroll - this.last_scroll ) > $(window).height()*0.1 ) {
                     this.last_scroll = scroll;
-              
+                    
+                    const that = this;
                     $('.page-limit').each(function( index ){
+
                         if( isVisible( $(this) ) ){
-                            console.log($(this).attr("data-page"));
-                            // history.replaceState( null, null, $(this).attr("data-page") );
-                            // return(false);
+
+                            let pageSlug = $(this).attr("data-page").replace(/^\/+/g, '').split('/');
+                            console.log('url ' , that.pageURL);
+                            console.log('temp ', that.tempURL);
+                            that.pageURL = arrayURL.concat(pageSlug).join('/');
+
+                            if ( that.pageURL != that.tempURL ) {
+                                
+                                console.log('ZMIENIAMY URLE')
+                                console.log('url ' ,that.pageURL);
+                                console.log('temp ', that.tempURL);
+                                // this.tempURL = window.location.href;
+                                history.replaceState( null, null, that.pageURL );
+                                that.tempURL = that.pageURL;
+                            }
+                            return(false);
                         }
                     });
                 }
@@ -119,26 +138,9 @@
                 let page = parseInt(e.target.dataset.page);
                 let newPage = page;
 
-                if( e.target.dataset.prev ) {
-                    newPage = page-1;
-                    console.log("PREV BTN " + newPage);
-
-                } else {
-                    newPage = page+1;
-                    console.log("NEXT BTN " + newPage);
-                }
-                console.log(newPage);
+                newPage = ( e.target.dataset.prev ) ? page-1 : page+1;
                 
-                const data = this.prepareData(newPage);
-
-                console.log('page ' + data.page);
-                
-
-                if( typeof prev === 'undefined' ){
-                    console.log('Page 0');
-                    this.prev = 0;
-                }
-                
+                const data = this.prepareData(newPage);     
        
                 this.$btnText.html('Ładuje ...');
                 this.$loadMoreBtn.addClass('loading');
@@ -150,22 +152,23 @@
                     type: this.$filterForm.attr('method'),
                 })
                 .done(function(response){
-                    // console.log( response );
-                    if( $('.btn__loadPrev').data('page') == 1 ) {
-                        console.log('KONIEC POSTÓW');
-                        
+                    if( response == 0 ) { // End posts list
                         $('#ajax_filter_results').append(
                             `
                             <div class="text-center">
-                                <h3>Koniec postów</h3>
-                                <p>Brak postów.</p>
+                                <h3>Dotarłeś do końca listy przepisów</h3>
                             </div>
                             `
                         )
+                        $('.btn__loadNext').slideUp();
                     } else {
                         if( prev == 1) {
                             $('#ajax_filter_results').prepend( response );
                             $('.btn__loadPrev').attr('data-page', newPage);
+                            if(newPage == 1) {
+                                console.log("Hide btn " , $('.btn__loadPrev').closest('.pagination'));                    
+                                $('.btn__loadPrev').closest('.paginaiton').slideUp();
+                            }                            
                         } else {
                             $('#ajax_filter_results').append( response );
                             $('.btn__loadNext').attr('data-page', newPage);

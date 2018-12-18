@@ -118,12 +118,6 @@ add_action('wp_ajax_nopriv_chomikoo_ajax_filter_function', 'chomikoo_ajax_filter
 function chomikoo_ajax_filter_function_callback() {
 
     $paged = $_POST['page'];
-    // $prev = $_POST['prev'];
-    echo $paged;
-    // if( $prev == 1 && $_POST['page'] != 1 ){
-    //     $paged = $_POST['page']-1;
-    // }
-
 
     $args = array(
         'post_type' => 'recipes',
@@ -238,7 +232,7 @@ function chomikoo_ajax_filter_function_callback() {
 	if( $query->have_posts() ) {
         $result = array();
         
-        echo '<div class="page-limit" data-page="/page/' . $paged . '">';
+        echo '<div class="page-limit row" data-page="/page/' . $paged . '">';
 
 		while( $query->have_posts() ){
              $query->the_post();
@@ -251,7 +245,7 @@ function chomikoo_ajax_filter_function_callback() {
         echo '</div>';
 
     } else {
-        echo $paged;
+        echo 0;
     }
  
 	die();
