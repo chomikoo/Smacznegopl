@@ -26,10 +26,14 @@ const gulp = require('gulp'),
 	gulpif = require('gulp-if'),
 	options = require('gulp-options'),
 
-	// Images/SVG
+	// Images/SVG/Fonts/Ico
 
 	imagemin = require('gulp-imagemin'),
-	svgo = require('gulp-svgo'),
+	// svgo = require('gulp-svgo'),
+	svgmin = require('gulp-svgmin'),
+	iconfont = require('gulp-iconfont'),
+	iconfontCss = require('gulp-iconfont-css'),
+	runTimestamp = Math.round(Date.now()/1000),
 
 	// Browser
 	browserSync = require('browser-sync').create(),
@@ -72,6 +76,16 @@ const jsDIST = './dist/js/';
 
 const imgSRC = './src/images/**/*';
 const imgDIST = './dist/images/';
+
+//=========== SVG ==================/
+
+const svgSRC = './src/svg/**/*';
+const svgDIST = './dist/svg/';
+
+//=========== SVG ==================/
+
+const iconsSRC = './src/icons/**/*';
+const iconsDIST = './dist/icons/';
 
 //=========== Fonts ==================/
 
@@ -183,11 +197,54 @@ gulp.task('images', () => {
 		.pipe(gulp.dest(imgDIST))
 });
 
+//================
+//     Images 
+//================
+
 gulp.task('svg', () => {
-    return gulp.src('src/svg/*')
-        .pipe(svgo())
-        .pipe(gulp.dest('dist/svg'));
+    return gulp.src(svgSRC)
+        .pipe(svgmin(
+			{
+				plugins: [{
+					removeDoctype: true
+				}, 
+				{
+					removeUselessDefs: true
+				},
+				{
+					removeViewBox: true
+				},
+				{
+					removeViewBox: false
+				}
+			]
+			}
+		))
+        .pipe(gulp.dest(svgDIST));
 });
+
+//================
+//     Icons 
+//================
+
+gulp.task('iconfont', () => {
+	return gulp.src(iconsSRC)
+	  .pipe(iconfontCss({
+		fontName: 'icons',
+		// path: 'src/sass/partials/_icons.scss', 
+		targetPath: 'src/sass/partials/_icons.scss',
+		fontPath: 'dist/fonts/icons/',
+	  }))
+	  .pipe(iconfont({
+		prependUnicode: false,
+		fontName: 'icons', 
+		formats: ['ttf', 'eot', 'woff'], 
+		normalize: true,
+		fontHeight: 1000,
+		timestamp: runTimestamp 
+	  }))
+	  .pipe(gulp.dest('dist/fonts/icons/'));
+  });
 
 //================
 //      Fonts 

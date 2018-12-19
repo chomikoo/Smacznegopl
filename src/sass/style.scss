@@ -1,104 +1,103 @@
- 
  /*--------------------------------------------------------------
 # Vendors
 --------------------------------------------------------------*/
-@import "vendors/slick.scss";
-@import "vendors/slick-theme.scss";
+ @import "vendors/slick.scss";
+ @import "vendors/slick-theme.scss";
 
-  
+
  /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
-@import "helpers/normalize";
-  
+ @import "helpers/normalize";
+
  /*--------------------------------------------------------------
 # WordPress
 --------------------------------------------------------------*/
-@import "helpers/wordpress";
+ @import "helpers/wordpress";
 
-/*--------------------------------------------------------------
+ /*--------------------------------------------------------------
 # Variables
 --------------------------------------------------------------*/
-@import "helpers/variables";
+ @import "helpers/variables";
 
-/*--------------------------------------------------------------
+ /*--------------------------------------------------------------
 # Mixins
 --------------------------------------------------------------*/
-@import "helpers/mixins";     
+ @import "helpers/mixins";
 
 
-/*--------------------------------------------------------------
+ /*--------------------------------------------------------------
 # Layout
 --------------------------------------------------------------*/
-@import "layout/breakpoints"; 
-@import "layout/grid"; 
-@import "layout/general";  
+ @import "layout/breakpoints";
+ @import "layout/grid";
+ @import "layout/general";
 
 
-/*--------------------------------------------------------------
+ /*--------------------------------------------------------------
 # Partials
---------------------------------------------------------------*/ 
-@import "partials/header";  
-@import "partials/navbar";  
-@import "partials/buttons";  
-@import "partials/form";  
-@import "partials/hamburger";  
-@import "partials/instagram";   
-@import "partials/footer";   
-@import "partials/wysiwyg";   
-@import "partials/icons";    
-@import "partials/preloader";  
-@import "partials/taxonomy-tags"; 
-@import "partials/section-spacer";  
-@import "partials/post-box";  
-@import "partials/product-box";   
-@import "partials/popular-posts";  
-@import "partials/newsletter";  
-@import "partials/top-bar";  
-@import "partials/nutritionbar"; 
-@import "partials/related-posts";  
-@import "partials/badges";    
-@import "partials/tooltip";  
-@import "partials/post-nav"; 
-@import "partials/nutrition-table";  
-@import "partials/pagination";  
-@import "partials/search-overlay";  
-@import "partials/tabs";
-@import "partials/sidebar";  
-@import "partials/filter";  
+--------------------------------------------------------------*/
+ @import "partials/icons";
+
+ @import "partials/header";
+ @import "partials/navbar";
+ @import "partials/buttons";
+ @import "partials/form";
+ @import "partials/hamburger";
+ @import "partials/instagram";
+ @import "partials/footer";
+ @import "partials/wysiwyg";
+ @import "partials/icons";
+ @import "partials/preloader";
+ @import "partials/taxonomy-tags";
+ @import "partials/section-spacer";
+ @import "partials/post-box";
+ @import "partials/product-box";
+ @import "partials/popular-posts";
+ @import "partials/newsletter";
+ @import "partials/top-bar";
+ @import "partials/nutritionbar";
+ @import "partials/related-posts";
+ @import "partials/badges";
+ @import "partials/tooltip";
+ @import "partials/post-nav";
+ @import "partials/nutrition-table";
+ @import "partials/pagination";
+ @import "partials/search-overlay";
+ @import "partials/tabs";
+ @import "partials/sidebar";
+ @import "partials/filter";
 
 
 
 
 
 
-  
- 
-/*--------------------------------------------------------------
+
+
+ /*--------------------------------------------------------------
 # Pages
---------------------------------------------------------------*/ 
+--------------------------------------------------------------*/
 
-@import "pages/error404";  
-@import "pages/single";  
-@import "pages/about";  
-@import "pages/contact";    
-@import "pages/archive";    
-@import "pages/front";    
-@import "pages/recipe-single";    
-@import "pages/calculators";    
+ @import "pages/error404";
+ @import "pages/single";
+ @import "pages/about";
+ @import "pages/contact";
+ @import "pages/archive";
+ @import "pages/front";
+ @import "pages/recipe-single";
+ @import "pages/calculators";
 
 
- 
-@import "layout/animations";   
 
- 
+ @import "layout/animations";
 
- 
-/*--------------------------------------------------------------
+
+
+
+ /*--------------------------------------------------------------
 # Widgets
---------------------------------------------------------------*/ 
+--------------------------------------------------------------*/
 
-@import "widgets/recent-posts";   
-@import "widgets/aboutme";   
-   
-
+ @import "widgets/recent-posts";
+ @import "widgets/aboutme";

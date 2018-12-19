@@ -1,0 +1,66 @@
+@font-face {
+	font-family: "icons";
+	src: url('dist/fonts/icons/icons.eot');
+	src: url('dist/fonts/icons/icons.eot?#iefix') format('eot'),
+		url('dist/fonts/icons/icons.woff2') format('woff2'),
+		url('dist/fonts/icons/icons.woff') format('woff'),
+		url('dist/fonts/icons/icons.ttf') format('truetype'),
+		url('dist/fonts/icons/icons.svg#icons') format('svg');
+}
+
+.icon:before {
+	font-family: "icons";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	/* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+	text-decoration: none;
+	text-transform: none;
+}
+
+
+.icon-carrot:before {
+	content: "\E001";
+}
+
+.icon-chevron:before {
+	content: "\E002";
+}
+
+.icon-cup:before {
+	content: "\E003";
+}
+
+.icon-fastfood:before {
+	content: "\E004";
+}
+
+.icon-fish:before {
+	content: "\E005";
+}
+
+.icon-fruit:before {
+	content: "\E006";
+}
+
+.icon-fruit2:before {
+	content: "\E007";
+}
+
+.icon-groocieries:before {
+	content: "\E008";
+}
+
+.icon-hamburger:before {
+	content: "\E009";
+}
+
+.icon-meat:before {
+	content: "\E00A";
+}
+
+.icon-restaurant:before {
+	content: "\E00B";
+}
