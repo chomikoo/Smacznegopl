@@ -14,10 +14,19 @@
     }
     &.active {
         #{$n}__menu {
-            top: #{$header-height + $gapMedium};
-            bottom: 0;
-            left: 0%;
-            transform: translateY(0px);
+            // top: #{$header-height + $gapMedium};
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 100vh;
+            // bottom: 0;
+            // left: 0%;
+            // transform: translateY(0px);
         }
         &::before {
             content: '';
@@ -31,14 +40,34 @@
     }
 
     .menu-item {
-        padding: 5px 15px;
-        border-bottom: 1px solid $c-grey-l;
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+        padding: 10px 15px;
+        // border-bottom: 1px solid $white;
         background-color: $white;
         cursor: pointer;
         transition: all 0.2s ease-in;
+        a {
+            color: $c-grey;
+        }
+  
         &.open,
         &:hover {
-            padding: 5px 20px;
+            // border-bottom: 1px solid $c-grey-l;
+            a {
+                color: $black;
+                // font-size: 1.5em;
+            }
+        }
+     
+    }
+
+    .menu-toggle > a {
+        &::after {
+            font-family: "Font Awesome 5 Free"; 
+            font-weight: 400; 
+            content: "\f16c";
         }
     }
 

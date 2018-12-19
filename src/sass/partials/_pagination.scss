@@ -1,7 +1,7 @@
 .paginaiton {
     display: flex;
     justify-content: space-around;
-    margin: 0 auto $gapMedium*2 auto;
+    margin: $gapMedium*2 auto $gapMedium*2 auto;
     text-align: center;
     // max-width: 400px;
 
@@ -12,6 +12,9 @@
             border-radius: $borderR;
             padding: 5px 10px;
             overflow: hidden;
+            * {
+                pointer-events: none;
+            }
             &__text {
                 display: inline-block;
                 transform: translate(-10px, 0);

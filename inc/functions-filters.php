@@ -117,11 +117,11 @@ add_action('wp_ajax_nopriv_chomikoo_ajax_filter_function', 'chomikoo_ajax_filter
 
 function chomikoo_ajax_filter_function_callback() {
 
+    $paged = $_POST['page'];
+
     $args = array(
         'post_type' => 'recipes',
-        'paged' => $_POST['page']+1,
-        // 'post_per_page' => -1,
-        // 'paged' => $_POST["page"]+1,
+        'paged' => $paged,
         'orderby' => 'meta_value_num',
         'meta_key' => $_POST['sort_terms'], 
         'order' => 'DESC'
@@ -227,41 +227,45 @@ function chomikoo_ajax_filter_function_callback() {
         }
     }
 
-
 	$query = new WP_Query( $args );
  
 	if( $query->have_posts() ) {
         $result = array();
+        
+        echo '<div class="page-limit row" data-page="/page/' . $paged . '">';
 
 		while( $query->have_posts() ){
              $query->the_post();
-
-            $result[] = array(
-                "id" => get_the_ID(),
-                "title" => get_the_title(),
-                "author" => get_the_author(),
-                "thumbnail" => get_the_post_thumbnail(get_the_ID(),'full'),                "date" => get_the_date( 'd F Y' ),
-                "permalink" => get_permalink(),
-                "kcal" => get_field('kcal'),
-                "time" => min_2_h( get_field('czas') ),
-                "proteins" => get_field('bialko'),
-                "carbs" => get_field('weglowodany'),
-                "fats" => get_field('tluszcze'),
-                "excerpt" => custom_field_excerpt('wstep', 20),
-                // "term" => $_POST['category_filter']
-            ) ;
+             
+            get_template_part('template-parts/content-recipes');
             
-            // get_template_part('../template-parts/content-recipes');
-
         }
         wp_reset_postdata();
-
-        echo json_encode( $result );
+        
+        echo '</div>';
 
     } else {
-        echo __('Niestety nie znaleziono postów pasujących do kryteriów wyszukiwania', 'Smaczegopl');
+        echo 0;
     }
  
 	die();
+
+}
+
+
+
+function chomikoo_check_paged( $num = null ){
+    $output = '';
+
+    if( is_paged() ){
+        $output = 'page/' . get_query_var( 'paged' ); 
+    }
+
+    if( $num == 1){
+        $paged = (get_query_var( 'paged' ) == 0 ? 1 : get_query_var( 'paged' ) );
+        return $paged;
+    } else {
+        return $output;
+    }
 
 }

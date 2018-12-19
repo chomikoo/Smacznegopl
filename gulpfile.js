@@ -52,13 +52,15 @@ const mapDIST = './';
 
 const jsSRC = './src/js/';
 const jsVendors = jsSRC + 'vendors/';
+const jsFrontend = jsSRC + 'frontend/';
+const jsBackend = jsSRC + 'backend/';
 const jsMain = jsSRC + 'script.js';
 
 const jsAll = [
 	jsVendors + 'slick.js',
 	jsVendors + 'instafeed.js',
-	jsSRC + 'live-search.js',
-	// jsSRC + 'frontend/filter-ajax.js',
+	jsFrontend + 'live-search.js',
+	jsFrontend + 'isVisible.js',
 
 	// jsSRC + 'calculators.js',
 	jsMain
