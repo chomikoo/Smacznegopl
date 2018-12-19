@@ -29,7 +29,7 @@
             events() {
                 this.$filterForm.on('submit', this.getResults.bind(this));
                 this.$loadMoreBtn.on('click', this.getMorePosts.bind(this));
-                this.$window.on('scroll', this.updateURL.bind(this));
+                // this.$window.on('scroll', this.updateURL.bind(this));
             }
 
             updateURL() {
@@ -45,19 +45,25 @@
                         if( isVisible( $(this) ) ){
 
                             let pageSlug = $(this).attr("data-page").replace(/^\/+/g, '').split('/');
-                            console.log('url ' , that.pageURL);
-                            console.log('temp ', that.tempURL);
-                            that.pageURL = arrayURL.concat(pageSlug).join('/');
+                            console.log('url ' , that.tempURL.join('/'));
+                            // console.log('temp ', that.tempURL);
+                            // console.log('pageS ',pageSlug);
+                            
 
-                            if ( that.pageURL != that.tempURL ) {
+                            // if ( pageSlug.toString() != that.tempURL.toString() ) {
                                 
-                                console.log('ZMIENIAMY URLE')
-                                console.log('url ' ,that.pageURL);
-                                console.log('temp ', that.tempURL);
-                                // this.tempURL = window.location.href;
-                                history.replaceState( null, null, that.pageURL );
-                                that.tempURL = that.pageURL;
-                            }
+                            //     console.log('ZMIENIAMY URLE')
+                            //     // console.log(pageSlug);
+                            //     that.pageURL = arrayURL.pop().concat(pageSlug).join('/');
+                            //     console.log(that.pageURL);
+
+                                
+                            //     // console.log('url ' ,that.pageURL);
+                            //     // console.log('win ', window.location.href);
+                            //     // // // this.tempURL = window.location.href;
+                            //     // history.replaceState( null, null, that.pageURL );
+                            //     that.tempURL = pageSlug;
+                            // }
                             return(false);
                         }
                     });
@@ -93,7 +99,7 @@
                 const data = {
                     action : "chomikoo_ajax_filter_function",
                     page: page,
-                    prev: prev,
+                    // prev: prev,
                     category_filter: this.category_filter,
                     sort_terms: this.sort_terms,
                     kcal_min: this.kcal_min,
