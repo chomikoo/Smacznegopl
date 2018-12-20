@@ -1,10 +1,21 @@
-.taxonomy-tag  {
+.taxonomy-tag {
     display: flex;
     flex-wrap: wrap;
+
     // justify-content: space-between;
-    > * {
+    >* {
         padding: 0 2px;
     }
+
+    &__link {
+        display: block;
+        font-size: 14px;
+        color: $c-green;
+        margin: 0 0 5px 0;
+        // font-weight: bold;
+        // letter-spacing: 1.1px;
+    }
+
     &__element:first-of-type {
         padding-left: 0;
     }

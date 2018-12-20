@@ -1,5 +1,6 @@
 .single-recipe {
     margin: 0 auto $gapMedium*2 auto;
+
     &__header {
         position: relative;
         width: 100%;
@@ -10,16 +11,20 @@
             color: $white;
         }
     }
+
     &__info {
         position: absolute;
-        bottom: 90px; left: 25px;
+        bottom: 90px;
+        left: 25px;
         z-index: 1;
+
         .badges {
             color: $white;
         }
-    }   
+    }
 
-    &__enter, &__end {
+    &__enter,
+    &__end {
         margin: 0 0 $gapMedium*4 0;
     }
 }
@@ -40,9 +45,11 @@
 
 .ingredients {
     margin: 0 0 $gapMedium*2 0;
+
     &__single {
         margin: 0 0 $gapMedium 0;
     }
+
     &__head {
         display: flex;
         justify-content: space-between;
@@ -73,6 +80,7 @@
         align-items: flex-start;
 
         text-transform: lowercase;
+
         &:last-of-type {
             margin-bottom: 0;
         }
@@ -80,7 +88,7 @@
         &:before {
             content: '\2022';
             display: inline-block;
-            
+
             font-size: 35px;
             color: $c-grey-l;
             margin-right: 20px;
@@ -112,6 +120,7 @@
     &__link {
         border-bottom: 1px dotted $c-grey-l;
         margin-left: 5px;
+
         &:hover {
             border-bottom: 1px solid $c-grey-l;
         }
@@ -121,8 +130,10 @@
         margin: 0 0 0 5px;
         color: $c-grey-l;
         transition: all 0.2s ease-in;
-        &:hover, &:focus {
-            color: $c-grey;
+
+        &:hover,
+        &:focus {
+            color: $c-green;
         }
     }
 
@@ -131,6 +142,7 @@
 .barcode {
     margin: 0 0 $gapMedium 0;
     text-align: center;
+
     &__subtitle {
         margin: 0 0 $gapMedium 0;
     }
@@ -145,13 +157,14 @@
 .wysiwyg-container {
     p {
         line-height: 1.5;
-        letter-spacing: 1px;        
+        letter-spacing: 1px;
     }
-    
+
     ol {
         list-style-type: none;
         font-family: $f-open;
-        margin: 0 0 $gapMedium*2 0; 
+        margin: 0 0 $gapMedium*2 0;
+
         li {
             position: relative;
             counter-increment: step-counter;
@@ -159,10 +172,11 @@
             letter-spacing: 1px;
             line-height: 1.5;
             padding-left: 60px;
-    
+
             &:last-of-type {
                 margin-bottom: 0;
             }
+
             &:before {
                 content: counter(step-counter);
                 padding: 6px;

@@ -127,14 +127,14 @@
 	}
 
 
-	function terms_list($id, $slug) {
+	function terms_list($id, $slug, $spacer='0') {
 		$terms = get_the_terms($id, $slug);
 		$terms_length = count($terms);
 		$i = 0;
 		$list = '<ul class="taxonomy-tag">';
 		foreach($terms as $term){
-			$list .= '<li class="taxonomy-tag__element">'.$term->name.'</li>';
-			if( !($i == $terms_length - 1) ) { $list .= '<span>&#8226;</span>';}
+			$list .= '<li class="taxonomy-tag__element"><a href="' . get_term_link($term) . '" class="taxonomy-tag__link">'.$term->name.'</a></li>';
+			if( !($i == $terms_length - 1) && $spacer ) { $list .= '<span>' . $spacer . '</span>';}
 			$i++;
 		}
 		$list .= '</ul>';

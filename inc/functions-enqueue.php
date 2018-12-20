@@ -19,11 +19,11 @@ function chomikoo_load_scripts() {
 	wp_enqueue_style( 'styles', THEME_URL . 'dist/css/style.min.css', array(), $ver, 'all' );
 
 	if( is_single() && get_post_type()=='recipes' ) {
-		wp_enqueue_script( 'recipe', THEME_URL . 'src/js/recipe.js', array('jquery'), $ver, 'all'  );	
+		wp_enqueue_script( 'recipe', THEME_URL . 'src/js/frontend/recipe.js', array('jquery'), $ver, 'all'  );	
 	}
 
 	if( is_page_template('template-calculator.php') ) {
-		wp_enqueue_script( 'calculators', THEME_URL . 'src/js/calculators.js', array('jquery'), $ver, 'all'  );	
+		wp_enqueue_script( 'calculators', THEME_URL . 'src/js/frontend/calculators.js', array('jquery'), $ver, 'all'  );	
 	}
 
 	// if( archive ) {}
