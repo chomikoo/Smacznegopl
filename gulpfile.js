@@ -166,6 +166,7 @@ gulp.task('scripts', () => {
 	return gulp.src(
 		jsAll
 		)
+		.pipe(plumber())
 		.pipe(concat('script.min.js'))
 		.pipe( gulpif( options.has( 'production'), stripdebug()))
 		.pipe(babili({

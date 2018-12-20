@@ -6,16 +6,16 @@
     // TABS
     function closeTabs() {
         [...document.querySelectorAll('.calculator')].map( elem => { elem.classList.remove('tabs--current')});
-        [...document.querySelectorAll('.tabs__nav')].map( elem => { elem.classList.remove('tabs__nav--active')});
+        [...document.querySelectorAll('.tabs__nav-element')].map( elem => { elem.classList.remove('tabs__nav-element--active')});
     }
 
     function openTab(hash, target) {
         closeTabs();
         document.querySelector(hash).classList.add('tabs--current');
-        target.classList.add('tabs__nav--active');
+        target.classList.add('tabs__nav-element--active');
     }
 
-    const tabsBtnsArr = [...document.querySelectorAll('.tabs__nav')];
+    const tabsBtnsArr = [...document.querySelectorAll('.tabs__nav-element')];
     tabsBtnsArr.map((element, i) => {
         element.addEventListener('click', (e)=>{
             e.preventDefault();

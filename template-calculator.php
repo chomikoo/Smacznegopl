@@ -12,11 +12,11 @@ get_header(); ?>
 
 	<section class="container">
 
-		<div class="tabs calculator__tabs">
-			<a href="#bmiTab" class="tabs__nav tabs__nav--active btn btn--tab"><?php echo __('BMI'); ?></a>
-			<a href="#bmrTab" class="tabs__nav btn btn--tab"><?php echo __('BMR'); ?></a>
-			<a href="#pwTab" class="tabs__nav btn btn--tab"><?php echo __('Idealna Waga'); ?></a>
-			<a href="#bfTab" class="tabs__nav btn btn--tab"><?php echo __('BF'); ?></a>
+		<div class="tabs__nav calculator__tabs">
+			<a href="#bmiTab" class="tabs__nav-element tabs__nav-element--active btn btn--tab"><?php echo __('BMI'); ?></a>
+			<a href="#bmrTab" class="tabs__nav-element btn btn--tab"><?php echo __('BMR'); ?></a>
+			<a href="#pwTab" class="tabs__nav-element btn btn--tab"><?php echo __('Idealna Waga'); ?></a>
+			<a href="#bfTab" class="tabs__nav-element btn btn--tab"><?php echo __('BF'); ?></a>
 		</div>
 
 		<div id="bmiTab" class="calculator calculator__bmi tabs--current">
