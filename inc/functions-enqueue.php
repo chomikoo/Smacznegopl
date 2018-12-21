@@ -26,6 +26,9 @@ function chomikoo_load_scripts() {
 		wp_enqueue_script( 'calculators', THEME_URL . 'src/js/frontend/calculators.js', array('jquery'), $ver, 'all'  );	
 	}
 
+	if( is_page_template('template-converter.php') ) {
+		wp_enqueue_script( 'converter', THEME_URL . 'src/js/frontend/converter.js', array('jquery'), $ver, 'all'  );	
+	}
 	// if( archive ) {}
 		
 		wp_enqueue_script( 'myscript', THEME_URL . 'dist/js/script.min.js', array('jquery'), $ver, 'all'  );

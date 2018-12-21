@@ -8,16 +8,16 @@
 	const navbar = $('.navbar');
 
 	const hamburger = $('#hamburger');
-	hamburger.on('click', function() {
+	hamburger.on('click', function () {
 		navbar.toggleClass('active');
 		$(this).toggleClass('active');
 		$('body').toggleClass('no-scroll');
 	})
 
 	navbar.find('.sub-menu').hide();
-	navbar.find('.menu-item-has-children').on('click', function(e) {
+	navbar.find('.menu-item-has-children').on('click', function (e) {
 		// e.preventDefault();
-		console.log('Open sub menu');
+		// console.log('Open sub menu');
 		$(this).toggleClass('open');
 		$(this).find('.sub-menu').slideToggle();
 	})
@@ -30,19 +30,18 @@
 		dots: false,
 		speed: 500,
 		slidesToShow: 3,
-		responsive: [
-			{
+		responsive: [{
 				breakpoint: 950,
 				settings: {
-				  slidesToShow: 2
+					slidesToShow: 2
 				}
 			},
 			{
 				breakpoint: 580,
 				settings: {
-				  slidesToShow: 1
+					slidesToShow: 1
 				}
-			  },
+			},
 		]
 	});
 
@@ -53,7 +52,7 @@
 	const setSlidesHeight = (element) => {
 		const slickWrapper = $(element);
 		const slickWrapperH = slickWrapper.height();
-		slickWrapper.find('.slick-slide').css('height', slickWrapperH + 'px' );
+		slickWrapper.find('.slick-slide').css('height', slickWrapperH + 'px');
 	}
 	setSlidesHeight('.top-carousel');
 	// setSlidesHeight('.meal-terms');
@@ -65,18 +64,16 @@
 		// dots: true,
 		speed: 500,
 		slidesToShow: 3,
-		responsive: [
-			{
-				breakpoint: 580,
-				settings: {
-				  slidesToShow: 2
-				}
-			  },
-		]
-	}); 
+		responsive: [{
+			breakpoint: 580,
+			settings: {
+				slidesToShow: 2
+			}
+		}, ]
+	});
 
 
-	
+
 	// Instafeeed
 	// Init instafeed.js
 	var instaFeed = new Instafeed({
@@ -93,10 +90,14 @@
 			'</div>'
 	});
 
-	if( $('#insta').length) {
+	if ($('#insta').length) {
 		instaFeed.run();
 	}
 
 
+	if ($('#tabs').length) {
+		console.log('aa');
+		const tabs = new CustomTabs('#tabs');
+	}
 
 })(jQuery)

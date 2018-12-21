@@ -33,7 +33,7 @@ const gulp = require('gulp'),
 	svgmin = require('gulp-svgmin'),
 	iconfont = require('gulp-iconfont'),
 	iconfontCss = require('gulp-iconfont-css'),
-	runTimestamp = Math.round(Date.now()/1000),
+	runTimestamp = Math.round(Date.now() / 1000),
 
 	// Browser
 	browserSync = require('browser-sync').create(),
@@ -44,7 +44,7 @@ const gulp = require('gulp'),
 
 //=========== Paths ==================/
 
-const projectName = 'smacznego'; 
+const projectName = 'smacznego';
 
 //=========== Styles ==================/
 
@@ -64,6 +64,8 @@ const jsAll = [
 	jsVendors + 'slick.js',
 	jsVendors + 'instafeed.js',
 	jsFrontend + 'tabs.js',
+	// jsFrontend + 'converter.js',
+	// jsFrontend + 'calculators.js',
 	jsFrontend + 'live-search.js',
 	jsFrontend + 'isVisible.js',
 
@@ -164,11 +166,11 @@ gulp.task('styles', () => {
 
 gulp.task('scripts', () => {
 	return gulp.src(
-		jsAll
+			jsAll
 		)
 		.pipe(plumber())
 		.pipe(concat('script.min.js'))
-		.pipe( gulpif( options.has( 'production'), stripdebug()))
+		.pipe(gulpif(options.has('production'), stripdebug()))
 		.pipe(babili({
 			mangle: {
 				keepClassNames: true
@@ -177,7 +179,7 @@ gulp.task('scripts', () => {
 		.on('error', function (err) {
 			gutil.log(gutil.colors.red('[Error]'), err.toString());
 		})
-		.pipe( sourcemaps.write( '.' ) )
+		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(jsDIST))
 		.pipe(browserSync.stream())
 });
@@ -204,12 +206,11 @@ gulp.task('images', () => {
 //================
 
 gulp.task('svg', () => {
-    return gulp.src(svgSRC)
-        .pipe(svgmin(
-			{
-				plugins: [{
+	return gulp.src(svgSRC)
+		.pipe(svgmin({
+			plugins: [{
 					removeDoctype: true
-				}, 
+				},
 				{
 					removeUselessDefs: true
 				},
@@ -220,9 +221,8 @@ gulp.task('svg', () => {
 					removeViewBox: false
 				}
 			]
-			}
-		))
-        .pipe(gulp.dest(svgDIST));
+		}))
+		.pipe(gulp.dest(svgDIST));
 });
 
 //================
@@ -231,32 +231,32 @@ gulp.task('svg', () => {
 
 gulp.task('iconfont', () => {
 	return gulp.src(iconsSRC)
-	  .pipe(iconfontCss({
-		fontName: 'icons',
-		// path: 'src/sass/partials/_icons.scss', 
-		targetPath: 'src/sass/partials/_icons.scss',
-		fontPath: 'dist/fonts/icons/',
-	  }))
-	  .pipe(iconfont({
-		prependUnicode: false,
-		fontName: 'icons', 
-		formats: ['ttf', 'eot', 'woff'], 
-		normalize: true,
-		fontHeight: 1000,
-		timestamp: runTimestamp 
-	  }))
-	  .pipe(gulp.dest('dist/fonts/icons/'));
-  });
+		.pipe(iconfontCss({
+			fontName: 'icons',
+			// path: 'src/sass/partials/_icons.scss', 
+			targetPath: 'src/sass/partials/_icons.scss',
+			fontPath: 'dist/fonts/icons/',
+		}))
+		.pipe(iconfont({
+			prependUnicode: false,
+			fontName: 'icons',
+			formats: ['ttf', 'eot', 'woff'],
+			normalize: true,
+			fontHeight: 1000,
+			timestamp: runTimestamp
+		}))
+		.pipe(gulp.dest('dist/fonts/icons/'));
+});
 
 //================
 //      Fonts 
 //================
 
 gulp.task('fonts', () => {
-	return gulp.src( fontSRC )
-	  .pipe(gulp.dest( fontDIST ))
-  });
-  
+	return gulp.src(fontSRC)
+		.pipe(gulp.dest(fontDIST))
+});
+
 
 gulp.task('watch', ['browserSync', 'styles'], () => {
 	gulp.watch(styleWatch, ['styles'], browserSync.reload());
@@ -269,4 +269,3 @@ gulp.task('default', function (callback) {
 	runSequence(['watch', 'styles', 'scripts', 'browserSync'],
 		callback)
 });
-
