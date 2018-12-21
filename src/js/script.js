@@ -96,7 +96,6 @@
 
 
 	if ($('#tabs').length) {
-		console.log('aa');
 		const tabs = new CustomTabs('#tabs');
 	}
 

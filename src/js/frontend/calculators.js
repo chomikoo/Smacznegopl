@@ -1,12 +1,16 @@
 (function () {
     'use strict'
 
-    console.log('Hello from calculators.js');
+    // console.log('Hello from calculators.js');
 
     // TABS
     function closeTabs() {
-        [...document.querySelectorAll('.calculator')].map( elem => { elem.classList.remove('tabs--current')});
-        [...document.querySelectorAll('.tabs__nav-element')].map( elem => { elem.classList.remove('tabs__nav-element--active')});
+        [...document.querySelectorAll('.calculator')].map(elem => {
+            elem.classList.remove('tabs--current')
+        });
+        [...document.querySelectorAll('.tabs__nav-element')].map(elem => {
+            elem.classList.remove('tabs__nav-element--active')
+        });
     }
 
     function openTab(hash, target) {
@@ -17,7 +21,7 @@
 
     const tabsBtnsArr = [...document.querySelectorAll('.tabs__nav-element')];
     tabsBtnsArr.map((element, i) => {
-        element.addEventListener('click', (e)=>{
+        element.addEventListener('click', (e) => {
             e.preventDefault();
             openTab(e.target.hash, e.target);
         });
@@ -34,7 +38,7 @@
         element.addEventListener('blur', event => {
             if (!event.target.value) {
                 event.target.parentNode.classList.remove('calculator__group--focus');
-            } 
+            }
         }, true);
     });
 
@@ -49,9 +53,7 @@
     });
 
     function bmiCalc() {
-
         let comment = document.getElementById('bmiComment');
-    
         // let gender = document.querySelector('input[name="gender"]:checked').value;
         let height = document.getElementById('bmiHeight').value / 100;
         let weight = document.getElementById('bmiWeight').value;
@@ -75,11 +77,9 @@
             color = 'black';
         }
 
-        console.log(`BMI  H ${height} W ${weight} BMI ${bmi} Comment ${commentText} Color ${color}`);
-
         comment.style.color = color;
         comment.innerHTML = commentText;
-    
+
     }
 
     ///////////////////
@@ -94,27 +94,24 @@
 
     function bmrCalc() {
         let comment = document.getElementById('bmrComment');
-    
         let gender = document.querySelector('input[name="bmr_gender"]:checked').value;
         let height = document.getElementById('bmrHeight').value;
         let weight = document.getElementById('bmrWeight').value;
         let age = document.getElementById('bmrAge').value;
-
         let activity = document.getElementById('bmr_activity').value;
 
         let ppm = 0;
 
-        
-        if ( gender == 'f') {
-            ppm =  66.47 + (13.75 * weight) + (5 * height) - (6.75 * age);
+        if (gender == 'f') {
+            ppm = 66.47 + (13.75 * weight) + (5 * height) - (6.75 * age);
 
-        } else if ( gender === 'm' ) {
+        } else if (gender === 'm') {
             ppm = 665.09 + (9.56 * weight) + (1.85 * height) - (4.67 * age);
         }
-        
+
         let bmr = ppm * activity;
 
-        console.log(`BMR G ${gender} H ${height} W ${weight} Age ${age} Activity ${activity} PPM ${Math.floor(ppm)} BMR ${Math.floor(bmr)}`);
+        // console.log(`BMR G ${gender} H ${height} W ${weight} Age ${age} Activity ${activity} PPM ${Math.floor(ppm)} BMR ${Math.floor(bmr)}`);
 
         const commentHtml = `
             <span>Podstawowa przemiana materii: ${Math.floor(ppm)} kcal</span><br>
@@ -140,14 +137,14 @@
         let gender = document.querySelector('input[name="pw_gender"]:checked').value;
         let height = document.getElementById('pwHeight').value;
         let pw = 0;
-  
-        if ( gender == 'f') {
-            pw =  height - 100 - ((height - 150) / 2);
-        } else if ( gender === 'm' ) {
+
+        if (gender == 'f') {
+            pw = height - 100 - ((height - 150) / 2);
+        } else if (gender === 'm') {
             pw = height - 100 - ((height - 150) / 4);
         }
 
-        console.log(`BW G ${gender} H ${height} PW ${pw}`);
+        // console.log(`BW G ${gender} H ${height} PW ${pw}`);
 
         const commentHtml = `
             <span>Idealna waga: ${pw.toFixed(1)} kg</span>
@@ -168,7 +165,7 @@
     [...document.querySelectorAll('#bfForm .radio__input')].map(elem => {
         elem.addEventListener('change', (event) => {
             console.log(event.target.value);
-            if(event.target.value === 'f') {
+            if (event.target.value === 'f') {
                 document.getElementById('bfHip').parentNode.classList.remove('d-none');
             } else {
                 document.getElementById('bfHip').parentNode.classList.add('d-none');
@@ -178,7 +175,7 @@
 
     function bfCalc() {
         let comment = document.getElementById('bfComment');
-    
+
         let gender = document.querySelector('input[name="bf_gender"]:checked').value;
         let heightVal = document.getElementById('bfHeight').value;
         let weightVal = document.getElementById('bfWeight').value;
@@ -191,12 +188,12 @@
 
         let bf = 0;
 
-        if ( gender === 'f') {
+        if (gender === 'f') {
             // bf = Math.floor(weight / (163.205 * Math.log10(waist + hip - neck) - 97.684 * Math.log10(height) - 78.387) * 100); // for woman
-            bf = Math.floor(495 / ( 1.29579 - 0.35004 * Math.log10( waistVal + hipVal - neckVal ) + 0.22100 * Math.log10( heightVal ) ) - 450);
-        } else if ( gender === 'm' ) {
+            bf = Math.floor(495 / (1.29579 - 0.35004 * Math.log10(waistVal + hipVal - neckVal) + 0.22100 * Math.log10(heightVal)) - 450);
+        } else if (gender === 'm') {
             // bf = Math.floor(weight / (86.010 * Math.log10( waist - neck ) - 70.041 * Math.log10(height + 36.76)) * 100); // for man
-            bf = Math.floor(495 / ( 1.0324 - 0.19077 * Math.log10( waistVal - neckVal ) + 0.15456 * Math.log10( heightVal ) ) - 450);
+            bf = Math.floor(495 / (1.0324 - 0.19077 * Math.log10(waistVal - neckVal) + 0.15456 * Math.log10(heightVal)) - 450);
         }
 
         console.log(`BF G ${gender} H ${heightVal} W ${waistVal} H ${hipVal} N ${neckVal} BF ${bf.toFixed(1)}`);
