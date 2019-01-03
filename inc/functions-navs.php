@@ -68,13 +68,13 @@ add_filter('nav_menu_css_class', 'chomikoo_menu_classes', 1, 3);
 				echo '<div style="background-image:url(' . $prevthumbnail . ')" class="post-nav__img"></div>';
 
 			$title = $prevPost->post_title;
-			$terms = terms_list($nextPost->ID, 'meal-type');
+			// $terms = terms_list($nextPost->ID, 'meal-type');
 		
-			echo '<div class="post-nav__content">' . $terms . '<h3>' . $title . '</h3></div>';
-
-			wp_reset_postdata();
+			echo '<div class="post-nav__content"><h3>' . $title . '</h3></div>';
 
 			echo '</a>';
+			wp_reset_postdata();
+
 		
 		} // if
 
@@ -102,8 +102,8 @@ add_filter('nav_menu_css_class', 'chomikoo_menu_classes', 1, 3);
 			echo '<div style="background-image:url(' . $nextthumbnail . ')" class="post-nav__img"></div>';
 
 			$title = $nextPost->post_title;
-			$terms = terms_list($nextPost->ID, 'meal-type');
-			echo '<div class="post-nav__content">' . $terms . '<h3>' . $title . '</h3></div>';
+			// $terms = terms_list($nextPost->ID, 'meal-type');
+			echo '<div class="post-nav__content"><h3>' . $title . '</h3></div>';
 		
 
 			wp_reset_postdata();

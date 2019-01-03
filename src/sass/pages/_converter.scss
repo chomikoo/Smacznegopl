@@ -1,7 +1,9 @@
 .converter {
+  &__subtitle {
+    padding: 25px 0;
+  }
 
-    &__subtitle {
-        padding: 25px 0;
-
-    }
+  .input-text {
+    padding: 15px 15px;
+  }
 }

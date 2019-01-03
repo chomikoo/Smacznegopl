@@ -46,24 +46,7 @@
 
                             let pageSlug = $(this).attr("data-page").replace(/^\/+/g, '').split('/');
                             console.log('url ' , that.tempURL.join('/'));
-                            // console.log('temp ', that.tempURL);
-                            // console.log('pageS ',pageSlug);
-                            
-
-                            // if ( pageSlug.toString() != that.tempURL.toString() ) {
-                                
-                            //     console.log('ZMIENIAMY URLE')
-                            //     // console.log(pageSlug);
-                            //     that.pageURL = arrayURL.pop().concat(pageSlug).join('/');
-                            //     console.log(that.pageURL);
-
-                                
-                            //     // console.log('url ' ,that.pageURL);
-                            //     // console.log('win ', window.location.href);
-                            //     // // // this.tempURL = window.location.href;
-                            //     // history.replaceState( null, null, that.pageURL );
-                            //     that.tempURL = pageSlug;
-                            // }
+                 
                             return(false);
                         }
                     });
@@ -132,8 +115,8 @@
                     this.revealArticles();
                  }
                 )
-                .fail(function() {
-                    console.log('Fail');
+                .fail(function(err) {
+                    console.log('Fail',err);
                 })
             }
 

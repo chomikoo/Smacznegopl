@@ -232,7 +232,7 @@ function chomikoo_ajax_filter_function_callback() {
 	if( $query->have_posts() ) {
         $result = array();
         
-        echo '<div class="page-limit row" data-page="/page/' . $paged . '">';
+        echo '<div class="page-limit row mx-auto" data-page="/page/' . $paged . '">';
 
 		while( $query->have_posts() ){
              $query->the_post();

@@ -8,7 +8,7 @@
 
 get_header(); ?>
 
-<main>
+<main class="converter">
 
 	<section class="entry">
 		<?php the_field('entry') ?>
@@ -42,7 +42,7 @@ get_header(); ?>
 		</div>
 
 		<!-- // Temperature Converter -->
-		<div id="tab2" class="tabs__tab">
+		<div id="tab2" class="tabs__tab tabs__tab--current">
 			<h2 class="calculator__subtitle subtitle">
 				<?php echo __('Przelicznik Temperatur');?>
 			</h2>
@@ -65,7 +65,7 @@ get_header(); ?>
 		</div>
 
 		<!-- // Temperature Weight -->
-		<div id="tab3" class="tabs__tab tabs__tab--current">
+		<div id="tab3" class="tabs__tab">
 
 			<h2 class="calculator__subtitle subtitle">
 				<?php echo __('Przelicznik Wag');?>
@@ -105,37 +105,49 @@ get_header(); ?>
 		
 		</div>
 
-		<div id="tab4" class="tabs__tab">
+		<div id="tab4" class="tabs__tab ">
 
 			<h2 class="calculator__subtitle subtitle">
 				<?php echo __('Przelicznik Objęści');?>
 			</h2>
 
-			<!-- <form id="capacity_conv" class="" action="">
-				<div role="group" class="calculator__text d-flex flex-column">
+			<form id="capacity_conv" class="" action="">
+				<div role="group" class="calculator__text row">
 
-					<div class="input-text">
-
-						<label class="input-text__label" for="tempC">
-							<?php echo __('Stopni Celsjusza'); ?>
+					<div class="input-text col-12">						
+						<input class="input-text__input" id="ml" type="number" name="ml" placeholder=" ">
+						<label class="input-text__label" for="ml">
+							<?php echo __('mililitry'); ?>
 						</label>
-						<input class="input-text__input" id="tempC" type="number" name="C" require>
+					</div>
+					<div class="input-text col-12">						
+						<input class="input-text__input" id="liters" type="number" name="liters" placeholder=" ">
+						<label class="input-text__label" for="liters">
+							<?php echo __('Litry'); ?>
+						</label>
+					</div>
+					<div class="input-text col-12">						
+						<input class="input-text__input" id="ts" type="number" name="ts" placeholder=" ">
+						<label class="input-text__label" for="ts">
+							<?php echo __('Łyżeczka'); ?>
+						</label>
+					</div>
+					<div class="input-text col-12">						
+						<input class="input-text__input" id="spoon" type="number" name="spoon" placeholder=" ">
+						<label class="input-text__label" for="spoon">
+							<?php echo __('Łyżka stołowa'); ?>
+						</label>
 					</div>
 
-					<div class="input-text">
-						
-						<label class="input-text__label" for="tempF">
-							<?php echo __('Stopni Fahrenheita'); ?>
+					<div class="input-text col-12">						
+						<input class="input-text__input" id="glass" type="number" name="glass" placeholder=" ">
+						<label class="input-text__label" for="glass">
+							<?php echo __('Szklanki'); ?>
 						</label>
-						<input class="input-text__input" id="tempF" type="number" name="F" require>
-						</div>
 					</div>
+
 				</div>
-			</form> -->
-
-			<div id="weight" class="convert__result">
-
-			</div>
+			</form>
 
 		</div>
 
