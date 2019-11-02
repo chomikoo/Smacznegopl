@@ -8,7 +8,7 @@
             <?php terms_list(get_the_id(), 'meal-type'); ?>
             
             <h2 class="subtitle">
-                Przepis: <?php echo get_the_title( get_the_id() ); ?>
+                <?php echo get_the_title( get_the_id() ); ?>
             </h2>
             
             <div class="slider__info">

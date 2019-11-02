@@ -1,119 +1,119 @@
 .recipe {
-    $r: &;
+  $r: &;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 0 50px 0;
+
+  &__thumbnail {
+    position: relative;
+    border-radius: $borderR;
+    margin: 0 0 25px 0;
+    height: 260px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 0;
+      opacity: 0.5;
+      background: $black;
+      background: $bg-gradient-recipe-card;
+      transition: all 0.3s ease-in;
+    }
+
+    &:hover {
+      &:after {
+        // transform: translate(0, 0);
+        opacity: 1;
+      }
+    }
+  }
+
+  &__content {
+    flex-grow: 1;
+  }
+
+  &__title {
+    // font-size: 35px;
+    font-size: 27px;
+    font-weight: 100;
+    letter-spacing: 1px;
+    margin: 0 0 15px 0;
+  }
+
+  &__info {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: $c-grey;
+    font-family: $f-open;
+
+    &--nutrition {
+      width: 100%;
+    }
+
+    &--thumbnail {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin: 0;
+      padding: 15px;
+      color: $white;
+      font-size: 20px;
+    }
+  }
+
+  &__excerpt {
+    font-size: 14px;
+    color: $c-grey;
+    margin: 0 0 20px 0;
+  }
+
+  &__footer {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    margin: 0 0 50px 0;
+    align-items: baseline;
+  }
 
-    &__thumbnail {
-        position: relative;
-        border-radius: $borderR;
-        margin: 0 0 25px 0;
-        height: 260px;
+  &__more {
+    margin: 0 10px 0 0;
+    transition: all 0.2s ease-in;
 
-        &::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 0;
-            opacity: 0.5;
-            background: $black;
-            background: $bg-gradient-recipe-card;
-            transition: all 0.3s ease-in;
-        }
+    &:hover,
+    &:focus {
+      color: $c-green;
 
-        &:hover {
-            &:after {
-                // transform: translate(0, 0);
-                opacity: 1;
-            }
-        }
+      & ~ .bar:after {
+        width: 100%;
+      }
     }
+  }
 
+  .bar {
+    // width: 100%;
+    position: relative;
+    flex-grow: 1;
+    height: 1px;
+    display: inline-block;
+    padding: 0 0 0 15px;
+    background-color: $c-grey-l;
 
-    &__content {
-        flex-grow: 1;
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 1px;
+      background-color: $c-green;
+      transition: all 0.2s ease-in;
     }
-
-    &__title {
-        font-size: 35px;
-        font-weight: 100;
-        letter-spacing: 1px;
-        margin: 0 0 15px 0;
-    }
-
-    &__info {
-        margin: 0 0 10px 0;
-        font-size: 14px;
-        color: $c-grey;
-        font-family: $f-open;
-
-        &--nutrition {
-            width: 100%;
-        }
-
-        &--thumbnail {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            z-index: 2;
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            margin: 0;
-            padding: 15px;
-            color: $white;
-            font-size: 20px;
-        }
-    }
-
-    &__excerpt {
-        font-size: 14px;
-        color: $c-grey;
-        margin: 0 0 20px 0;
-    }
-
-    &__footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-    }
-
-    &__more {
-        margin: 0 10px 0 0;
-        transition: all 0.2s ease-in;
-
-        &:hover,
-        &:focus {
-            color: $c-green;
-
-            &~.bar:after {
-                width: 100%;
-            }
-        }
-    }
-
-    .bar {
-        // width: 100%;
-        position: relative;
-        flex-grow: 1;
-        height: 1px;
-        display: inline-block;
-        padding: 0 0 0 15px;
-        background-color: $c-grey-l;
-
-        &:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 0;
-            height: 1px;
-            background-color: $c-green;
-            transition: all 0.2s ease-in;
-        }
-    }
+  }
 }

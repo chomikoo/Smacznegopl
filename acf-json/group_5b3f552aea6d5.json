@@ -193,28 +193,6 @@
                     "button_label": "",
                     "sub_fields": [
                         {
-                            "key": "field_5b3f589b50104",
-                            "label": "Składnik",
-                            "name": "skladnik",
-                            "type": "post_object",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "60",
-                                "class": "",
-                                "id": ""
-                            },
-                            "post_type": [
-                                "products"
-                            ],
-                            "taxonomy": [],
-                            "allow_null": 1,
-                            "multiple": 0,
-                            "return_format": "object",
-                            "ui": 1
-                        },
-                        {
                             "key": "field_5b3f58b450105",
                             "label": "Ilość",
                             "name": "ilosc",
@@ -243,6 +221,54 @@
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "10",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5b3f589b50104",
+                            "label": "Składnik",
+                            "name": "skladnik",
+                            "type": "post_object",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "60",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "products"
+                            ],
+                            "taxonomy": [],
+                            "allow_null": 1,
+                            "multiple": 0,
+                            "return_format": "object",
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_5d866d4caffab",
+                            "label": "Składnik",
+                            "name": "name_skladnik",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5b3f589b50104",
+                                        "operator": "==empty"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "100",
                                 "class": "",
                                 "id": ""
                             },
@@ -471,5 +497,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1544785385
+    "modified": 1569092172
 }

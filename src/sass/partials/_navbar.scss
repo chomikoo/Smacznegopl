@@ -6,7 +6,7 @@
   $n: &;
 
   &__menu {
-    height: 100vh;
+    // height: 100vh;
     padding: 25px;
     display: flex;
     flex-direction: column;
@@ -16,18 +16,26 @@
     left: 50%;
     position: fixed;
     width: 100%;
-    transform: translate(-50%, -200%);
+    transform: translate(-150%, -50%);
     transition: all 0.2s ease-in;
-    overflow-y: scroll;
+    // overflow-y: scroll;
+    border-radius: 5px;
     overflow-x: hidden;
     opacity: 0.2;
     transition: all 0.2s ease-in;
+    @include breakpoint(sm) {
+      left: 0%;
+      width: 40%;
+    }
   }
 
   &.active {
     #{$n}__menu {
       transform: translate(-50%, -50%);
       opacity: 1;
+      @include breakpoint(sm) {
+        transform: translate(0%, -50%);
+      }
     }
 
     &::before {
@@ -65,12 +73,11 @@
   }
 
   .menu-item-has-children {
-
-    &.open>a::after {
+    &.open > a::after {
       transform: rotate(180deg);
     }
 
-    >a {
+    > a {
       &::after {
         display: inline-block;
         font-family: "icons";

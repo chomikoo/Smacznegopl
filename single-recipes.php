@@ -124,9 +124,12 @@
                                                 <?php 
                                                     $unit = get_sub_field('jednostka'); 
                                                     if( $unit ) {
-                                                        echo  $unit ;
+                                                        echo  $unit;
                                                     }
-                                        
+                                                    $name_prod = get_sub_field('name_skladnik'); 
+                                                    if( $name_prod ) {
+                                                        echo  $name_prod;
+                                                    }                                        
                                                     $prod_obj = get_sub_field('skladnik');
                                                     if ( $prod_obj ) {
                                                         $post = $prod_obj;

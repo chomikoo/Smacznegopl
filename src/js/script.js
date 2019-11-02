@@ -6,6 +6,7 @@
 	// Navigation
 	/////////////////////
 	const navbar = $('.navbar');
+	const $header = $('.header__container');
 
 	const hamburger = $('#hamburger');
 	hamburger.on('click', function () {
@@ -20,6 +21,14 @@
 		// console.log('Open sub menu');
 		$(this).toggleClass('open');
 		$(this).find('.sub-menu').slideToggle();
+	})
+
+	$(window).on('scroll', function(e) {
+		if($header.height() < window.pageYOffset){
+			$header.addClass('header__container--thin');
+		} else {
+			$header.removeClass('header__container--thin');
+		}
 	})
 
 	/////////////////////////
@@ -49,13 +58,13 @@
 	// equal slide height //
 	////////////////////////
 
-	const setSlidesHeight = (element) => {
-		const slickWrapper = $(element);
-		const slickWrapperH = slickWrapper.height();
-		slickWrapper.find('.slick-slide').css('height', slickWrapperH + 'px');
-	}
-	setSlidesHeight('.top-carousel');
-	// setSlidesHeight('.meal-terms');
+	// const setSlidesHeight = (element) => {
+	// 	const slickWrapper = $(element);
+	// 	const slickWrapperH = slickWrapper.height();
+	// 	slickWrapper.find('.slick-slide').css('height', slickWrapperH + 'px');
+	// }
+	// setSlidesHeight('.top-carousel');
+	// // setSlidesHeight('.meal-terms');
 
 
 	$(window).on('resize', setSlidesHeight('.top-carousel'));
