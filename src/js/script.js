@@ -2,6 +2,20 @@
 	'use strict'
 	console.log('Hello from script.js ');
 
+	
+	////////////////////////
+	// equal slide height //
+	////////////////////////
+
+	const setSlidesHeight = (element) => {
+		const slickWrapper = $(element);
+		const slickWrapperH = slickWrapper.height();
+		slickWrapper.find('.slick-slide').css('height', slickWrapperH + 'px');
+	}
+	setSlidesHeight('.top-carousel');
+	// setSlidesHeight('.meal-terms');
+
+
 	/////////////////////
 	// Navigation
 	/////////////////////
@@ -53,18 +67,6 @@
 			},
 		]
 	});
-
-	////////////////////////
-	// equal slide height //
-	////////////////////////
-
-	// const setSlidesHeight = (element) => {
-	// 	const slickWrapper = $(element);
-	// 	const slickWrapperH = slickWrapper.height();
-	// 	slickWrapper.find('.slick-slide').css('height', slickWrapperH + 'px');
-	// }
-	// setSlidesHeight('.top-carousel');
-	// // setSlidesHeight('.meal-terms');
 
 
 	$(window).on('resize', setSlidesHeight('.top-carousel'));
